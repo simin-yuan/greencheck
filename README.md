@@ -21,7 +21,8 @@ mutants    : 12
 ----------------------------------------------------------------------
 caught 11 / 12
 
-verdict: the gate had no reaction to 1/12 mutants - it has a visible blind spot.
+mutants the gate let through (1):
+  *  blank-value:config.json:4:"replicas":
 ```
 
 The escaped mutant turns `"replicas": 3` into `"replicas": 0` — a service that

@@ -52,8 +52,19 @@ mutants    : 12
 ----------------------------------------------------------------------
 caught 11 / 12
 
-verdict: the gate had no reaction to 1/12 mutants - it has a visible blind spot.
+mutants the gate let through (1):
+  *  blank-value:config.json:4:"replicas":
+
+  These are questions, not findings. Some are real gaps. Some are
+  mutations that are semantically legal, and a gate that rejected
+  them would be wrong. This run cannot tell you which is which -
+  that needs someone who knows what the gate is for.
+  For each line, ask: if this had happened, why didn't the gate care?
 ```
+
+This one is a real gap, and the next section shows why. But the tool does not
+decide that for you, and it should not pretend to: the same output shape is
+produced by a genuine hole and by a mutation that any correct gate would allow.
 
 ## What the escaped mutant actually is
 

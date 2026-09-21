@@ -343,12 +343,14 @@ def main(argv=None) -> int:
               + (f"   build errors {len(errors)}" if errors else ""))
 
         if missed:
-            print(f"\nmutants that were NOT caught ({len(missed)}) - your visible blind spots:")
+            print(f"\nmutants the gate let through ({len(missed)}):")
             for name, _ in missed:
                 print(f"  *  {name}")
-            print("\n  Note: an escaped mutant is not automatically a defect - some")
-            print("  mutations are semantically legal. But every line deserves an")
-            print("  answer to: if this had happened, why didn't my gate care?")
+            print("\n  These are questions, not findings. Some are real gaps. Some are")
+            print("  mutations that are semantically legal, and a gate that rejected")
+            print("  them would be wrong. This run cannot tell you which is which -")
+            print("  that needs someone who knows what the gate is for.")
+            print("  For each line, ask: if this had happened, why didn't the gate care?")
 
     report = {
         "greencheck_mutate_version": __version__,
@@ -390,13 +392,15 @@ def main(argv=None) -> int:
         return 1
     if missed:
         if not a.json:
-            print(f"verdict: the gate had no reaction to {len(missed)}/{total} mutants "
-                  "- it has a visible blind spot.")
+            print(f"verdict: the gate let through {len(missed)}/{total} mutants.")
+            print("         That is a list of inputs to think about, not a verdict that")
+            print("         the gate is broken. See the note above.")
         return 1
     if not a.json:
-        print(f"verdict: all {total} mutants were caught - no blind spot found this round.")
-        print("         (That is still not 'the gate is correct'. It is only 'it said no")
-        print("          to every input in this particular set'.)")
+        print(f"verdict: the gate rejected all {total} mutants this round - no gap "
+              "surfaced under this set.")
+        print("         (Which is still not 'the gate is correct'. It is only 'it said")
+        print("          no to every input in this particular set'.)")
         print("=" * 70)
     return 0
 
