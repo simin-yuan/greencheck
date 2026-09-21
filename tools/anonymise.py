@@ -186,11 +186,39 @@ def build_gate_aggregates(events: List[Dict[str, Any]]):
         "days_covered": len(daily),
         "total_firings": sum(daily_fired.values()),
         "days_with_zero_firings_before_first_fire": _zero_days_before_first(daily, daily_fired, first_fire),
+        "events_in_zero_firing_days": _events_in_zero_days_before_first(rows, daily_fired, first_fire),
         "events_before_first_fire": _events_before_first(events, first_fire),
         "event_totals_before_first_fire": _totals_before_first(events, first_fire),
         "first_fire_utc": _iso(first_fire),
     }
     return rows, summary
+
+
+def _events_in_zero_days_before_first(daily_rows, daily_fired, first_fire):
+    """The headline number, in a form a reader can recompute.
+
+    `events_before_first_fire` counts events with a timestamp earlier than the
+    first firing. That needs event-level data, and only aggregates are
+    published, so a reader cannot check it: the published daily rows sum to a
+    smaller number, because the day the guard first fired was partly silent.
+
+    This counts events on whole days that ended with zero firings, up to the
+    first day that fired at all. It is the same claim, one day coarser, and it
+    is arithmetic anyone can redo from `gate_daily.jsonl` with a for-loop.
+
+    A headline that a reader cannot reproduce is the failure this package
+    exists to find, so the headline uses this number and not the other one.
+    """
+    total = 0
+    for row in daily_rows:
+        if first_fire is not None:
+            first_day = _dt.datetime.fromtimestamp(
+                first_fire, _dt.timezone.utc).strftime("%Y-%m-%d")
+            if row["date"] >= first_day:
+                break
+        if daily_fired.get(row["date"], 0) == 0:
+            total += row["events"]
+    return total
 
 
 def _totals_before_first(events, first_fire):

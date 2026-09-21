@@ -1,5 +1,5 @@
 {
-  "mdt_version": "0.1.0",
+  "mdt_version": "0.3.0",
   "headline": {
     "ledger_samples": 84,
     "ledger_window": [
@@ -146,27 +146,27 @@
   ],
   "gate_results": [
     {
-      "subject": "guard denial path — before any positive control",
-      "n_samples": 28176,
+      "subject": "guard denial path — 13 full days with zero firings",
+      "n_samples": 27097,
       "verdicts": [
         "DEAD_GATE"
       ],
       "findings": [
         {
           "verdict": "DEAD_GATE",
-          "subject": "guard denial path — before any positive control",
-          "detail": "28,176 events recorded across 13 days, of which 26,668 were the guard reporting itself healthy, and the denial path fired 0 times. The assertion has never been observed to fire. Its existence is documented; its behaviour is not.",
+          "subject": "guard denial path — 13 full days with zero firings",
+          "detail": "27,097 events recorded across 13 days, of which 25,594 were the guard reporting itself healthy, and the denial path fired 0 times. The assertion has never been observed to fire. Its existence is documented; its behaviour is not.",
           "evidence": {
-            "total_events": 28176,
-            "health_events": 26668,
+            "total_events": 27097,
+            "health_events": 25594,
             "firings": 0,
             "note": ""
           }
         }
       ],
       "stats": {
-        "total_events": 28176,
-        "health_events": 26668,
+        "total_events": 27097,
+        "health_events": 25594,
         "firings": 0,
         "first_fire": null,
         "silent_days_before_first_fire": 13

@@ -102,7 +102,7 @@ Check whether an assertion has ever fired:
 ```console
 $ greencheck gate guard_events.jsonl --fire-event block_issued
 
-[DEAD_GATE] block_issued never fired in 28,176 events spanning 13 days.
+[DEAD_GATE] block_issued never fired in 27,097 events spanning 13 full days.
             A criterion that has never been observed to trigger is not a
             defence. It is an untested assumption with a dashboard attached.
 ```
@@ -119,7 +119,7 @@ No dependencies. Python 3.9+. Nothing to install beyond the repo.
 | `IDENTITY` | Separates inputs by existence, not by the claimed dimension | Empty vs non-empty moves it; good vs contradictory content does not |
 | `BARE_ZERO` | `n = 0` and `n > 0, 0 hits` produce the same output | 63 of 84 "recall" samples examined nothing and reported `0.0` |
 | `LIVENESS_BIT` | All variance traces to one boolean | A composite score whose two values are exactly a freshness flag |
-| `DEAD_GATE` | A guard exists, logs health, has never fired | 26,668 healthy events, 0 firings, 13 days |
+| `DEAD_GATE` | A guard exists, logs health, has never fired | 25,594 healthy events, 0 firings, 13 full days |
 | `NO_DATA` | Nothing matched | Reported instead of `PASS`, on purpose |
 
 **`NO_DATA` is the failure mode of the audit tool itself.** An empty input
@@ -149,7 +149,7 @@ python case_study/run_case_study.py
 | `self_assessment.memory_recall.recall_rate` | 84 | **CONSTANT; BARE_ZERO** |
 | `self_assessment.reflection_score` | 84 | **LIVENESS_BIT** |
 | `self_assessment.overall (composite)` | 84 | **LIVENESS_BIT** |
-| `guard denial path — before any positive control` | 28,176 | **DEAD_GATE** |
+| `guard denial path — 13 full days with zero firings` | 27,097 | **DEAD_GATE** |
 | `guard denial path — full window` | 33,228 | **PASS** |
 
 Six instruments. Five flagged. Full write-up:
@@ -160,6 +160,13 @@ days before anyone constructed an input it was *known* to have to block, and
 `PASS` afterwards. Nothing about the guard changed at that moment. What changed
 is that somebody finally asked it to prove itself.
 
+Every number above can be recomputed from the two files in `data/`. The headline
+is 27,097 and not a larger figure, because the larger one counted events with a
+timestamp earlier than the first firing — which needs event-level data, and only
+aggregates are published. A reader could not have checked it. Summing the
+zero-firing rows of [`data/gate_daily.jsonl`](data/gate_daily.jsonl) gives
+exactly 27,097, and that is the number used everywhere in this repository.
+
 That is the whole thesis. A control is not validated by its presence in the
 code, nor by its green light. It is validated by having been observed to fire.
 
@@ -167,7 +174,7 @@ code, nor by its green light. It is validated by having been observed to fire.
 
 ## Skills
 
-The CLI audits a ledger **after** the fact. `skills/` is for **before** —
+The CLI audits a ledger **after** the fact. `greencheck/skills/` is for **before** —
 agent-readable instructions that keep the broken instrument from being built at
 all.
 

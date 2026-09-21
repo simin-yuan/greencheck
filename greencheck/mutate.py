@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -240,6 +241,26 @@ def run_gate(gate: str, target: Path, workdir: Path, timeout: int):
         return -1, f"[greencheck] could not start the gate: {e}"
 
 
+def _portable(path):
+    """Record a path a reader can follow, not one that publishes the operator.
+
+    A report is a file people commit next to their code, paste into an issue and
+    attach to a bug report. Writing the absolute target path into it means every
+    one of those ordinary acts also publishes the operator's username, machine
+    layout and project directory name.
+
+    A tool whose subject is "was this thing ever actually checked" should not
+    quietly widen what leaves the machine while it runs. Relative to the working
+    directory is enough for anyone to follow along, and carries nothing
+    personal.
+    """
+    try:
+        return os.path.relpath(path)
+    except ValueError:
+        # Different drive on Windows: no relative path exists.
+        return os.path.basename(path)
+
+
 def main(argv=None) -> int:
     import argparse
 
@@ -355,7 +376,7 @@ def main(argv=None) -> int:
     report = {
         "greencheck_mutate_version": __version__,
         "gate": a.gate,
-        "target": str(target),
+        "target": _portable(target),
         "baseline_exit_code": rc0,
         "baseline_ok": rc0 == 0,
         "files": len(base),

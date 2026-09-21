@@ -30,3 +30,5 @@ REPOSITION.md
 dist/
 build/
 *.egg-info/
+*-mutate-report.json
+greencheck-mutate-report.json

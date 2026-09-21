@@ -37,6 +37,19 @@ DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(HERE, "results")
 
 
+def _last_zero_firing_day():
+    """The last day that closed with zero firings, before the first day that fired.
+
+    Straight out of gate_daily.jsonl, which is the file a reader has.
+    """
+    last = None
+    for row in load_jsonl(os.path.join(DATA, "gate_daily.jsonl")):
+        if row.get("firings", 0) > 0:
+            break
+        last = row["date"]
+    return last
+
+
 def audit_ledger_paths(field, subject, count_field=None, fresh_field=None):
     rows = load_jsonl(os.path.join(DATA, "ledger_metric_samples.jsonl"))
     projected = []
@@ -91,14 +104,23 @@ def main() -> int:
     # Two windows, because the interesting fact is not the total firing count
     # but the fact that the count was zero for the entire period before anyone
     # constructed an input the guard was known to have to block.
-    pre_total = gate_summary["events_before_first_fire"]
-    pre_health = gate_summary["event_totals_before_first_fire"].get("self_change", 0)
+    #
+    # The numbers here are the whole-day ones, not the timestamp-precise ones.
+    # `events_before_first_fire` needs event-level data, and only aggregates are
+    # published, so it cannot be recomputed by a reader: the published daily rows
+    # sum to a smaller figure, because the day of the first firing was partly
+    # silent. A headline nobody can check is the exact defect this package
+    # reports, so the headline is the sum over whole days that ended with zero
+    # firings. Same claim, one day coarser, checkable with a for-loop.
+    pre_total = gate_summary["events_in_zero_firing_days"]
+    pre_health = gate_summary["event_totals_in_zero_firing_days"].get("self_change", 0)
+    last_silent_day = _last_zero_firing_day()
     gate_dead = audit_gate_counts(
         total_events=pre_total,
         firings=0,
         health_events=pre_health,
-        subject="guard denial path — before any positive control",
-        window=[gate_summary["window_start_utc"], gate_summary["first_fire_utc"]],
+        subject="guard denial path — 13 full days with zero firings",
+        window=[gate_summary["window_start_utc"], last_silent_day],
         silent_days_before_first_fire=gate_summary["days_with_zero_firings_before_first_fire"],
     )
     gate_all = audit_gate_counts(

@@ -11,6 +11,7 @@ import io
 import json
 import os
 import pathlib
+import re
 import sys
 import unittest
 
@@ -294,6 +295,109 @@ class TestVersionIsSingleSourced(unittest.TestCase):
             re.M,
         ).group(1)
         self.assertEqual(__version__, declared)
+
+
+class TestPublishedNumbersAreCheckable(unittest.TestCase):
+    """A headline a reader cannot recompute is the defect this package reports.
+
+    The first version of this repository led with a larger figure: events
+    recorded before the guard's first firing, counted by timestamp. Reproducing
+    it needs event-level data, and only aggregates are published -- so the
+    published daily rows summed to a smaller number, and anyone who tried to
+    check the claim would have found the arithmetic did not agree.
+
+    The same story told in whole days is checkable with a for-loop. These tests
+    keep it that way.
+    """
+
+    def setUp(self):
+        self.root = pathlib.Path(__file__).resolve().parent.parent
+        self.daily = [
+            json.loads(line)
+            for line in (self.root / "data/gate_daily.jsonl")
+            .read_text(encoding="utf-8")
+            .splitlines()
+            if line.strip()
+        ]
+        self.summary = json.loads(
+            (self.root / "data/gate_summary.json").read_text(encoding="utf-8")
+        )
+
+    def _zero_days(self):
+        first_day = self.summary["first_fire_utc"][:10]
+        return [r for r in self.daily if r["date"] < first_day and r["firings"] == 0]
+
+    def test_headline_equals_sum_of_published_rows(self):
+        """The headline has to come out of gate_daily.jsonl, and nothing else."""
+        rows = self._zero_days()
+        self.assertEqual(
+            sum(r["events"] for r in rows), self.summary["events_in_zero_firing_days"]
+        )
+        self.assertEqual(
+            len(rows), self.summary["days_with_zero_firings_before_first_fire"]
+        )
+
+    def test_breakdown_equals_sum_of_published_rows(self):
+        rows = self._zero_days()
+        for kind, claimed in self.summary["event_totals_in_zero_firing_days"].items():
+            got = sum(r.get("by_event", {}).get(kind, 0) for r in rows)
+            self.assertEqual(got, claimed, f"{kind} does not match the daily rows")
+
+    def test_no_document_quotes_the_uncheckable_figure(self):
+        """If it cannot be recomputed from data/, it does not belong in a document."""
+        banned = ("28,176", "28176", "26,668", "26668")
+        docs = [
+            self.root / "README.md",
+            self.root / "case_study/results/CASE_STUDY.md",
+            self.root / "case_study/results/tables.json",
+        ] + sorted((self.root / "greencheck/skills").glob("*/SKILL.md"))
+        for path in docs:
+            text = path.read_text(encoding="utf-8")
+            for token in banned:
+                self.assertNotIn(
+                    token, text,
+                    f"{path.name} quotes {token}, which a reader cannot recompute from data/",
+                )
+
+    def test_history_of_the_correction_is_kept(self):
+        """The superseded figure stays in the summary so the change is auditable."""
+        self.assertEqual(self.summary["events_before_first_fire"], 28176)
+        self.assertGreater(
+            self.summary["events_before_first_fire"],
+            self.summary["events_in_zero_firing_days"],
+        )
+
+
+class TestReportDoesNotPublishTheOperator(unittest.TestCase):
+    """A report is a file people commit, paste into issues and attach to bugs.
+
+    The first version recorded the absolute target path, so the ordinary act of
+    running the demo committed the operator's username and directory layout into
+    the repository. A tool whose subject is "was this actually checked" should
+    not widen what leaves the machine while it runs.
+    """
+
+    def setUp(self):
+        self.root = pathlib.Path(__file__).resolve().parent.parent
+
+    def test_recorded_target_is_relative(self):
+        from greencheck.mutate import _portable
+
+        here = pathlib.Path.cwd()
+        got = _portable(here / "examples" / "mutate-demo" / "input")
+        self.assertFalse(os.path.isabs(got), f"absolute path recorded: {got}")
+        self.assertNotIn(":\\", got)
+        self.assertNotIn(":/", got)
+
+    def test_no_examples_report_carries_a_machine_path(self):
+        """If such a file is ever committed again, this goes red."""
+        pattern = re.compile(r"(?<![A-Za-z])[A-Za-z]:[\\/]")
+        for path in (self.root / "examples").rglob("*.json"):
+            text = path.read_text(encoding="utf-8", errors="replace")
+            self.assertIsNone(
+                pattern.search(text),
+                f"{path.relative_to(self.root)} contains what looks like a local path",
+            )
 
 
 if __name__ == "__main__":

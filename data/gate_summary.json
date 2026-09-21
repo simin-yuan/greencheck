@@ -1,6 +1,11 @@
 {
   "days_covered": 16,
   "days_with_zero_firings_before_first_fire": 13,
+  "events_in_zero_firing_days": 27097,
+  "event_totals_in_zero_firing_days": {
+    "registered": 1503,
+    "self_change": 25594
+  },
   "event_totals": {
     "block_issued": 5,
     "registered": 1581,

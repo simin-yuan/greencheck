@@ -18,7 +18,7 @@ A guard sat in a production system for thirteen days. It ran on every event,
 wrote a health record each time, and never denied anything:
 
 ```
-events:  28,176
+events:  27,097
 denials: 0
 days:    13
 ```
