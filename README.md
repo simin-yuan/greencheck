@@ -3,7 +3,7 @@
 ### Your validator passes inputs it should reject. This finds them.
 
 ```console
-$ pip install git+https://github.com/simin-yuan/greencheck
+$ pip install https://github.com/simin-yuan/greencheck/releases/download/v0.3.0/greencheck-0.3.0-py3-none-any.whl
 $ greencheck mutate --gate "python validate.py {target}" --target ./config
 ```
 
