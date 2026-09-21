@@ -400,5 +400,34 @@ class TestReportDoesNotPublishTheOperator(unittest.TestCase):
             )
 
 
+class TestTheLicenceIsComplete(unittest.TestCase):
+    """The licence shipped truncated at 453 bytes: title, copyright, opening clause.
+
+    GitHub read it as NOASSERTION, which is GitHub's way of saying "this is not a
+    licence I recognise". The missing half held the disclaimer.
+
+    A project whose subject is that an artefact must be checked before it is
+    trusted shipped an unchecked artefact. The check is cheap, so it is a test.
+    """
+
+    def setUp(self):
+        self.root = pathlib.Path(__file__).resolve().parent.parent
+
+    def test_mit_licence_contains_its_operative_clauses(self):
+        text = (self.root / "LICENSE").read_text(encoding="utf-8")
+        for needed in (
+            "Permission is hereby granted",
+            "WITHOUT WARRANTY OF ANY KIND",
+            "MERCHANTABILITY",
+            "LIABILITY",
+        ):
+            self.assertIn(needed, text, f"LICENSE is missing: {needed}")
+
+    def test_licence_is_the_length_of_the_real_thing(self):
+        """Standard MIT is ~1070 bytes. Truncation was how this went wrong."""
+        size = (self.root / "LICENSE").stat().st_size
+        self.assertGreater(size, 1000, f"LICENSE is only {size} bytes — truncated?")
+
+
 if __name__ == "__main__":
     unittest.main()
