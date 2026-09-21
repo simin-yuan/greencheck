@@ -6,12 +6,16 @@ No third-party dependencies on purpose: anyone should be able to check the
 claims without installing anything.
 """
 
+import contextlib
+import io
 import os
+import pathlib
 import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from greencheck import cli  # noqa: E402
 from greencheck import (  # noqa: E402
     BARE_ZERO,
     CONSTANT,
@@ -102,6 +106,77 @@ class TestAuditGate(unittest.TestCase):
     def test_empty_window_is_not_evidence_of_death(self):
         r = audit_gate_counts(total_events=0, firings=0, subject="gate")
         self.assertNotIn(DEAD_GATE, r.verdicts)
+
+
+class TestSkills(unittest.TestCase):
+    """The skills are part of the product, so they get verified like any other
+    artefact.
+
+    A skill with a malformed header is worse than a missing one: the harness
+    loads it and gets nothing, and nothing is what a silent failure looks like.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.root = pathlib.Path(__file__).resolve().parent.parent / "skills"
+        cls.skills = sorted(p for p in cls.root.iterdir() if (p / "SKILL.md").is_file())
+
+    def _frontmatter(self, path):
+        text = path.read_text(encoding="utf-8")
+        self.assertTrue(text.startswith("---"), f"{path} has no frontmatter")
+        end = text.find("\n---", 3)
+        self.assertNotEqual(end, -1, f"{path} has unclosed frontmatter")
+        block = {}
+        for line in text[3:end].splitlines():
+            if ":" in line:
+                key, value = line.split(":", 1)
+                block[key.strip().lower()] = value.strip()
+        return block
+
+    def test_at_least_five_skills_ship(self):
+        self.assertGreaterEqual(len(self.skills), 5)
+
+    def test_every_skill_declares_name_and_description(self):
+        for p in self.skills:
+            fm = self._frontmatter(p / "SKILL.md")
+            self.assertIn("name", fm, p.name)
+            self.assertIn("description", fm, p.name)
+
+    def test_declared_name_matches_its_directory(self):
+        for p in self.skills:
+            fm = self._frontmatter(p / "SKILL.md")
+            self.assertEqual(fm["name"], p.name)
+
+    def test_description_states_its_trigger(self):
+        """A description that does not say *when* to load the skill does not get
+        loaded. 'Use when ...' is the contract with the harness."""
+        for p in self.skills:
+            fm = self._frontmatter(p / "SKILL.md")
+            self.assertTrue(
+                fm["description"].startswith("Use when"),
+                f"{p.name}: description must start with 'Use when'",
+            )
+
+    def test_cli_lists_every_skill(self):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = cli.main(["skills"])
+        self.assertEqual(rc, 0)
+        out = buf.getvalue()
+        for p in self.skills:
+            self.assertIn(p.name, out)
+
+    def test_cli_prints_a_skill_in_full(self):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = cli.main(["skills", "positive-control"])
+        self.assertEqual(rc, 0)
+        self.assertIn("## The rule", buf.getvalue())
+
+    def test_cli_rejects_an_unknown_skill_name(self):
+        with contextlib.redirect_stderr(io.StringIO()):
+            rc = cli.main(["skills", "no-such-skill-exists"])
+        self.assertEqual(rc, 2)
 
 
 if __name__ == "__main__":

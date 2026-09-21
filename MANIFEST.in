@@ -1,0 +1,20 @@
+include README.md
+include LICENSE
+include CITATION.cff
+include pyproject.toml
+
+# The skills ship with the source tree rather than inside the package: they are
+# meant to be read as files (and browsed on GitHub), not imported. `greencheck
+# skills` locates this directory relative to the package, so a source install
+# finds them; a bare `pip install greencheck` from a wheel would not.
+recursive-include skills *.md
+recursive-include data *.json *.jsonl *.md
+recursive-include docs *.md
+recursive-include case_study *.py *.md *.json
+recursive-include tests *.py
+recursive-include tools *.py *.example.json *.example.txt
+
+# Never ship these, whatever else changes.
+exclude tools/*.local.json
+exclude tools/*.local.txt
+prune .git

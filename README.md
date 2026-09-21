@@ -125,6 +125,41 @@ code, nor by its green light. It is validated by having been observed to fire.
 
 ---
 
+## Skills
+
+The CLI audits a ledger **after** the fact. `skills/` is for **before** —
+agent-readable instructions that keep the broken instrument from being built at
+all.
+
+```console
+$ greencheck skills
+greencheck skills — 5 available
+
+  bare-zero                  Use when a metric, counter, rate or score reports zero...
+  dead-check                 Use when writing or reviewing a monitoring rule...
+  dimension-scope            Use when testing whether an instrument measures what its name claims...
+  measurement-or-decoration  Use when a system reports a score, confidence, health value about itself...
+  positive-control           Use when writing a guard, assertion, test, alert or validation rule...
+
+Read one in full:   greencheck skills <name>
+```
+
+Plain `SKILL.md` files with YAML frontmatter — the format used by Claude Code,
+Codex, OpenClaw and most agent harnesses. Copy one where your harness looks for
+skills, or let your agent read it directly:
+
+```console
+$ greencheck skills positive-control   # prints the whole file
+```
+
+| skill | use when |
+|---|---|
+| [`measurement-or-decoration`](skills/measurement-or-decoration/SKILL.md) | the system reports a score about itself. The root rule; the others are special cases. |
+| [`positive-control`](skills/positive-control/SKILL.md) | writing a guard, assertion or alert that is supposed to reject bad input |
+| [`dead-check`](skills/dead-check/SKILL.md) | writing a monitor. Covers rules that can never fire, and rules with inverted polarity. |
+| [`dimension-scope`](skills/dimension-scope/SKILL.md) | testing whether an instrument measures the dimension its name claims |
+| [`bare-zero`](skills/bare-zero/SKILL.md) | a metric reports `0` |
+
 ## Install / use
 
 No dependencies. Python 3.9+.

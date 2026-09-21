@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import pathlib
 import sys
 
 from . import __version__
@@ -117,6 +118,73 @@ def cmd_demo(args) -> int:
     return 0
 
 
+def _skills_root() -> pathlib.Path:
+    """Locate the bundled skills directory.
+
+    Sits next to the package in a checkout. The search is forgiving so that an
+    installed copy still finds it wherever the data files landed.
+    """
+    here = pathlib.Path(__file__).resolve().parent
+    for cand in (here.parent / "skills", here / "skills"):
+        if cand.is_dir():
+            return cand
+    return here.parent / "skills"
+
+
+def _frontmatter_description(path: pathlib.Path) -> str:
+    """Pull `description:` out of a SKILL.md YAML frontmatter block."""
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("---"):
+        return ""
+    end = text.find("\n---", 3)
+    block = text[3:end] if end != -1 else text[3:]
+    for line in block.splitlines():
+        if line.lower().startswith("description:"):
+            return line.split(":", 1)[1].strip()
+    return ""
+
+
+def cmd_skills(args) -> int:
+    """List the bundled skills, or print one in full so an agent can read it."""
+    root = _skills_root()
+    if not root.is_dir():
+        print(f"no skills directory at {root}", file=sys.stderr)
+        return 2
+    entries = sorted(p for p in root.iterdir() if (p / "SKILL.md").is_file())
+    if not entries:
+        print(f"no skills found in {root}", file=sys.stderr)
+        return 2
+
+    if args.name:
+        target = root / args.name / "SKILL.md"
+        if not target.is_file():
+            print(f"no skill named {args.name!r}", file=sys.stderr)
+            print("available: " + ", ".join(p.name for p in entries), file=sys.stderr)
+            return 2
+        print(target.read_text(encoding="utf-8"))
+        return 0
+
+    if args.json:
+        print(json.dumps(
+            [{"name": p.name, "description": _frontmatter_description(p / "SKILL.md")}
+             for p in entries],
+            indent=2, ensure_ascii=False))
+        return 0
+
+    print(f"greencheck skills — {len(entries)} available\n")
+    width = max(len(p.name) for p in entries)
+    for p in entries:
+        desc = _frontmatter_description(p / "SKILL.md")
+        if len(desc) > 96:
+            desc = desc[:93] + "..."
+        print(f"  {p.name:<{width}}  {desc}")
+    print()
+    print("Read one in full:   greencheck skills <name>")
+    print("These are plain SKILL.md files with YAML frontmatter, the format used")
+    print("by most agent harnesses. Point your agent at the skills/ directory.")
+    return 0
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="greencheck", description=__doc__.splitlines()[0])
     ap.add_argument("--version", action="version", version=f"greencheck {__version__}")
@@ -138,6 +206,11 @@ def main(argv=None) -> int:
 
     d = sub.add_parser("demo", help="run the built-in demonstration")
     d.set_defaults(func=cmd_demo)
+
+    s = sub.add_parser("skills", help="list the bundled agent skills, or print one in full")
+    s.add_argument("name", nargs="?", help="skill name to print in full")
+    s.add_argument("--json", action="store_true")
+    s.set_defaults(func=cmd_skills)
 
     args = ap.parse_args(argv)
     return args.func(args)
