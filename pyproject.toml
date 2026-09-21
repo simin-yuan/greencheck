@@ -28,5 +28,8 @@ greencheck = "greencheck.cli:main"
 [tool.setuptools]
 include-package-data = true
 
+[tool.setuptools.package-data]
+greencheck = ["skills/*/SKILL.md", "skills/README.md"]
+
 [tool.setuptools.packages.find]
 include = ["greencheck*"]

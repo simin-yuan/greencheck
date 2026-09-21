@@ -194,11 +194,11 @@ $ greencheck skills positive-control   # prints the whole file
 
 | skill | use when |
 |---|---|
-| [`measurement-or-decoration`](skills/measurement-or-decoration/SKILL.md) | the system reports a score about itself. The root rule; the others are special cases. |
-| [`positive-control`](skills/positive-control/SKILL.md) | writing a guard, assertion or alert that is supposed to reject bad input |
-| [`dead-check`](skills/dead-check/SKILL.md) | writing a monitor. Covers rules that can never fire, and rules with inverted polarity. |
-| [`dimension-scope`](skills/dimension-scope/SKILL.md) | testing whether an instrument measures the dimension its name claims |
-| [`bare-zero`](skills/bare-zero/SKILL.md) | a metric reports `0` |
+| [`measurement-or-decoration`](greencheck/skills/measurement-or-decoration/SKILL.md) | the system reports a score about itself. The root rule; the others are special cases. |
+| [`positive-control`](greencheck/skills/positive-control/SKILL.md) | writing a guard, assertion or alert that is supposed to reject bad input |
+| [`dead-check`](greencheck/skills/dead-check/SKILL.md) | writing a monitor. Covers rules that can never fire, and rules with inverted polarity. |
+| [`dimension-scope`](greencheck/skills/dimension-scope/SKILL.md) | testing whether an instrument measures the dimension its name claims |
+| [`bare-zero`](greencheck/skills/bare-zero/SKILL.md) | a metric reports `0` |
 
 ## Install / use
 

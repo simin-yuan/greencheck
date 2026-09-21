@@ -120,7 +120,10 @@ class TestSkills(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.root = pathlib.Path(__file__).resolve().parent.parent / "skills"
+        # Ask the product where its skills are, rather than assuming a path.
+        # The assumption is what broke when the skills moved into the package;
+        # the assertion we actually want is "the CLI can find them".
+        cls.root = cli._skills_root()
         cls.skills = sorted(p for p in cls.root.iterdir() if (p / "SKILL.md").is_file())
 
     def _frontmatter(self, path):
