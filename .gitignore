@@ -23,3 +23,7 @@ tools/*.local.txt
 raw/
 private/
 secrets/
+
+# Internal working notes: analysis of publishing strategy and identity.
+# Never publish this.
+REPOSITION.md

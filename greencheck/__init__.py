@@ -1,4 +1,4 @@
-"""mdt — discriminability testing for self-reported metrics."""
+"""greencheck — discriminability testing for self-reported metrics."""
 
 from .core import (
     ALL_VERDICTS,

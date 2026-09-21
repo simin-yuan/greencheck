@@ -1,4 +1,4 @@
-"""Tests for mdt.
+"""Tests for greencheck.
 
     python -m unittest discover -s tests -v
 
@@ -12,7 +12,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from mdt import (  # noqa: E402
+from greencheck import (  # noqa: E402
     BARE_ZERO,
     CONSTANT,
     DEAD_GATE,

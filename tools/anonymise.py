@@ -61,7 +61,7 @@ FIELD_RENAMES: Dict[str, str] = {}
 #: Patterns that are unsafe to publish regardless of who the operator is:
 #: filesystem layouts, credentials, hosts. Generic, so they ship with the tool.
 GENERIC_FORBIDDEN_PATTERNS = [
-    r"[A-Za-z]:[\\/]",                       # Windows drive paths
+    r"(?<![A-Za-z])[A-Za-z]:[\\/]",                       # Windows drive paths
     r"/(?:Users|home)/[^/\s\"\']+",           # POSIX home directories
     r"\\\\[A-Za-z0-9._-]+\\",              # UNC shares
     r"[\w.+-]+@[\w-]+\.[\w.]{2,}",           # e-mail addresses

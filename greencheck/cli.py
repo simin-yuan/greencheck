@@ -1,8 +1,8 @@
-"""mdt.cli — command line entry point.
+"""greencheck.cli — command line entry point.
 
-    mdt audit examples/ledger.jsonl --field identity.identity_score --count memory_recall.sampled
-    mdt gate  examples/gate_events.jsonl --fire-event block_issued
-    mdt demo
+    greencheck audit examples/ledger.jsonl --field identity.identity_score --count memory_recall.sampled
+    greencheck gate  examples/gate_events.jsonl --fire-event block_issued
+    greencheck demo
 """
 
 from __future__ import annotations
@@ -102,7 +102,7 @@ def cmd_demo(args) -> int:
         discriminate(content_presence_score, pairs, subject="content_presence_score", claimed_dimensions=["content"]),
         discriminate(always_one, pairs, subject="always_one (control)", claimed_dimensions=["content"]),
     ]
-    print(render_text(results, title="mdt demo — discriminate()"))
+    print(render_text(results, title="greencheck demo — discriminate()"))
     print()
     print("Note: content_presence_score separates the presence pair (1/2 pairs")
     print("separated overall) yet is still reported FAIL, because it collapses")
@@ -113,13 +113,13 @@ def cmd_demo(args) -> int:
         {"value": 1.0, "n": 0}, {"value": 1.0, "n": 0},
     ]
     r = audit_ledger(ledger, field="value", count_field="n", subject="demo.identity_score")
-    print(render_text([r], title="mdt demo — audit_ledger()"))
+    print(render_text([r], title="greencheck demo — audit_ledger()"))
     return 0
 
 
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(prog="mdt", description=__doc__.splitlines()[0])
-    ap.add_argument("--version", action="version", version=f"mdt {__version__}")
+    ap = argparse.ArgumentParser(prog="greencheck", description=__doc__.splitlines()[0])
+    ap.add_argument("--version", action="version", version=f"greencheck {__version__}")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     a = sub.add_parser("audit", help="audit a recorded metric ledger")

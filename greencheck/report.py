@@ -1,4 +1,4 @@
-"""mdt.report — turn audit results into something a human will read."""
+"""greencheck.report — turn audit results into something a human will read."""
 
 from __future__ import annotations
 

@@ -23,14 +23,26 @@ import re
 import sys
 
 #: Matches that have been individually reviewed and are expected.
-ALLOW: "dict[str, str]" = {
-    # The pattern table and the self-test probes live in this file. It
-    # necessarily contains one example of every shape the scanner looks for —
-    # that is what makes it able to detect anything.
-    "tools/anonymise.py": "defines the patterns and their self-test probes",
-    # The author's public academic contact address, identical to the address
-    # published on the author's other work.
-    "CITATION.cff": "author's public academic contact address",
+#:
+#: path -> exactly which matched strings are cleared *for that file*. A blanket
+#: per-file pass would also clear a real leak that landed in the same file
+#: later, which defeats the point of scanning it.
+ALLOW: "dict[str, tuple[str, ...]]" = {
+    # The pattern table and the self-test probes live in this file. It must
+    # contain one example of every shape the scanner looks for — that is what
+    # makes it able to detect anything, so every match here is by design.
+    "tools/anonymise.py": ("*",),
+    # "Simon" is the authorized public byline for this project (owner decision,
+    # 2026-09-22) and the only operator identifier cleared for publication. It
+    # stays in the forbidden list so that any *other* occurrence — a new one, in
+    # these files or anywhere else — still fails the scan.
+    "LICENSE": ("Simon",),
+    "pyproject.toml": ("Simon",),
+    "README.md": ("Simon",),
+    "CITATION.cff": ("Simon",),
+    # This file's own allow table has to name the cleared byline in order to
+    # clear it elsewhere. Only that exact literal is cleared here.
+    "tools/leakscan.py": ("Simon",),
 }
 
 SKIP_DIRS = {".git", "__pycache__", ".venv", "venv", "build", "dist"}
@@ -81,8 +93,9 @@ def main(argv: "list[str] | None" = None) -> int:
     print(f"scanned {scanned} files")
     real = 0
     for rel, pat, sample in hits:
-        if rel in ALLOW:
-            print(f"  allowed  {rel}: {sample!r}  ({ALLOW[rel]})")
+        cleared = ALLOW.get(rel, ())
+        if "*" in cleared or sample.lower() in tuple(c.lower() for c in cleared):
+            print(f"  allowed  {rel}: {sample!r}")
             continue
         real += 1
         print(f"  LEAK     {rel}: {pat} -> {sample!r}")

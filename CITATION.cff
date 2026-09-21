@@ -1,25 +1,22 @@
 cff-version: 1.2.0
 message: "If you use this software or the case-study data, please cite it as below."
-title: "metric-discrimination-test: discriminability testing for self-reported metrics"
+title: "greencheck: auditing self-reported instruments in long-running agents"
 abstract: >-
-  A dependency-free checker for the rule that a number is not a measurement
-  until it has been observed to take different values on inputs that are known
-  to differ. Includes five detectors for common failure signatures in
-  self-reported metrics (constant, identity, bare zero, liveness bit, dead
-  gate) and an anonymised case study of six instruments recorded in production
-  on a continuously-running autonomous agent.
+  A dependency-free checker for one rule: a number is not a measurement until it
+  has been observed to take different values on inputs that are known to differ.
+  Ships a taxonomy of six ways a self-reported metric can be correct code and
+  still measure nothing, and a case study over six instruments of an autonomous
+  agent that ran continuously for roughly two months.
 authors:
-  - family-names: Yuan
-    given-names: Simin
-    email: yleven120@gmail.com
-version: 0.1.0
-date-released: "2026-09-22"
+  - name: Simon
+version: 0.2.0
+date-released: 2026-09-22
 license: MIT
+type: software
 keywords:
-  - autonomous agents
+  - autonomous-agents
   - self-report
-  - metrics
   - observability
-  - discriminability
+  - falsification
+  - metrics
   - reproducibility
-  - negative results

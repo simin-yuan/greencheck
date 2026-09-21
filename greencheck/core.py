@@ -1,5 +1,5 @@
 """
-mdt.core — the discriminability test.
+greencheck.core — the discriminability test.
 
 Central claim of this package:
 
