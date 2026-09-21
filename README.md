@@ -4,7 +4,13 @@
 
 ```console
 $ pip install https://github.com/simin-yuan/greencheck/releases/download/v0.3.0/greencheck-0.3.0-py3-none-any.whl
-$ greencheck mutate --gate "python validate.py {target}" --target ./config
+```
+
+Then, from a checkout of this repository (both halves run against files that
+ship with it, so a reader can reproduce every line below):
+
+```console
+$ python -m greencheck.cli mutate --gate "python examples/mutate-demo/gate.py {target}/config.json" --target examples/mutate-demo/input
 ```
 
 ```
@@ -86,10 +92,10 @@ outputs differ?") passes it. But the pair it separates differs in *existence*,
 not in *content*, and `content` is what the instrument is named after. A
 discriminability test that is not dimension-scoped is itself a decoration.
 
-Audit a real ledger:
+Audit a real ledger (this one ships in `data/`):
 
 ```console
-$ greencheck audit ledger.jsonl --field identity.identity_score
+$ python -m greencheck.cli audit data/ledger_metric_samples.jsonl --field identity.identity_score
 
 [FAIL] identity.identity_score  (84 samples)
        - CONSTANT: 84/84 samples report the identical value 1.0.
@@ -97,17 +103,33 @@ $ greencheck audit ledger.jsonl --field identity.identity_score
        stats: n_samples=84, distinct_values=1
 ```
 
-Check whether an assertion has ever fired:
+Check whether an assertion has ever fired. This reads the per-day aggregate
+log in `data/` — the same file the case study table is computed from, so the
+figure is yours to re-add:
 
 ```console
-$ greencheck gate guard_events.jsonl --fire-event block_issued
+$ python -m greencheck.cli gate data/gate_daily.jsonl --fire-event block_issued
 
-[DEAD_GATE] block_issued never fired in 27,097 events spanning 13 full days.
-            A criterion that has never been observed to trigger is not a
-            defence. It is an untested assumption with a dashboard attached.
+[FAIL] data/gate_daily.jsonl — 13 full days with zero firings  (27097 samples)
+       - DEAD_GATE: 27,097 events recorded across 13 days, of which 25,594 were
+         the guard reporting itself healthy, and the denial path fired 0 times.
+         The assertion has never been observed to fire. Its existence is
+         documented; its behaviour is not.
+       stats: total_events=27097, health_events=25594, firings=0, silent_days_before_first_fire=13
+
+[ok  ] data/gate_daily.jsonl — full window (16 days)  (33228 samples)
+       - PASS: The path fired 5 times, the first on 2026-09-19. That first
+         firing came from a positive control written specifically to exercise
+         the path, not from ordinary traffic.
+       stats: total_events=33228, health_events=31642, firings=5
 ```
 
-No dependencies. Python 3.9+. Nothing to install beyond the repo.
+Both rows are the same guard. The code did not change between them; what
+changed is that somebody finally built it an input it was known to have to
+reject. Full window: 5 firings out of 33,228 events. Without that positive
+control, all 33,228 would have read as health.
+
+Zero dependencies. Python 3.9+. Nothing to install beyond the repo.
 
 ---
 
@@ -179,7 +201,7 @@ agent-readable instructions that keep the broken instrument from being built at
 all.
 
 ```console
-$ greencheck skills
+$ python -m greencheck.cli skills
 greencheck skills — 5 available
 
   bare-zero                  Use when a metric, counter, rate or score reports zero...
@@ -196,7 +218,7 @@ Codex, OpenClaw and most agent harnesses. Copy one where your harness looks for
 skills, or let your agent read it directly:
 
 ```console
-$ greencheck skills positive-control   # prints the whole file
+$ python -m greencheck.cli skills positive-control   # prints the whole file
 ```
 
 | skill | use when |
@@ -211,11 +233,11 @@ $ greencheck skills positive-control   # prints the whole file
 
 No dependencies. Python 3.9+.
 
-```bash
-git clone https://github.com/simin-yuan/greencheck
-cd greencheck
-python -m unittest discover -s tests      # 13 tests, stdlib only
-python -m greencheck.cli demo
+From a checkout of this repository:
+
+```console
+$ python -m unittest discover -s tests      # 45 tests, stdlib only
+$ python -m greencheck.cli demo
 ```
 
 Audit your own ledger:

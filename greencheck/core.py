@@ -33,7 +33,7 @@ import json
 import math
 import os
 from dataclasses import dataclass, field, asdict
-from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence
+from typing import Any, Callable, Dict, Iterable, List, Optional, Sequence, Tuple
 
 
 # --------------------------------------------------------------------------
@@ -416,6 +416,100 @@ def audit_gate(
         health_events=registered,
         subject=subject,
     )
+
+
+def looks_like_daily_aggregate(rows: Sequence[Any]) -> bool:
+    """True if these rows count days rather than events.
+
+    The two are easy to confuse and the confusion is silent: reading daily rows
+    as event rows turns a sixteen-day window into "16 samples", which is a
+    confident number that means nothing. The published dataset in this
+    repository is daily, so a tool that cannot read its own published data has a
+    defect any reader would hit in the first minute.
+    """
+    if not rows:
+        return False
+    first = rows[0]
+    if not isinstance(first, dict):
+        return False
+    return (
+        "date" in first
+        and "events" in first
+        and "firings" in first
+        and "event" not in first
+    )
+
+
+def audit_gate_daily(
+    rows: Sequence[Dict[str, Any]],
+    fire_event: str = "block_issued",
+    subject: str = "<gate>",
+    health_event: str = "self_change",
+) -> Tuple[AuditResult, AuditResult]:
+    """Audit a per-day aggregate log, in both windows that matter.
+
+    Returns ``(before_first_fire, whole_window)``.
+
+    The first is the interesting one and the second is the control. Both are
+    the same guard: the first covers only the whole days that ended with zero
+    firings and before any firing happened, the second covers everything. The
+    same code reads DEAD_GATE for the first and PASS for the second, which is
+    the point — what changed between them is not the guard but whether anyone
+    had ever built it an input it had to reject.
+
+    Whole days rather than timestamps, deliberately. A count of "events before
+    the first firing" needs event-level rows to recompute, and only aggregates
+    are published here, so that number would be checkable by nobody. Day
+    granularity costs one day of precision and buys the reader a for-loop.
+    """
+    days = [r for r in rows if isinstance(r, dict)]
+    if not days:
+        raise ValueError("no daily rows to audit")
+
+    # The window that ends before any firing happened at all. Only whole days:
+    # the day of the first firing is partly silent and is excluded.
+    leading = []
+    for row in days:
+        if row.get("firings", 0) > 0:
+            break
+        leading.append(row)
+
+    def _totals(window: Sequence[Dict[str, Any]]):
+        events = sum(int(r.get("events", 0)) for r in window)
+        firings = sum(int(r.get("firings", 0)) for r in window)
+        health = sum(int((r.get("by_event") or {}).get(health_event, 0)) for r in window)
+        return events, firings, health
+
+    lead_events, _, lead_health = _totals(leading)
+    all_events, all_firings, all_health = _totals(days)
+
+    n_leading = len(leading)
+    before = audit_gate_counts(
+        total_events=lead_events,
+        firings=0,
+        health_events=lead_health,
+        subject=f"{subject} — {n_leading} full days with zero firings",
+        window=[leading[0]["date"], leading[-1]["date"]] if leading else None,
+        silent_days_before_first_fire=n_leading or None,
+        note=(
+            f"Window: {leading[0]['date']} to {leading[-1]['date']}, whole days only."
+            if leading
+            else ""
+        ),
+    )
+    whole = audit_gate_counts(
+        total_events=all_events,
+        firings=all_firings,
+        health_events=all_health,
+        subject=f"{subject} — full window ({len(days)} days)",
+        note=(
+            f"The path fired {all_firings} times, the first on "
+            f"{next((r['date'] for r in days if r.get('firings', 0) > 0), 'n/a')}. "
+            "That first firing came from a positive control written specifically "
+            "to exercise the path, not from ordinary traffic."
+        ),
+    )
+    return before, whole
 
 
 def audit_gate_counts(

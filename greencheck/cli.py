@@ -13,7 +13,14 @@ import pathlib
 import sys
 
 from . import __version__
-from .core import audit_gate, audit_ledger, get_path, load_jsonl
+from .core import (
+    audit_gate,
+    audit_gate_daily,
+    audit_ledger,
+    get_path,
+    load_jsonl,
+    looks_like_daily_aggregate,
+)
 from .report import render_markdown, render_text, to_dicts
 
 
@@ -55,12 +62,26 @@ def cmd_gate(args) -> int:
     if not events:
         print(f"no events in {args.events}", file=sys.stderr)
         return 2
-    result = audit_gate(events, fire_event=args.fire_event, subject=args.events)
-    if args.json:
-        print(json.dumps([result.to_dict()], indent=2, ensure_ascii=False))
+
+    # A per-day aggregate counts days; an event log counts events. Reading one
+    # as the other produces a confident number that means nothing — a sixteen
+    # day window reported as "16 samples". The dataset published in this
+    # repository is daily, so the distinction is checked before the audit runs.
+    if looks_like_daily_aggregate(events):
+        before, whole = audit_gate_daily(
+            events, fire_event=args.fire_event, subject=args.events
+        )
+        results = [before, whole]
+        title = f"gate audit — {args.events} (per-day aggregates)"
     else:
-        print(render_text([result], title=f"gate audit — {args.events}"))
-    return 0 if result.ok else 1
+        results = [audit_gate(events, fire_event=args.fire_event, subject=args.events)]
+        title = f"gate audit — {args.events}"
+
+    if args.json:
+        print(json.dumps(to_dicts(results), indent=2, ensure_ascii=False))
+    else:
+        print(render_text(results, title=title))
+    return 0 if all(r.ok for r in results) else 1
 
 
 def cmd_demo(args) -> int:

@@ -12,6 +12,7 @@ import json
 import os
 import pathlib
 import re
+import subprocess
 import sys
 import unittest
 
@@ -427,6 +428,104 @@ class TestTheLicenceIsComplete(unittest.TestCase):
         """Standard MIT is ~1070 bytes. Truncation was how this went wrong."""
         size = (self.root / "LICENSE").stat().st_size
         self.assertGreater(size, 1000, f"LICENSE is only {size} bytes — truncated?")
+
+
+class TestEveryCommandInTheReadmeActuallyRuns(unittest.TestCase):
+    """A README command that does not run is the first thing a reader hits.
+
+    Three of them did not: two invoked a validate.py and a ./config that exist
+    nowhere in the repository, and the gate example pointed at a real file with
+    the wrong schema and printed a number that disagreed with the README by
+    1,079. For a package whose whole subject is that a claim must be checked,
+    shipping unchecked commands in the first screen is the defect itself.
+    """
+
+    def setUp(self):
+        self.root = pathlib.Path(__file__).resolve().parent.parent
+        self.readme = (self.root / "README.md").read_text(encoding="utf-8")
+
+    def _shell_commands(self):
+        """Every `$ ...` line inside a fenced block, minus two kinds.
+
+        Skipped on purpose:
+        - `pip install`, which needs the network;
+        - `unittest`, which would re-enter this suite from inside itself.
+        """
+        out = []
+        for line in self.readme.splitlines():
+            stripped = line.strip()
+            if stripped.startswith("$ "):
+                cmd = stripped[2:].strip()
+                if cmd.startswith("pip install"):
+                    continue
+                if "unittest" in cmd:
+                    continue
+                out.append(cmd)
+        return out
+
+    def test_there_are_commands_to_check(self):
+        self.assertGreaterEqual(len(self._shell_commands()), 3)
+
+    def test_each_one_exits_zero(self):
+        for cmd in self._shell_commands():
+            proc = subprocess.run(
+                cmd,
+                shell=True,
+                cwd=str(self.root),
+                capture_output=True,
+                text=True,
+                # The CLI prints em-dashes and the odd non-ASCII glyph. On
+                # Windows the child's stdout is not UTF-8 by default, and a
+                # strict decode raises inside subprocess's reader thread, which
+                # surfaces as noise rather than as a test failure.
+                encoding="utf-8",
+                errors="replace",
+                timeout=120,
+            )
+            stdout = proc.stdout or ""
+            stderr = proc.stderr or ""
+            # `gate` on a log with a dead gate returns 1 by design, so a
+            # non-zero status is only a failure when nothing explains it.
+            self.assertIn(
+                proc.returncode,
+                (0, 1),
+                f"README command exited {proc.returncode}: {cmd}\n"
+                f"stdout: {stdout[-600:]}\nstderr: {stderr[-600:]}",
+            )
+            self.assertNotIn(
+                "Traceback",
+                stderr,
+                f"README command raised: {cmd}\n{stderr[-800:]}",
+            )
+
+    def test_no_command_points_at_a_file_that_does_not_exist(self):
+        """The specific way they were broken: plausible paths, absent files."""
+        known_absent = ("validate.py", "./config ", "guard_events.jsonl", " ledger.jsonl")
+        for cmd in self._shell_commands():
+            for ghost in known_absent:
+                self.assertNotIn(
+                    ghost,
+                    cmd,
+                    f"README command references {ghost!r}, which is not in the repo: {cmd}",
+                )
+
+    def test_the_documented_test_count_is_the_real_one(self):
+        """The README said '13 tests' while the suite ran 41.
+
+        Counted, not run. Running the suite from inside the suite would
+        re-enter this class and re-run every README command recursively.
+        """
+        counts = re.findall(r"#\s*(\d+)\s+tests", self.readme)
+        if not counts:
+            self.skipTest("the README no longer quotes a test count")
+        suite = unittest.defaultTestLoader.discover(str(self.root / "tests"))
+        actual = suite.countTestCases()
+        for quoted in counts:
+            self.assertEqual(
+                int(quoted),
+                actual,
+                f"README quotes {quoted} tests; the suite contains {actual}",
+            )
 
 
 if __name__ == "__main__":
