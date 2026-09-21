@@ -1,0 +1,13 @@
+# Copy to forbidden.local.txt and replace with your own patterns.
+# One regex per line, '#' starts a comment. Checked case-insensitively against
+# every published file; any hit fails the run.
+#
+# Examples of what belongs here:
+#   <your-hostname>
+#   <your-account-handle>
+#   <your-city>
+#   <internal-service-name>
+#
+# Generic patterns (filesystem paths, e-mail addresses, token shapes, PEM
+# blocks, IPv4 literals) are built into tools/anonymise.py and do not need to
+# be repeated here.

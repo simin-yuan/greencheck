@@ -1,0 +1,5 @@
+{
+  "_comment": "Copy to field_renames.local.json and fill in your own field names. The names on the left are the sensitive part, which is why this mapping is not committed.",
+  "agent_name_refs_recent": "self_refs_recent",
+  "operator_name_refs_recent": "user_refs_recent"
+}

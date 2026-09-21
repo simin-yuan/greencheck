@@ -1,0 +1,203 @@
+{
+  "mdt_version": "0.1.0",
+  "headline": {
+    "ledger_samples": 84,
+    "ledger_window": [
+      "2026-08-03T06:42:50.370383+00:00",
+      "2026-09-19T20:25:44.885478+00:00"
+    ],
+    "identity_score_distinct": 1,
+    "identity_score_value": [
+      "1.0"
+    ],
+    "recall_rate_distinct": 1,
+    "samples_examining_nothing": 63,
+    "overall_distinct": 2,
+    "gate_events": 33228,
+    "gate_firings": 5,
+    "gate_days_covered": 16,
+    "gate_silent_days_before_first_fire": 13,
+    "gate_first_fire_utc": "2026-09-19T14:52:23.011940+00:00"
+  },
+  "metric_results": [
+    {
+      "subject": "self_assessment.identity_score",
+      "n_samples": 84,
+      "verdicts": [
+        "CONSTANT"
+      ],
+      "findings": [
+        {
+          "verdict": "CONSTANT",
+          "subject": "self_assessment.identity_score",
+          "detail": "84/84 samples report the identical value 1.0. Zero variance over the observed window.",
+          "evidence": {
+            "value": 1.0,
+            "n": 84
+          }
+        }
+      ],
+      "stats": {
+        "n_samples": 84,
+        "distinct_values": 1,
+        "value_counts": {
+          "1.0": 84
+        }
+      },
+      "ok": false
+    },
+    {
+      "subject": "self_assessment.memory_recall.recall_rate",
+      "n_samples": 84,
+      "verdicts": [
+        "CONSTANT",
+        "BARE_ZERO"
+      ],
+      "findings": [
+        {
+          "verdict": "CONSTANT",
+          "subject": "self_assessment.memory_recall.recall_rate",
+          "detail": "84/84 samples report the identical value 0.0. Zero variance over the observed window.",
+          "evidence": {
+            "value": 0.0,
+            "n": 84
+          }
+        },
+        {
+          "verdict": "BARE_ZERO",
+          "subject": "self_assessment.memory_recall.recall_rate",
+          "detail": "63 of 84 samples examined nothing (_count=0) yet reported 0.0 — the same value produced by samples that examined 3+ items and matched none. The zero is ambiguous: a consumer cannot distinguish 'not examined' from 'examined, no hits'.",
+          "evidence": {
+            "zero_count_rows": 63,
+            "zero_count_value": 0.0,
+            "min_examined": 3
+          }
+        }
+      ],
+      "stats": {
+        "n_samples": 84,
+        "distinct_values": 1,
+        "value_counts": {
+          "0.0": 84
+        }
+      },
+      "ok": false
+    },
+    {
+      "subject": "self_assessment.reflection_score",
+      "n_samples": 84,
+      "verdicts": [
+        "LIVENESS_BIT"
+      ],
+      "findings": [
+        {
+          "verdict": "LIVENESS_BIT",
+          "subject": "self_assessment.reflection_score",
+          "detail": "100% of the variance in 'value' is accounted for by the boolean '_fresh' alone. Every other input is constant across the ledger, so the score is a liveness indicator, not a measurement of the property in its name.",
+          "evidence": {
+            "attribution": 1.000000000000001,
+            "n": 84
+          }
+        }
+      ],
+      "stats": {
+        "n_samples": 84,
+        "distinct_values": 2,
+        "value_counts": {
+          "1.0": 38,
+          "0.5": 46
+        },
+        "variance_explained_by": {
+          "_fresh": 1.000000000000001
+        }
+      },
+      "ok": false
+    },
+    {
+      "subject": "self_assessment.overall (composite)",
+      "n_samples": 84,
+      "verdicts": [
+        "LIVENESS_BIT"
+      ],
+      "findings": [
+        {
+          "verdict": "LIVENESS_BIT",
+          "subject": "self_assessment.overall (composite)",
+          "detail": "100% of the variance in 'value' is accounted for by the boolean '_fresh' alone. Every other input is constant across the ledger, so the score is a liveness indicator, not a measurement of the property in its name.",
+          "evidence": {
+            "attribution": 0.9999999999999927,
+            "n": 84
+          }
+        }
+      ],
+      "stats": {
+        "n_samples": 84,
+        "distinct_values": 2,
+        "value_counts": {
+          "0.7": 38,
+          "0.55": 46
+        },
+        "variance_explained_by": {
+          "_fresh": 0.9999999999999927
+        }
+      },
+      "ok": false
+    }
+  ],
+  "gate_results": [
+    {
+      "subject": "guard denial path — before any positive control",
+      "n_samples": 28176,
+      "verdicts": [
+        "DEAD_GATE"
+      ],
+      "findings": [
+        {
+          "verdict": "DEAD_GATE",
+          "subject": "guard denial path — before any positive control",
+          "detail": "28,176 events recorded across 13 days, of which 26,668 were the guard reporting itself healthy, and the denial path fired 0 times. The assertion has never been observed to fire. Its existence is documented; its behaviour is not.",
+          "evidence": {
+            "total_events": 28176,
+            "health_events": 26668,
+            "firings": 0,
+            "note": ""
+          }
+        }
+      ],
+      "stats": {
+        "total_events": 28176,
+        "health_events": 26668,
+        "firings": 0,
+        "first_fire": null,
+        "silent_days_before_first_fire": 13
+      },
+      "ok": false
+    },
+    {
+      "subject": "guard denial path — full window",
+      "n_samples": 33228,
+      "verdicts": [
+        "PASS"
+      ],
+      "findings": [
+        {
+          "verdict": "PASS",
+          "subject": "guard denial path — full window",
+          "detail": "The path has fired 5 times, the first at 2026-09-19T14:52:23.011940+00:00. That first firing was produced by a positive control written specifically to exercise the path, not by ordinary traffic.",
+          "evidence": {
+            "total_events": 33228,
+            "firings": 5
+          }
+        }
+      ],
+      "stats": {
+        "total_events": 33228,
+        "health_events": 31642,
+        "firings": 5,
+        "first_fire": "2026-09-19T14:52:23.011940+00:00",
+        "silent_days_before_first_fire": null
+      },
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "days_covered": 16,
+  "days_with_zero_firings_before_first_fire": 13,
+  "event_totals": {
+    "block_issued": 5,
+    "registered": 1581,
+    "self_change": 31642
+  },
+  "event_totals_before_first_fire": {
+    "registered": 1508,
+    "self_change": 26668
+  },
+  "events_before_first_fire": 28176,
+  "first_fire_utc": "2026-09-19T14:52:23.011940+00:00",
+  "tool_totals": {
+    "cronjob_manage": 127,
+    "delegate_task": 13,
+    "execute_code": 221,
+    "memory": 10,
+    "patch": 1712,
+    "read_file": 938,
+    "search_files": 520,
+    "skill_manage": 184,
+    "terminal": 25654,
+    "vision_analyze": 8,
+    "write_file": 2260
+  },
+  "total_events": 33228,
+  "total_firings": 5,
+  "window_end_utc": "2026-09-21T18:25:42.085434+00:00",
+  "window_start_utc": "2026-09-06T16:10:24.904961+00:00"
+}

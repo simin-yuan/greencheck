@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Operator-specific privacy config. These files contain the very strings the
+# tool exists to keep out of publication, so they never enter version control.
+tools/*.local.json
+tools/*.local.txt
+
+# Never commit raw production logs. The published datasets in data/ are
+# produced by tools/anonymise.py and pass its mandatory leak check; the
+# inputs to that script stay wherever they live.
+*.raw
+*_raw.jsonl
+raw/
+private/
+secrets/
