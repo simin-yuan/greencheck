@@ -8,6 +8,7 @@ claims without installing anything.
 
 import contextlib
 import io
+import json
 import os
 import pathlib
 import sys
@@ -16,6 +17,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from greencheck import cli  # noqa: E402
+from greencheck import mutate  # noqa: E402
 from greencheck import (  # noqa: E402
     BARE_ZERO,
     CONSTANT,
@@ -177,6 +179,118 @@ class TestSkills(unittest.TestCase):
         with contextlib.redirect_stderr(io.StringIO()):
             rc = cli.main(["skills", "no-such-skill-exists"])
         self.assertEqual(rc, 2)
+
+
+class TestMutationOperators(unittest.TestCase):
+    """Every operator must have an input it is *known* to fire on.
+
+    This is the product's own rule applied to the product. An operator that has
+    never been observed to produce a mutant is not an operator, it is a function
+    nobody calls.
+
+    The JSON case below is not hypothetical. `blank-value` silently produced
+    *zero* mutants on a JSON file for as long as its pattern expected `key: value`
+    and JSON writes `"key": "value"`. It looked like coverage. It was a string.
+    """
+
+    JSON = '{\n  "service": "billing",\n  "replicas": 3\n}\n'
+    YAML = "service: billing\nreplicas: 3\n"
+    MD = "# Title\n\n## Alpha\nalpha body\n\n## Beta\nbeta body\n"
+
+    def _fire(self, op, files):
+        out = list(op(files))
+        self.assertTrue(out, f"{op.__name__} produced no mutants on this input")
+        return out
+
+    def test_drop_file_fires(self):
+        self._fire(mutate.op_drop_file, {"a.json": self.JSON})
+
+    def test_empty_file_fires(self):
+        self._fire(mutate.op_empty_file, {"a.json": self.JSON})
+
+    def test_drop_section_fires_on_markdown(self):
+        out = self._fire(mutate.op_drop_section, {"a.md": self.MD})
+        self.assertTrue(any("Alpha" in n for n, _ in out))
+
+    def test_drop_line_fires(self):
+        self._fire(mutate.op_drop_line, {"a.json": self.JSON})
+
+    def test_blank_value_fires_on_json_with_quoted_keys(self):
+        out = self._fire(mutate.op_blank_value, {"a.json": self.JSON})
+        names = [n for n, _ in out]
+        self.assertTrue(any("service" in n for n in names), names)
+        self.assertTrue(any("replicas" in n for n in names), names)
+
+    def test_blank_value_fires_on_yaml(self):
+        self.assertTrue(len(self._fire(mutate.op_blank_value, {"a.yaml": self.YAML})) >= 2)
+
+    def test_blank_value_keeps_the_document_parsable(self):
+        """A mutant that breaks JSON syntax tests the parser, not the gate.
+
+        Numbers must stay numbers and booleans must stay booleans: blanking
+        `"replicas": 3` to `"replicas":` produces unparsable JSON, and the gate
+        then rejects it for the wrong reason.
+        """
+        for name, patch in mutate.op_blank_value({"a.json": self.JSON}):
+            with self.subTest(mutant=name):
+                json.loads(patch["a.json"])  # must not raise
+
+    def test_blank_value_preserves_scalar_types(self):
+        src = '{\n  "name": "svc",\n  "n": 3,\n  "on": true\n}\n'
+        got = {n: p["a.json"] for n, p in mutate.op_blank_value({"a.json": src})}
+        self.assertIn('"name": ""', got['blank-value:a.json:2:"name":'])
+        self.assertIn('"n": 0', got['blank-value:a.json:3:"n":'])
+        self.assertIn('"on": false', got['blank-value:a.json:4:"on":'])
+
+    def test_break_reference_fires(self):
+        self._fire(mutate.op_break_reference, {"a.md": "see FOO-BAR-01 for detail\n"})
+
+    def test_dup_id_fires(self):
+        self._fire(mutate.op_dup_id, {"a.md": self.MD})
+
+    def test_no_registered_operator_is_dead_code(self):
+        """The blanket version: nothing in OPERATORS may be unreachable.
+
+        The corpus has to contain the *shape* each operator needs. An operator
+        that finds nothing here is either dead code or starved of input, and
+        those two look identical from the outside — so give it input.
+        """
+        corpus = {
+            "a.json": self.JSON,                              # quoted keys, numbers
+            "b.md": self.MD,                                  # headings, sections
+            "c.yaml": self.YAML,                              # bare keys
+            "d.md": "# Index\n\nsee FOO-BAR-01 for detail\n",  # a reference id
+        }
+        for op in mutate.OPERATORS:
+            with self.subTest(op=op.__name__):
+                self._fire(op, corpus)
+
+    def test_build_mutants_deduplicates(self):
+        corpus = {"a.json": self.JSON}
+        mutants = mutate.build_mutants(corpus)
+        names = [n for n, _ in mutants]
+        self.assertEqual(len(names), len(set(names)))
+
+
+class TestVersionIsSingleSourced(unittest.TestCase):
+    def test_package_version_matches_pyproject(self):
+        """One version, one place.
+
+        The package reported 0.1.0 while pyproject said 0.2.0 — a second copy of
+        a fact that had already drifted. Two numbers, at least one of them wrong,
+        which is the exact shape of the problem this tool exists to find.
+        """
+        import re
+
+        from greencheck import __version__
+
+        root = pathlib.Path(__file__).resolve().parent.parent
+        declared = re.search(
+            r'^version\s*=\s*"([^"]+)"',
+            (root / "pyproject.toml").read_text(encoding="utf-8"),
+            re.M,
+        ).group(1)
+        self.assertEqual(__version__, declared)
 
 
 if __name__ == "__main__":

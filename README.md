@@ -1,12 +1,51 @@
 # greencheck
 
-### 28,176 green checks. Zero denials.
+### Your validator passes inputs it should reject. This finds them.
 
-That is not a passing gate. That is a gate that ran 28,176 times without ever
-firing once — and nobody noticed for thirteen days.
+```console
+$ pip install git+https://github.com/simin-yuan/greencheck
+$ greencheck mutate --gate "python validate.py {target}" --target ./config
+```
 
-`greencheck` audits the instruments an agent uses to report on itself, and finds
-the ones that look like measurements but measure nothing.
+```
+baseline rc: 0  PASS (baseline is clean, mutating)
+mutants    : 12
+----------------------------------------------------------------------
+      caught  drop-file:config.json
+      caught  empty-file:config.json
+      caught  drop-line:config.json:4:"replicas": 3,
+      caught  blank-value:config.json:2:"service":
+      caught  blank-value:config.json:3:"region":
+   * ESCAPED  blank-value:config.json:4:"replicas":
+      caught  blank-value:config.json:5:"owner":
+----------------------------------------------------------------------
+caught 11 / 12
+
+verdict: the gate had no reaction to 1/12 mutants - it has a visible blind spot.
+```
+
+The escaped mutant turns `"replicas": 3` into `"replicas": 0` — a service that
+never starts. The gate checks that every key is present and every value is
+non-empty. Zero is neither missing nor empty, so it says yes.
+
+**Every structural property the gate tests for still holds.** That is exactly
+why this class of gap survives review: it is invisible to anything that only
+looks at shape. → [the runnable example](examples/mutate-demo/)
+
+## It also audits metrics
+
+Point it at a metric you already collect — a self-score, a recall rate, a health
+probe — and it tells you whether the number varies with the thing it is named
+after, or only with something adjacent: input existence, wall-clock freshness, a
+single boolean.
+
+```console
+$ greencheck audit data/ledger_metric_samples.jsonl --field identity.identity_score
+```
+
+The same question, asked of numbers instead of gates: *has this ever been
+observed to take a different value on input that differs?* If it has not, it is
+not a measurement. It is a decoration that updates on a schedule.
 
 ---
 

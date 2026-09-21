@@ -185,6 +185,17 @@ def cmd_skills(args) -> int:
     return 0
 
 
+def cmd_mutate(args) -> int:
+    """Delegate to the mutation engine, which owns its own argument parser.
+
+    `mutate` takes a gate command plus its own flags, so the subparser collects
+    everything after it verbatim rather than trying to re-declare those flags.
+    """
+    from .mutate import main as mutate_main
+
+    return mutate_main(args.args)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="greencheck", description=__doc__.splitlines()[0])
     ap.add_argument("--version", action="version", version=f"greencheck {__version__}")
@@ -212,7 +223,17 @@ def main(argv=None) -> int:
     s.add_argument("--json", action="store_true")
     s.set_defaults(func=cmd_skills)
 
-    args = ap.parse_args(argv)
+    m = sub.add_parser("mutate", help="does your gate actually say no? mutate the input, run the gate")
+    m.set_defaults(func=None)
+
+    # `mutate` takes its own flags (--gate, --target, ...). REMAINDER does not
+    # capture option-likes, so parse known args here and hand the rest to the
+    # mutation engine, which owns that argument surface.
+    args, rest = ap.parse_known_args(argv)
+    if getattr(args, "cmd", None) == "mutate":
+        from .mutate import main as mutate_main
+
+        return mutate_main(rest)
     return args.func(args)
 
 
