@@ -1,14 +1,17 @@
 # greencheck
 
 [![tests](https://github.com/simin-yuan/greencheck/actions/workflows/tests.yml/badge.svg)](https://github.com/simin-yuan/greencheck/actions/workflows/tests.yml)
+[![PyPI](https://img.shields.io/pypi/v/greencheck.svg)](https://pypi.org/project/greencheck/)
 [![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 [![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](#)
 
 ### Your validator passes inputs it should reject. This finds them.
 
 ```console
-$ pip install https://github.com/simin-yuan/greencheck/releases/download/v0.3.0/greencheck-0.3.0-py3-none-any.whl
+$ pip install greencheck
 ```
+
+Zero dependencies, Python 3.9+, nothing to configure.
 
 Then, from a checkout of this repository (both halves run against files that
 ship with it, so a reader can reproduce every line below):

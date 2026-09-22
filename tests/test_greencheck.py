@@ -466,6 +466,25 @@ class TestEveryCommandInTheReadmeActuallyRuns(unittest.TestCase):
     def test_there_are_commands_to_check(self):
         self.assertGreaterEqual(len(self._shell_commands()), 3)
 
+    def test_the_install_line_names_the_distribution(self):
+        """`pip install greencheck` — not a wheel URL.
+
+        The URL form worked, but it pinned the README to one release forever
+        and could not be checked against anything. The name form has a fact
+        behind it: the distribution on PyPI, which is the same string as
+        `name` in pyproject.toml. If those two ever disagree, this is where
+        it shows up rather than in a reader's terminal.
+        """
+        text = (self.root / "pyproject.toml").read_text(encoding="utf-8")
+        name = re.search(r'^name = "(.*)"', text, re.M).group(1)
+
+        install_lines = [l for l in self.readme.splitlines() if l.startswith("$ pip install")]
+        self.assertTrue(install_lines, "the README no longer says how to install it")
+        for line in install_lines:
+            target = line.split("pip install", 1)[1].strip()
+            self.assertNotIn("http", target, f"install line points at a file, not a package: {line}")
+            self.assertEqual(target, name, f"install line names a different package than pyproject.toml")
+
     def _environment_without_an_installed_greencheck(self):
         """A PATH containing only the interpreter's own directory.
 
