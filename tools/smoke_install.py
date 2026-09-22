@@ -32,6 +32,17 @@ import venv
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 
+# Windows gives a Python 3.9 process a cp1252 stdout when it is writing to a
+# pipe rather than a console. The CLI under test prints an em-dash, so printing
+# its output raised UnicodeEncodeError and the check failed on Windows only.
+# The encoding of this script's own output is not something the check should
+# depend on.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):  # pragma: no cover — old interpreters
+        pass
+
 
 def declared_version() -> str:
     text = (REPO / "pyproject.toml").read_text(encoding="utf-8")

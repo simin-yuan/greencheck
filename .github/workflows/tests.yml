@@ -19,6 +19,11 @@ jobs:
   test:
     name: py${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    env:
+      # Windows runners hand a piped Python process the ANSI code page, and the
+      # CLI prints non-ASCII. Set once here so every step agrees, including the
+      # subprocesses the tests spawn.
+      PYTHONIOENCODING: utf-8
     strategy:
       fail-fast: false
       matrix:
