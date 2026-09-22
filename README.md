@@ -1,5 +1,9 @@
 # greencheck
 
+[![tests](https://github.com/simin-yuan/greencheck/actions/workflows/tests.yml/badge.svg)](https://github.com/simin-yuan/greencheck/actions/workflows/tests.yml)
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
+[![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](#)
+
 ### Your validator passes inputs it should reject. This finds them.
 
 ```console
