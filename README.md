@@ -251,7 +251,7 @@ No dependencies. Python 3.9+.
 From a checkout of this repository:
 
 ```console
-$ python -m unittest discover -s tests      # 45 tests, stdlib only
+$ python -m unittest discover -s tests      # 46 tests, stdlib only
 $ python -m greencheck.cli demo
 ```
 
