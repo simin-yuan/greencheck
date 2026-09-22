@@ -55,13 +55,7 @@ jobs:
       - name: Install the built wheel into an empty environment and run it
         # The defect this catches: skills/ lived outside the package once, so
         # `greencheck skills` worked in a checkout and failed for everybody who
-        # installed it.
-        shell: bash
-        run: |
-          python -m venv /tmp/cleanvenv || python -m venv "$RUNNER_TEMP/cleanvenv"
-          if [ -x /tmp/cleanvenv/bin/python ]; then V=/tmp/cleanvenv; else V="$RUNNER_TEMP/cleanvenv"; fi
-          "$V/bin/python" -m pip install --quiet dist/*.whl 2>/dev/null || "$V/Scripts/python.exe" -m pip install --quiet dist/*.whl
-          if [ -x "$V/bin/greencheck" ]; then G="$V/bin/greencheck"; else G="$V/Scripts/greencheck.exe"; fi
-          "$G" --version
-          "$G" skills
-          "$G" demo
+        # actually installed it. Kept in a script rather than inline shell
+        # because the shell version used /tmp and $RUNNER_TEMP and produced exit
+        # 127 on Windows, which is the same class of mistake as the one above.
+        run: python tools/smoke_install.py dist
