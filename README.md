@@ -47,7 +47,7 @@ after, or only with something adjacent: input existence, wall-clock freshness, a
 single boolean.
 
 ```console
-$ greencheck audit data/ledger_metric_samples.jsonl --field identity.identity_score
+$ python -m greencheck.cli audit data/ledger_metric_samples.jsonl --field identity.identity_score
 ```
 
 The same question, asked of numbers instead of gates: *has this ever been
@@ -76,7 +76,7 @@ freshness, a single boolean.
 ## 30 seconds
 
 ```console
-$ greencheck demo
+$ python -m greencheck.cli demo
 
 [ok  ] content_length          (2 samples)
 [FAIL] content_presence_score  (2 samples)
@@ -218,7 +218,7 @@ greencheck skills — 5 available
   measurement-or-decoration  Use when a system reports a score, confidence, health value about itself...
   positive-control           Use when writing a guard, assertion, test, alert or validation rule...
 
-Read one in full:   greencheck skills <name>
+Read one in full:   python -m greencheck.cli skills <name>
 ```
 
 Plain `SKILL.md` files with YAML frontmatter — the format used by Claude Code,

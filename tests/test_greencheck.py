@@ -466,6 +466,19 @@ class TestEveryCommandInTheReadmeActuallyRuns(unittest.TestCase):
     def test_there_are_commands_to_check(self):
         self.assertGreaterEqual(len(self._shell_commands()), 3)
 
+    def _environment_without_an_installed_greencheck(self):
+        """A PATH containing only the interpreter's own directory.
+
+        Without this the test passes on a machine where the package happens to
+        be installed and fails for everyone else — which is how a bare
+        `$ greencheck audit ...` shipped in the README while the honest form is
+        `python -m greencheck.cli ...`. A bare `greencheck` must not resolve.
+        """
+        env = dict(os.environ)
+        env["PATH"] = os.path.dirname(sys.executable)
+        env.pop("PYTHONPATH", None)
+        return env
+
     def test_each_one_exits_zero(self):
         for cmd in self._shell_commands():
             proc = subprocess.run(
@@ -481,6 +494,7 @@ class TestEveryCommandInTheReadmeActuallyRuns(unittest.TestCase):
                 encoding="utf-8",
                 errors="replace",
                 timeout=120,
+                env=self._environment_without_an_installed_greencheck(),
             )
             stdout = proc.stdout or ""
             stderr = proc.stderr or ""
