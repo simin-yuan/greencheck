@@ -1,0 +1,67 @@
+name: tests
+
+# Runs the suite the README tells a reader to run, on the interpreter floors
+# the package claims to support and on three operating systems. The test class
+# TestEveryCommandInTheReadmeActuallyRuns executes the README's own commands,
+# so a documentation change that stops working fails here rather than in
+# somebody's terminal.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: py${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.9", "3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # No install step on purpose: the package declares zero dependencies and
+      # the tests are stdlib unittest. If either stops being true, this job is
+      # the thing that notices.
+      - name: Show the interpreter and confirm the no-deps claim
+        run: python -c "import sys; print(sys.version)"
+
+      - name: Run the suite
+        run: python -m unittest discover -s tests -v
+
+      - name: The README's own commands must run
+        # Duplicated deliberately, and separately visible: this is the class
+        # that fails when the documentation drifts away from the code, which
+        # is the failure mode this project exists to talk about.
+        run: python -m unittest tests.test_greencheck.TestEveryCommandInTheReadmeActuallyRuns -v
+
+      - name: Build the wheel and the sdist, and check them
+        run: |
+          python -m pip install --quiet build twine
+          python -m build
+          python -m twine check dist/*
+
+      - name: Install the built wheel into an empty environment and run it
+        # The defect this catches: skills/ lived outside the package once, so
+        # `greencheck skills` worked in a checkout and failed for everybody who
+        # installed it.
+        shell: bash
+        run: |
+          python -m venv /tmp/cleanvenv || python -m venv "$RUNNER_TEMP/cleanvenv"
+          if [ -x /tmp/cleanvenv/bin/python ]; then V=/tmp/cleanvenv; else V="$RUNNER_TEMP/cleanvenv"; fi
+          "$V/bin/python" -m pip install --quiet dist/*.whl 2>/dev/null || "$V/Scripts/python.exe" -m pip install --quiet dist/*.whl
+          if [ -x "$V/bin/greencheck" ]; then G="$V/bin/greencheck"; else G="$V/Scripts/greencheck.exe"; fi
+          "$G" --version
+          "$G" skills
+          "$G" demo

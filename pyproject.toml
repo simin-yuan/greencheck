@@ -10,14 +10,40 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Simon" }]
-keywords = ["observability", "metrics", "agent", "monitoring", "evaluation", "test"]
+keywords = [
+    "mutation-testing",
+    "observability",
+    "metrics",
+    "agent",
+    "monitoring",
+    "evaluation",
+    "verification",
+    "test",
+    "testing",
+    "audit",
+]
 classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "License :: OSI Approved :: MIT License",
     "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
     "Topic :: System :: Monitoring",
 ]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/simin-yuan/greencheck"
+Repository = "https://github.com/simin-yuan/greencheck"
+Issues = "https://github.com/simin-yuan/greencheck/issues"
+Changelog = "https://github.com/simin-yuan/greencheck/releases"
 
 [project.optional-dependencies]
 dev = ["pytest>=7"]
