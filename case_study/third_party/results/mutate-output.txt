@@ -1,0 +1,325 @@
+======================================================================
+greencheck mutate - does your gate actually say no?
+======================================================================
+baseline   : C:<path>  (1 files)
+baseline rc: 0  PASS (baseline is clean, mutating)
+mutants    : 168
+gate       : python case_study/third_party/gate.py {target}/package.json
+
+----------------------------------------------------------------------
+      caught  drop-file:package.json
+      caught  empty-file:package.json
+      caught  drop-line:package.json:1:{
+   * ESCAPED  drop-line:package.json:2:"name": "express",
+   * ESCAPED  drop-line:package.json:3:"description": "Fast, unopin...
+   * ESCAPED  drop-line:package.json:4:"version": "5.2.1",
+   * ESCAPED  drop-line:package.json:5:"author": "TJ Holowaychuk <t...
+      caught  drop-line:package.json:6:"contributors": [
+   * ESCAPED  drop-line:package.json:7:"Aaron Heckmann <aaron.heckm...
+   * ESCAPED  drop-line:package.json:8:"Ciaran Jessup <<redacted-email>
+   * ESCAPED  drop-line:package.json:9:"Douglas Christopher Wilson ...
+   * ESCAPED  drop-line:package.json:10:"Guillermo Rauch <<redacted-email>
+   * ESCAPED  drop-line:package.json:11:"Jonathan Ong <<redacted-email>
+   * ESCAPED  drop-line:package.json:12:"Roman Shtylman <shtylman+ex...
+      caught  drop-line:package.json:13:"Young Jae Sim <<redacted-email>
+      caught  drop-line:package.json:14:],
+   * ESCAPED  drop-line:package.json:15:"license": "MIT",
+   * ESCAPED  drop-line:package.json:16:"repository": "expressjs/exp...
+   * ESCAPED  drop-line:package.json:17:"homepage": "https://express...
+      caught  drop-line:package.json:18:"funding": {
+   * ESCAPED  drop-line:package.json:19:"type": "opencollective",
+      caught  drop-line:package.json:20:"url": "https://opencollecti...
+      caught  drop-line:package.json:21:},
+      caught  drop-line:package.json:22:"keywords": [
+   * ESCAPED  drop-line:package.json:23:"express",
+   * ESCAPED  drop-line:package.json:24:"framework",
+   * ESCAPED  drop-line:package.json:25:"sinatra",
+   * ESCAPED  drop-line:package.json:26:"web",
+   * ESCAPED  drop-line:package.json:27:"http",
+   * ESCAPED  drop-line:package.json:28:"rest",
+   * ESCAPED  drop-line:package.json:29:"restful",
+   * ESCAPED  drop-line:package.json:30:"router",
+   * ESCAPED  drop-line:package.json:31:"app",
+      caught  drop-line:package.json:32:"api"
+      caught  drop-line:package.json:33:],
+      caught  drop-line:package.json:34:"dependencies": {
+   * ESCAPED  drop-line:package.json:35:"accepts": "^2.0.0",
+   * ESCAPED  drop-line:package.json:36:"body-parser": "^2.3.0",
+   * ESCAPED  drop-line:package.json:37:"content-disposition": "^2.0...
+   * ESCAPED  drop-line:package.json:38:"content-type": "^2.0.0",
+   * ESCAPED  drop-line:package.json:39:"cookie": "^0.7.1",
+   * ESCAPED  drop-line:package.json:40:"cookie-signature": "^1.2.1"...
+   * ESCAPED  drop-line:package.json:41:"debug": "^4.4.0",
+   * ESCAPED  drop-line:package.json:42:"depd": "^2.0.0",
+   * ESCAPED  drop-line:package.json:43:"encodeurl": "^2.0.0",
+   * ESCAPED  drop-line:package.json:44:"escape-html": "^1.0.3",
+   * ESCAPED  drop-line:package.json:45:"etag": "^1.8.1",
+   * ESCAPED  drop-line:package.json:46:"finalhandler": "^2.1.0",
+   * ESCAPED  drop-line:package.json:47:"fresh": "^2.0.0",
+   * ESCAPED  drop-line:package.json:48:"http-errors": "^2.0.0",
+   * ESCAPED  drop-line:package.json:49:"merge-descriptors": "^2.0.0...
+   * ESCAPED  drop-line:package.json:50:"mime-types": "^3.0.0",
+   * ESCAPED  drop-line:package.json:51:"on-finished": "^2.4.1",
+   * ESCAPED  drop-line:package.json:52:"once": "^1.4.0",
+   * ESCAPED  drop-line:package.json:53:"parseurl": "^1.3.3",
+   * ESCAPED  drop-line:package.json:54:"proxy-addr": "^2.0.7",
+   * ESCAPED  drop-line:package.json:55:"qs": "^6.15.2",
+   * ESCAPED  drop-line:package.json:56:"range-parser": "^1.2.1",
+   * ESCAPED  drop-line:package.json:57:"router": "^2.2.0",
+   * ESCAPED  drop-line:package.json:58:"send": "^1.1.0",
+   * ESCAPED  drop-line:package.json:59:"serve-static": "^2.2.0",
+   * ESCAPED  drop-line:package.json:60:"statuses": "^2.0.1",
+   * ESCAPED  drop-line:package.json:61:"type-is": "^2.1.0",
+      caught  drop-line:package.json:62:"vary": "^1.1.2"
+      caught  drop-line:package.json:63:},
+      caught  drop-line:package.json:64:"devDependencies": {
+   * ESCAPED  drop-line:package.json:65:"after": "0.8.2",
+   * ESCAPED  drop-line:package.json:66:"connect-redis": "^8.0.1",
+   * ESCAPED  drop-line:package.json:67:"cookie-parser": "1.4.7",
+   * ESCAPED  drop-line:package.json:68:"cookie-session": "2.1.1",
+   * ESCAPED  drop-line:package.json:69:"ejs": "^3.1.10",
+   * ESCAPED  drop-line:package.json:70:"eslint": "8.47.0",
+   * ESCAPED  drop-line:package.json:71:"express-session": "^1.18.1"...
+   * ESCAPED  drop-line:package.json:72:"hbs": "4.3.0",
+   * ESCAPED  drop-line:package.json:73:"marked": "^15.0.3",
+   * ESCAPED  drop-line:package.json:74:"method-override": "3.0.0",
+   * ESCAPED  drop-line:package.json:75:"mocha": "^11.7.5",
+   * ESCAPED  drop-line:package.json:76:"morgan": "1.12.0",
+   * ESCAPED  drop-line:package.json:77:"nyc": "^17.1.0",
+   * ESCAPED  drop-line:package.json:78:"pbkdf2-password": "1.2.1",
+   * ESCAPED  drop-line:package.json:79:"supertest": "^6.3.0",
+      caught  drop-line:package.json:80:"vhost": "~3.0.2"
+      caught  drop-line:package.json:81:},
+      caught  drop-line:package.json:82:"engines": {
+   * ESCAPED  drop-line:package.json:83:"node": ">= 18"
+      caught  drop-line:package.json:84:},
+      caught  drop-line:package.json:85:"files": [
+   * ESCAPED  drop-line:package.json:86:"LICENSE",
+   * ESCAPED  drop-line:package.json:87:"Readme.md",
+   * ESCAPED  drop-line:package.json:88:"index.js",
+      caught  drop-line:package.json:89:"lib/"
+      caught  drop-line:package.json:90:],
+      caught  drop-line:package.json:91:"scripts": {
+   * ESCAPED  drop-line:package.json:92:"lint": "eslint .",
+   * ESCAPED  drop-line:package.json:93:"lint:fix": "eslint . --fix"...
+   * ESCAPED  drop-line:package.json:94:"test": "mocha --require tes...
+   * ESCAPED  drop-line:package.json:95:"test-ci": "nyc --exclude ex...
+   * ESCAPED  drop-line:package.json:96:"test-cov": "nyc --exclude e...
+      caught  drop-line:package.json:97:"test-tap": "mocha --require...
+      caught  drop-line:package.json:98:}
+      caught  drop-line:package.json:99:}
+      caught  blank-value:package.json:2:"name":
+   * ESCAPED  blank-value:package.json:3:"description":
+   * ESCAPED  blank-value:package.json:4:"version":
+   * ESCAPED  blank-value:package.json:5:"author":
+      caught  blank-value:package.json:6:"contributors":
+   * ESCAPED  blank-value:package.json:15:"license":
+   * ESCAPED  blank-value:package.json:16:"repository":
+   * ESCAPED  blank-value:package.json:17:"homepage":
+      caught  blank-value:package.json:18:"funding":
+   * ESCAPED  blank-value:package.json:19:"type":
+   * ESCAPED  blank-value:package.json:20:"url":
+      caught  blank-value:package.json:22:"keywords":
+      caught  blank-value:package.json:34:"dependencies":
+   * ESCAPED  blank-value:package.json:35:"accepts":
+   * ESCAPED  blank-value:package.json:36:"body-parser":
+   * ESCAPED  blank-value:package.json:37:"content-disposition":
+   * ESCAPED  blank-value:package.json:38:"content-type":
+   * ESCAPED  blank-value:package.json:39:"cookie":
+   * ESCAPED  blank-value:package.json:40:"cookie-signature":
+   * ESCAPED  blank-value:package.json:41:"debug":
+   * ESCAPED  blank-value:package.json:42:"depd":
+   * ESCAPED  blank-value:package.json:43:"encodeurl":
+   * ESCAPED  blank-value:package.json:44:"escape-html":
+   * ESCAPED  blank-value:package.json:45:"etag":
+   * ESCAPED  blank-value:package.json:46:"finalhandler":
+   * ESCAPED  blank-value:package.json:47:"fresh":
+   * ESCAPED  blank-value:package.json:48:"http-errors":
+   * ESCAPED  blank-value:package.json:49:"merge-descriptors":
+   * ESCAPED  blank-value:package.json:50:"mime-types":
+   * ESCAPED  blank-value:package.json:51:"on-finished":
+   * ESCAPED  blank-value:package.json:52:"once":
+   * ESCAPED  blank-value:package.json:53:"parseurl":
+   * ESCAPED  blank-value:package.json:54:"proxy-addr":
+   * ESCAPED  blank-value:package.json:55:"qs":
+   * ESCAPED  blank-value:package.json:56:"range-parser":
+   * ESCAPED  blank-value:package.json:57:"router":
+   * ESCAPED  blank-value:package.json:58:"send":
+   * ESCAPED  blank-value:package.json:59:"serve-static":
+   * ESCAPED  blank-value:package.json:60:"statuses":
+   * ESCAPED  blank-value:package.json:61:"type-is":
+   * ESCAPED  blank-value:package.json:62:"vary":
+      caught  blank-value:package.json:64:"devDependencies":
+   * ESCAPED  blank-value:package.json:65:"after":
+   * ESCAPED  blank-value:package.json:66:"connect-redis":
+   * ESCAPED  blank-value:package.json:67:"cookie-parser":
+   * ESCAPED  blank-value:package.json:68:"cookie-session":
+   * ESCAPED  blank-value:package.json:69:"ejs":
+   * ESCAPED  blank-value:package.json:70:"eslint":
+   * ESCAPED  blank-value:package.json:71:"express-session":
+   * ESCAPED  blank-value:package.json:72:"hbs":
+   * ESCAPED  blank-value:package.json:73:"marked":
+   * ESCAPED  blank-value:package.json:74:"method-override":
+   * ESCAPED  blank-value:package.json:75:"mocha":
+   * ESCAPED  blank-value:package.json:76:"morgan":
+   * ESCAPED  blank-value:package.json:77:"nyc":
+   * ESCAPED  blank-value:package.json:78:"pbkdf2-password":
+   * ESCAPED  blank-value:package.json:79:"supertest":
+   * ESCAPED  blank-value:package.json:80:"vhost":
+      caught  blank-value:package.json:82:"engines":
+   * ESCAPED  blank-value:package.json:83:"node":
+      caught  blank-value:package.json:85:"files":
+      caught  blank-value:package.json:91:"scripts":
+   * ESCAPED  blank-value:package.json:92:"lint":
+   * ESCAPED  blank-value:package.json:94:"test":
+   * ESCAPED  blank-value:package.json:95:"test-ci":
+   * ESCAPED  blank-value:package.json:96:"test-cov":
+   * ESCAPED  blank-value:package.json:97:"test-tap":
+----------------------------------------------------------------------
+caught 36 / 168
+
+mutants the gate let through (132):
+  *  drop-line:package.json:2:"name": "express",
+  *  drop-line:package.json:3:"description": "Fast, unopin...
+  *  drop-line:package.json:4:"version": "5.2.1",
+  *  drop-line:package.json:5:"author": "TJ Holowaychuk <t...
+  *  drop-line:package.json:7:"Aaron Heckmann <aaron.heckm...
+  *  drop-line:package.json:8:"Ciaran Jessup <<redacted-email>
+  *  drop-line:package.json:9:"Douglas Christopher Wilson ...
+  *  drop-line:package.json:10:"Guillermo Rauch <<redacted-email>
+  *  drop-line:package.json:11:"Jonathan Ong <<redacted-email>
+  *  drop-line:package.json:12:"Roman Shtylman <shtylman+ex...
+  *  drop-line:package.json:15:"license": "MIT",
+  *  drop-line:package.json:16:"repository": "expressjs/exp...
+  *  drop-line:package.json:17:"homepage": "https://express...
+  *  drop-line:package.json:19:"type": "opencollective",
+  *  drop-line:package.json:23:"express",
+  *  drop-line:package.json:24:"framework",
+  *  drop-line:package.json:25:"sinatra",
+  *  drop-line:package.json:26:"web",
+  *  drop-line:package.json:27:"http",
+  *  drop-line:package.json:28:"rest",
+  *  drop-line:package.json:29:"restful",
+  *  drop-line:package.json:30:"router",
+  *  drop-line:package.json:31:"app",
+  *  drop-line:package.json:35:"accepts": "^2.0.0",
+  *  drop-line:package.json:36:"body-parser": "^2.3.0",
+  *  drop-line:package.json:37:"content-disposition": "^2.0...
+  *  drop-line:package.json:38:"content-type": "^2.0.0",
+  *  drop-line:package.json:39:"cookie": "^0.7.1",
+  *  drop-line:package.json:40:"cookie-signature": "^1.2.1"...
+  *  drop-line:package.json:41:"debug": "^4.4.0",
+  *  drop-line:package.json:42:"depd": "^2.0.0",
+  *  drop-line:package.json:43:"encodeurl": "^2.0.0",
+  *  drop-line:package.json:44:"escape-html": "^1.0.3",
+  *  drop-line:package.json:45:"etag": "^1.8.1",
+  *  drop-line:package.json:46:"finalhandler": "^2.1.0",
+  *  drop-line:package.json:47:"fresh": "^2.0.0",
+  *  drop-line:package.json:48:"http-errors": "^2.0.0",
+  *  drop-line:package.json:49:"merge-descriptors": "^2.0.0...
+  *  drop-line:package.json:50:"mime-types": "^3.0.0",
+  *  drop-line:package.json:51:"on-finished": "^2.4.1",
+  *  drop-line:package.json:52:"once": "^1.4.0",
+  *  drop-line:package.json:53:"parseurl": "^1.3.3",
+  *  drop-line:package.json:54:"proxy-addr": "^2.0.7",
+  *  drop-line:package.json:55:"qs": "^6.15.2",
+  *  drop-line:package.json:56:"range-parser": "^1.2.1",
+  *  drop-line:package.json:57:"router": "^2.2.0",
+  *  drop-line:package.json:58:"send": "^1.1.0",
+  *  drop-line:package.json:59:"serve-static": "^2.2.0",
+  *  drop-line:package.json:60:"statuses": "^2.0.1",
+  *  drop-line:package.json:61:"type-is": "^2.1.0",
+  *  drop-line:package.json:65:"after": "0.8.2",
+  *  drop-line:package.json:66:"connect-redis": "^8.0.1",
+  *  drop-line:package.json:67:"cookie-parser": "1.4.7",
+  *  drop-line:package.json:68:"cookie-session": "2.1.1",
+  *  drop-line:package.json:69:"ejs": "^3.1.10",
+  *  drop-line:package.json:70:"eslint": "8.47.0",
+  *  drop-line:package.json:71:"express-session": "^1.18.1"...
+  *  drop-line:package.json:72:"hbs": "4.3.0",
+  *  drop-line:package.json:73:"marked": "^15.0.3",
+  *  drop-line:package.json:74:"method-override": "3.0.0",
+  *  drop-line:package.json:75:"mocha": "^11.7.5",
+  *  drop-line:package.json:76:"morgan": "1.12.0",
+  *  drop-line:package.json:77:"nyc": "^17.1.0",
+  *  drop-line:package.json:78:"pbkdf2-password": "1.2.1",
+  *  drop-line:package.json:79:"supertest": "^6.3.0",
+  *  drop-line:package.json:83:"node": ">= 18"
+  *  drop-line:package.json:86:"LICENSE",
+  *  drop-line:package.json:87:"Readme.md",
+  *  drop-line:package.json:88:"index.js",
+  *  drop-line:package.json:92:"lint": "eslint .",
+  *  drop-line:package.json:93:"lint:fix": "eslint . --fix"...
+  *  drop-line:package.json:94:"test": "mocha --require tes...
+  *  drop-line:package.json:95:"test-ci": "nyc --exclude ex...
+  *  drop-line:package.json:96:"test-cov": "nyc --exclude e...
+  *  blank-value:package.json:3:"description":
+  *  blank-value:package.json:4:"version":
+  *  blank-value:package.json:5:"author":
+  *  blank-value:package.json:15:"license":
+  *  blank-value:package.json:16:"repository":
+  *  blank-value:package.json:17:"homepage":
+  *  blank-value:package.json:19:"type":
+  *  blank-value:package.json:20:"url":
+  *  blank-value:package.json:35:"accepts":
+  *  blank-value:package.json:36:"body-parser":
+  *  blank-value:package.json:37:"content-disposition":
+  *  blank-value:package.json:38:"content-type":
+  *  blank-value:package.json:39:"cookie":
+  *  blank-value:package.json:40:"cookie-signature":
+  *  blank-value:package.json:41:"debug":
+  *  blank-value:package.json:42:"depd":
+  *  blank-value:package.json:43:"encodeurl":
+  *  blank-value:package.json:44:"escape-html":
+  *  blank-value:package.json:45:"etag":
+  *  blank-value:package.json:46:"finalhandler":
+  *  blank-value:package.json:47:"fresh":
+  *  blank-value:package.json:48:"http-errors":
+  *  blank-value:package.json:49:"merge-descriptors":
+  *  blank-value:package.json:50:"mime-types":
+  *  blank-value:package.json:51:"on-finished":
+  *  blank-value:package.json:52:"once":
+  *  blank-value:package.json:53:"parseurl":
+  *  blank-value:package.json:54:"proxy-addr":
+  *  blank-value:package.json:55:"qs":
+  *  blank-value:package.json:56:"range-parser":
+  *  blank-value:package.json:57:"router":
+  *  blank-value:package.json:58:"send":
+  *  blank-value:package.json:59:"serve-static":
+  *  blank-value:package.json:60:"statuses":
+  *  blank-value:package.json:61:"type-is":
+  *  blank-value:package.json:62:"vary":
+  *  blank-value:package.json:65:"after":
+  *  blank-value:package.json:66:"connect-redis":
+  *  blank-value:package.json:67:"cookie-parser":
+  *  blank-value:package.json:68:"cookie-session":
+  *  blank-value:package.json:69:"ejs":
+  *  blank-value:package.json:70:"eslint":
+  *  blank-value:package.json:71:"express-session":
+  *  blank-value:package.json:72:"hbs":
+  *  blank-value:package.json:73:"marked":
+  *  blank-value:package.json:74:"method-override":
+  *  blank-value:package.json:75:"mocha":
+  *  blank-value:package.json:76:"morgan":
+  *  blank-value:package.json:77:"nyc":
+  *  blank-value:package.json:78:"pbkdf2-password":
+  *  blank-value:package.json:79:"supertest":
+  *  blank-value:package.json:80:"vhost":
+  *  blank-value:package.json:83:"node":
+  *  blank-value:package.json:92:"lint":
+  *  blank-value:package.json:94:"test":
+  *  blank-value:package.json:95:"test-ci":
+  *  blank-value:package.json:96:"test-cov":
+  *  blank-value:package.json:97:"test-tap":
+
+  These are questions, not findings. Some are real gaps. Some are
+  mutations that are semantically legal, and a gate that rejected
+  them would be wrong. This run cannot tell you which is which -
+  that needs someone who knows what the gate is for.
+  For each line, ask: if this had happened, why didn't the gate care?
+
+report written: C:<path>
+======================================================================
+verdict: the gate let through 132/168 mutants.
+         That is a list of inputs to think about, not a verdict that
+         the gate is broken. See the note above.

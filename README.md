@@ -192,6 +192,14 @@ exactly 27,097, and that is the number used everywhere in this repository.
 That is the whole thesis. A control is not validated by its presence in the
 code, nor by its green light. It is validated by having been observed to fire.
 
+### The same loop, on a validator nobody here wrote
+
+[`case_study/third_party/`](case_study/third_party/) points it at third-party
+artifacts instead: a real `package.json` from a public project, checked by
+SchemaStore's official schema. 168 mutants, 36 caught, 132 let through — and
+then the part that decides anything: `npm` refuses two of the escapes and
+accepts a third. The count is not the finding. The triage is.
+
 ---
 
 ## Skills
