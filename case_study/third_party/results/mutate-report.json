@@ -1,0 +1,715 @@
+{
+  "greencheck_mutate_version": "1.0.0",
+  "gate": "python case_study/third_party/gate.py {target}/package.json",
+  "target": "<downloads>/instance",
+  "baseline_exit_code": 0,
+  "baseline_ok": true,
+  "files": 1,
+  "mutants_total": 168,
+  "caught_count": 36,
+  "escaped_count": 132,
+  "caught": [
+    "drop-file:package.json",
+    "empty-file:package.json",
+    "drop-line:package.json:1:{",
+    "drop-line:package.json:6:\"contributors\": [",
+    "drop-line:package.json:13:\"Young Jae Sim <<redacted-email>",
+    "drop-line:package.json:14:],",
+    "drop-line:package.json:18:\"funding\": {",
+    "drop-line:package.json:20:\"url\": \"https://opencollecti...",
+    "drop-line:package.json:21:},",
+    "drop-line:package.json:22:\"keywords\": [",
+    "drop-line:package.json:32:\"api\"",
+    "drop-line:package.json:33:],",
+    "drop-line:package.json:34:\"dependencies\": {",
+    "drop-line:package.json:62:\"vary\": \"^1.1.2\"",
+    "drop-line:package.json:63:},",
+    "drop-line:package.json:64:\"devDependencies\": {",
+    "drop-line:package.json:80:\"vhost\": \"~3.0.2\"",
+    "drop-line:package.json:81:},",
+    "drop-line:package.json:82:\"engines\": {",
+    "drop-line:package.json:84:},",
+    "drop-line:package.json:85:\"files\": [",
+    "drop-line:package.json:89:\"lib/\"",
+    "drop-line:package.json:90:],",
+    "drop-line:package.json:91:\"scripts\": {",
+    "drop-line:package.json:97:\"test-tap\": \"mocha --require...",
+    "drop-line:package.json:98:}",
+    "drop-line:package.json:99:}",
+    "blank-value:package.json:2:\"name\":",
+    "blank-value:package.json:6:\"contributors\":",
+    "blank-value:package.json:18:\"funding\":",
+    "blank-value:package.json:22:\"keywords\":",
+    "blank-value:package.json:34:\"dependencies\":",
+    "blank-value:package.json:64:\"devDependencies\":",
+    "blank-value:package.json:82:\"engines\":",
+    "blank-value:package.json:85:\"files\":",
+    "blank-value:package.json:91:\"scripts\":"
+  ],
+  "escaped": [
+    "drop-line:package.json:2:\"name\": \"express\",",
+    "drop-line:package.json:3:\"description\": \"Fast, unopin...",
+    "drop-line:package.json:4:\"version\": \"5.2.1\",",
+    "drop-line:package.json:5:\"author\": \"TJ Holowaychuk <t...",
+    "drop-line:package.json:7:\"Aaron Heckmann <aaron.heckm...",
+    "drop-line:package.json:8:\"Ciaran Jessup <<redacted-email>",
+    "drop-line:package.json:9:\"Douglas Christopher Wilson ...",
+    "drop-line:package.json:10:\"Guillermo Rauch <<redacted-email>",
+    "drop-line:package.json:11:\"Jonathan Ong <<redacted-email>",
+    "drop-line:package.json:12:\"Roman Shtylman <shtylman+ex...",
+    "drop-line:package.json:15:\"license\": \"MIT\",",
+    "drop-line:package.json:16:\"repository\": \"expressjs/exp...",
+    "drop-line:package.json:17:\"homepage\": \"https://express...",
+    "drop-line:package.json:19:\"type\": \"opencollective\",",
+    "drop-line:package.json:23:\"express\",",
+    "drop-line:package.json:24:\"framework\",",
+    "drop-line:package.json:25:\"sinatra\",",
+    "drop-line:package.json:26:\"web\",",
+    "drop-line:package.json:27:\"http\",",
+    "drop-line:package.json:28:\"rest\",",
+    "drop-line:package.json:29:\"restful\",",
+    "drop-line:package.json:30:\"router\",",
+    "drop-line:package.json:31:\"app\",",
+    "drop-line:package.json:35:\"accepts\": \"^2.0.0\",",
+    "drop-line:package.json:36:\"body-parser\": \"^2.3.0\",",
+    "drop-line:package.json:37:\"content-disposition\": \"^2.0...",
+    "drop-line:package.json:38:\"content-type\": \"^2.0.0\",",
+    "drop-line:package.json:39:\"cookie\": \"^0.7.1\",",
+    "drop-line:package.json:40:\"cookie-signature\": \"^1.2.1\"...",
+    "drop-line:package.json:41:\"debug\": \"^4.4.0\",",
+    "drop-line:package.json:42:\"depd\": \"^2.0.0\",",
+    "drop-line:package.json:43:\"encodeurl\": \"^2.0.0\",",
+    "drop-line:package.json:44:\"escape-html\": \"^1.0.3\",",
+    "drop-line:package.json:45:\"etag\": \"^1.8.1\",",
+    "drop-line:package.json:46:\"finalhandler\": \"^2.1.0\",",
+    "drop-line:package.json:47:\"fresh\": \"^2.0.0\",",
+    "drop-line:package.json:48:\"http-errors\": \"^2.0.0\",",
+    "drop-line:package.json:49:\"merge-descriptors\": \"^2.0.0...",
+    "drop-line:package.json:50:\"mime-types\": \"^3.0.0\",",
+    "drop-line:package.json:51:\"on-finished\": \"^2.4.1\",",
+    "drop-line:package.json:52:\"once\": \"^1.4.0\",",
+    "drop-line:package.json:53:\"parseurl\": \"^1.3.3\",",
+    "drop-line:package.json:54:\"proxy-addr\": \"^2.0.7\",",
+    "drop-line:package.json:55:\"qs\": \"^6.15.2\",",
+    "drop-line:package.json:56:\"range-parser\": \"^1.2.1\",",
+    "drop-line:package.json:57:\"router\": \"^2.2.0\",",
+    "drop-line:package.json:58:\"send\": \"^1.1.0\",",
+    "drop-line:package.json:59:\"serve-static\": \"^2.2.0\",",
+    "drop-line:package.json:60:\"statuses\": \"^2.0.1\",",
+    "drop-line:package.json:61:\"type-is\": \"^2.1.0\",",
+    "drop-line:package.json:65:\"after\": \"0.8.2\",",
+    "drop-line:package.json:66:\"connect-redis\": \"^8.0.1\",",
+    "drop-line:package.json:67:\"cookie-parser\": \"1.4.7\",",
+    "drop-line:package.json:68:\"cookie-session\": \"2.1.1\",",
+    "drop-line:package.json:69:\"ejs\": \"^3.1.10\",",
+    "drop-line:package.json:70:\"eslint\": \"8.47.0\",",
+    "drop-line:package.json:71:\"express-session\": \"^1.18.1\"...",
+    "drop-line:package.json:72:\"hbs\": \"4.3.0\",",
+    "drop-line:package.json:73:\"marked\": \"^15.0.3\",",
+    "drop-line:package.json:74:\"method-override\": \"3.0.0\",",
+    "drop-line:package.json:75:\"mocha\": \"^11.7.5\",",
+    "drop-line:package.json:76:\"morgan\": \"1.12.0\",",
+    "drop-line:package.json:77:\"nyc\": \"^17.1.0\",",
+    "drop-line:package.json:78:\"pbkdf2-password\": \"1.2.1\",",
+    "drop-line:package.json:79:\"supertest\": \"^6.3.0\",",
+    "drop-line:package.json:83:\"node\": \">= 18\"",
+    "drop-line:package.json:86:\"LICENSE\",",
+    "drop-line:package.json:87:\"Readme.md\",",
+    "drop-line:package.json:88:\"index.js\",",
+    "drop-line:package.json:92:\"lint\": \"eslint .\",",
+    "drop-line:package.json:93:\"lint:fix\": \"eslint . --fix\"...",
+    "drop-line:package.json:94:\"test\": \"mocha --require tes...",
+    "drop-line:package.json:95:\"test-ci\": \"nyc --exclude ex...",
+    "drop-line:package.json:96:\"test-cov\": \"nyc --exclude e...",
+    "blank-value:package.json:3:\"description\":",
+    "blank-value:package.json:4:\"version\":",
+    "blank-value:package.json:5:\"author\":",
+    "blank-value:package.json:15:\"license\":",
+    "blank-value:package.json:16:\"repository\":",
+    "blank-value:package.json:17:\"homepage\":",
+    "blank-value:package.json:19:\"type\":",
+    "blank-value:package.json:20:\"url\":",
+    "blank-value:package.json:35:\"accepts\":",
+    "blank-value:package.json:36:\"body-parser\":",
+    "blank-value:package.json:37:\"content-disposition\":",
+    "blank-value:package.json:38:\"content-type\":",
+    "blank-value:package.json:39:\"cookie\":",
+    "blank-value:package.json:40:\"cookie-signature\":",
+    "blank-value:package.json:41:\"debug\":",
+    "blank-value:package.json:42:\"depd\":",
+    "blank-value:package.json:43:\"encodeurl\":",
+    "blank-value:package.json:44:\"escape-html\":",
+    "blank-value:package.json:45:\"etag\":",
+    "blank-value:package.json:46:\"finalhandler\":",
+    "blank-value:package.json:47:\"fresh\":",
+    "blank-value:package.json:48:\"http-errors\":",
+    "blank-value:package.json:49:\"merge-descriptors\":",
+    "blank-value:package.json:50:\"mime-types\":",
+    "blank-value:package.json:51:\"on-finished\":",
+    "blank-value:package.json:52:\"once\":",
+    "blank-value:package.json:53:\"parseurl\":",
+    "blank-value:package.json:54:\"proxy-addr\":",
+    "blank-value:package.json:55:\"qs\":",
+    "blank-value:package.json:56:\"range-parser\":",
+    "blank-value:package.json:57:\"router\":",
+    "blank-value:package.json:58:\"send\":",
+    "blank-value:package.json:59:\"serve-static\":",
+    "blank-value:package.json:60:\"statuses\":",
+    "blank-value:package.json:61:\"type-is\":",
+    "blank-value:package.json:62:\"vary\":",
+    "blank-value:package.json:65:\"after\":",
+    "blank-value:package.json:66:\"connect-redis\":",
+    "blank-value:package.json:67:\"cookie-parser\":",
+    "blank-value:package.json:68:\"cookie-session\":",
+    "blank-value:package.json:69:\"ejs\":",
+    "blank-value:package.json:70:\"eslint\":",
+    "blank-value:package.json:71:\"express-session\":",
+    "blank-value:package.json:72:\"hbs\":",
+    "blank-value:package.json:73:\"marked\":",
+    "blank-value:package.json:74:\"method-override\":",
+    "blank-value:package.json:75:\"mocha\":",
+    "blank-value:package.json:76:\"morgan\":",
+    "blank-value:package.json:77:\"nyc\":",
+    "blank-value:package.json:78:\"pbkdf2-password\":",
+    "blank-value:package.json:79:\"supertest\":",
+    "blank-value:package.json:80:\"vhost\":",
+    "blank-value:package.json:83:\"node\":",
+    "blank-value:package.json:92:\"lint\":",
+    "blank-value:package.json:94:\"test\":",
+    "blank-value:package.json:95:\"test-ci\":",
+    "blank-value:package.json:96:\"test-cov\":",
+    "blank-value:package.json:97:\"test-tap\":"
+  ],
+  "build_errors": [],
+  "escaped_detail": [
+    {
+      "mutant": "drop-line:package.json:2:\"name\": \"express\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:3:\"description\": \"Fast, unopin...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:4:\"version\": \"5.2.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:5:\"author\": \"TJ Holowaychuk <t...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:7:\"Aaron Heckmann <aaron.heckm...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:8:\"Ciaran Jessup <<redacted-email>",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:9:\"Douglas Christopher Wilson ...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:10:\"Guillermo Rauch <<redacted-email>",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:11:\"Jonathan Ong <<redacted-email>",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:12:\"Roman Shtylman <shtylman+ex...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:15:\"license\": \"MIT\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:16:\"repository\": \"expressjs/exp...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:17:\"homepage\": \"https://express...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:19:\"type\": \"opencollective\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:23:\"express\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:24:\"framework\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:25:\"sinatra\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:26:\"web\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:27:\"http\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:28:\"rest\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:29:\"restful\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:30:\"router\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:31:\"app\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:35:\"accepts\": \"^2.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:36:\"body-parser\": \"^2.3.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:37:\"content-disposition\": \"^2.0...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:38:\"content-type\": \"^2.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:39:\"cookie\": \"^0.7.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:40:\"cookie-signature\": \"^1.2.1\"...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:41:\"debug\": \"^4.4.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:42:\"depd\": \"^2.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:43:\"encodeurl\": \"^2.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:44:\"escape-html\": \"^1.0.3\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:45:\"etag\": \"^1.8.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:46:\"finalhandler\": \"^2.1.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:47:\"fresh\": \"^2.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:48:\"http-errors\": \"^2.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:49:\"merge-descriptors\": \"^2.0.0...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:50:\"mime-types\": \"^3.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:51:\"on-finished\": \"^2.4.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:52:\"once\": \"^1.4.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:53:\"parseurl\": \"^1.3.3\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:54:\"proxy-addr\": \"^2.0.7\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:55:\"qs\": \"^6.15.2\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:56:\"range-parser\": \"^1.2.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:57:\"router\": \"^2.2.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:58:\"send\": \"^1.1.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:59:\"serve-static\": \"^2.2.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:60:\"statuses\": \"^2.0.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:61:\"type-is\": \"^2.1.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:65:\"after\": \"0.8.2\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:66:\"connect-redis\": \"^8.0.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:67:\"cookie-parser\": \"1.4.7\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:68:\"cookie-session\": \"2.1.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:69:\"ejs\": \"^3.1.10\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:70:\"eslint\": \"8.47.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:71:\"express-session\": \"^1.18.1\"...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:72:\"hbs\": \"4.3.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:73:\"marked\": \"^15.0.3\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:74:\"method-override\": \"3.0.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:75:\"mocha\": \"^11.7.5\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:76:\"morgan\": \"1.12.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:77:\"nyc\": \"^17.1.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:78:\"pbkdf2-password\": \"1.2.1\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:79:\"supertest\": \"^6.3.0\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:83:\"node\": \">= 18\"",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:86:\"LICENSE\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:87:\"Readme.md\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:88:\"index.js\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:92:\"lint\": \"eslint .\",",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:93:\"lint:fix\": \"eslint . --fix\"...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:94:\"test\": \"mocha --require tes...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:95:\"test-ci\": \"nyc --exclude ex...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "drop-line:package.json:96:\"test-cov\": \"nyc --exclude e...",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:3:\"description\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:4:\"version\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:5:\"author\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:15:\"license\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:16:\"repository\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:17:\"homepage\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:19:\"type\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:20:\"url\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:35:\"accepts\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:36:\"body-parser\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:37:\"content-disposition\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:38:\"content-type\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:39:\"cookie\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:40:\"cookie-signature\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:41:\"debug\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:42:\"depd\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:43:\"encodeurl\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:44:\"escape-html\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:45:\"etag\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:46:\"finalhandler\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:47:\"fresh\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:48:\"http-errors\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:49:\"merge-descriptors\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:50:\"mime-types\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:51:\"on-finished\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:52:\"once\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:53:\"parseurl\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:54:\"proxy-addr\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:55:\"qs\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:56:\"range-parser\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:57:\"router\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:58:\"send\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:59:\"serve-static\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:60:\"statuses\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:61:\"type-is\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:62:\"vary\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:65:\"after\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:66:\"connect-redis\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:67:\"cookie-parser\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:68:\"cookie-session\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:69:\"ejs\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:70:\"eslint\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:71:\"express-session\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:72:\"hbs\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:73:\"marked\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:74:\"method-override\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:75:\"mocha\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:76:\"morgan\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:77:\"nyc\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:78:\"pbkdf2-password\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:79:\"supertest\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:80:\"vhost\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:83:\"node\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:92:\"lint\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:94:\"test\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:95:\"test-ci\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:96:\"test-cov\":",
+      "gate_output_head": "valid\n"
+    },
+    {
+      "mutant": "blank-value:package.json:97:\"test-tap\":",
+      "gate_output_head": "valid\n"
+    }
+  ],
+  "redacted": "absolute paths replaced with <path>; e-mail addresses taken from the borrowed instance file replaced with <redacted-email>"
+}

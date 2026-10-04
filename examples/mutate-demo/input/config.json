@@ -1,0 +1,6 @@
+{
+  "service": "billing",
+  "region": "eu-west-1",
+  "replicas": 3,
+  "owner": "team-payments"
+}

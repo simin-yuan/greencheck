@@ -1,0 +1,87 @@
+name: publish
+
+# Publishes to PyPI using Trusted Publishing (OIDC). No API token is stored
+# anywhere: PyPI trusts this repository and this workflow name, hands back a
+# short-lived credential, and the upload happens over that. There is nothing
+# to rotate and nothing to leak.
+#
+# Setup on the PyPI side, once, by the account holder:
+#   PyPI → Account settings → Publishing → "Add a pending publisher"
+#   PyPI Project Name : greencheck
+#   Owner             : simin-yuan
+#   Repository name   : greencheck
+#   Workflow name     : publish.yml
+#   Environment name  : pypi
+#
+# After that, publishing a GitHub release publishes the package.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type the version you intend to publish, e.g. 0.3.0'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: The suite must pass before anything is published
+        run: python -m unittest discover -s tests
+
+      - name: Build
+        run: |
+          python -m pip install --quiet build twine
+          python -m build
+
+      - name: twine check — PyPI will reject a package it cannot render
+        run: python -m twine check dist/*
+
+      - name: The version being published must be the version in the tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          BUILT=$(ls dist/*.whl | sed -E 's/.*-([0-9]+\.[0-9]+\.[0-9]+)-.*/\1/')
+          DECLARED=$(python -c "import re,pathlib; print(re.search(r'^version = \"(.*)\"', pathlib.Path('pyproject.toml').read_text(), re.M).group(1))")
+          echo "built=$BUILT declared=$DECLARED"
+          test "$BUILT" = "$DECLARED"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Upload to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/greencheck
+    permissions:
+      id-token: write # required: this is what Trusted Publishing exchanges
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # Fails loudly if the version already exists, instead of silently
+          # doing nothing. A publish step that reports success without
+          # publishing is exactly the class of bug this project is about.
+          attestations: true

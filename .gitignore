@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local-only configuration and private working material.
+tools/*.local.json
+tools/*.local.txt
+
+*.raw
+*_raw.jsonl
+raw/
+private/
+secrets/
+
+# Local working notes.
+REPOSITION.md
+
+*-mutate-report.json
+greencheck-mutate-report.json

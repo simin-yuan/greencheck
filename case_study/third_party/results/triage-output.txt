@@ -1,0 +1,12 @@
+blank-value on the root version
+    schema (jsonschema + SchemaStore): rc=0 accepts it
+    npm pack --dry-run               : rc=1 refuses it -> npm error Invalid package, must have name and version
+the name line deleted
+    schema (jsonschema + SchemaStore): rc=0 accepts it
+    npm pack --dry-run               : rc=1 refuses it -> npm error Invalid package, must have name and version
+the license line deleted
+    schema (jsonschema + SchemaStore): rc=0 accepts it
+    npm pack --dry-run               : rc=0 accepts it
+
+schema accepted 3/3 of these mutants; npm accepted 1/3.
+The gap between those two numbers is the finding. The mutants both accept are not gaps in anything.

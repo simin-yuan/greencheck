@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "greencheck: mutation and discriminability checks for validators and metrics"
+abstract: >-
+  A dependency-free tool for testing whether validators, quality gates, and
+  reported metrics can actually distinguish known-good from known-bad inputs
+  in the dimensions they claim to measure.
+authors:
+  - family-names: Yuan
+    given-names: Simin
+version: 0.3.0
+date-released: 2026-10-05
+type: software
+keywords:
+  - validation
+  - mutation-testing
+  - observability
+  - falsification
+  - metrics
+  - quality-gates
