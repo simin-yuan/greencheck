@@ -142,6 +142,14 @@ Dimension-scoped discriminability and falsification-first verification were adap
 - The tool only sees what you record.
 - Positive controls are part of the validation procedure, not an optional extra.
 
+## Related tools
+
+Small, falsifiable verification tools that fit together:
+
+- **[precheck](https://github.com/simin-yuan/precheck)** — make an agent prove its claims with checks it was forbidden to write; the check is frozen before the run.
+- **[agent-pushgate](https://github.com/simin-yuan/agent-pushgate)** — gates that run before a push, so a repo never ships what it did not mean to.
+- **[self-auditing-agent](https://github.com/simin-yuan/self-auditing-agent)** — an agent auditing its own workflow: case studies, an archive, and a repro harness.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
