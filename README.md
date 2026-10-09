@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/simin-yuan/greencheck/actions/workflows/tests.yml/badge.svg)](https://github.com/simin-yuan/greencheck/actions/workflows/tests.yml)
 [![PyPI](https://img.shields.io/pypi/v/greencheck.svg)](https://pypi.org/project/greencheck/)
-[![licence: All Rights Reserved](https://img.shields.io/badge/licence-All%20Rights%20Reserved-red.svg)](LICENSE)
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-yellow.svg)](LICENSE)
 [![dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](#)
 
 ### Your validator passes inputs it should reject. This finds them.
@@ -144,6 +144,6 @@ Dimension-scoped discriminability and falsification-first verification were adap
 
 ## License
 
-All Rights Reserved — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
 
 **Simin Yuan**, 2026.

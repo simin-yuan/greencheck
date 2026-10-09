@@ -8,9 +8,10 @@ abstract: >-
 authors:
   - family-names: Yuan
     given-names: Simin
-version: 0.3.0
-date-released: 2026-10-05
+version: 0.3.1
+date-released: 2026-10-10
 type: software
+license: MIT
 keywords:
   - validation
   - mutation-testing

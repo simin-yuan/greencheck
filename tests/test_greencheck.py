@@ -331,16 +331,17 @@ class TestReportDoesNotPublishTheOperator(unittest.TestCase):
 
 
 class TestTheLicenceIsComplete(unittest.TestCase):
-    """The repository intentionally ships a proprietary notice."""
+    """The repository ships the MIT license."""
 
     def setUp(self):
         self.root = pathlib.Path(__file__).resolve().parent.parent
 
-    def test_proprietary_notice_names_rights_holder(self):
+    def test_mit_license_names_rights_holder(self):
         text = (self.root / "LICENSE").read_text(encoding="utf-8")
-        self.assertIn("ALL RIGHTS RESERVED", text.upper())
+        self.assertIn("MIT License", text)
         self.assertIn("Simin Yuan", text)
-        self.assertIn("Public availability is not an open-source license", text)
+        self.assertIn("Permission is hereby granted, free of charge", text)
+        self.assertNotIn("ALL RIGHTS RESERVED", text.upper())
 
 
 class TestEveryCommandInTheReadmeActuallyRuns(unittest.TestCase):
