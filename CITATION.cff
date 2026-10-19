@@ -7,7 +7,8 @@ abstract: >-
   in the dimensions they claim to measure.
 authors:
   - family-names: Yuan
-    given-names: Simin
+    given-names: "Simin (Simon)"
+    orcid: "https://orcid.org/0009-0002-6843-3390"
 version: 0.3.1
 date-released: 2026-10-10
 type: software

@@ -154,4 +154,4 @@ Small, falsifiable verification tools that fit together:
 
 MIT — see [LICENSE](LICENSE).
 
-**Simin Yuan**, 2026.
+**Simin (Simon) Yuan**, 2026. ORCID [0009-0002-6843-3390](https://orcid.org/0009-0002-6843-3390) · [github.com/simin-yuan](https://github.com/simin-yuan).

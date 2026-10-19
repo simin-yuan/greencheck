@@ -339,7 +339,7 @@ class TestTheLicenceIsComplete(unittest.TestCase):
     def test_mit_license_names_rights_holder(self):
         text = (self.root / "LICENSE").read_text(encoding="utf-8")
         self.assertIn("MIT License", text)
-        self.assertIn("Simin Yuan", text)
+        self.assertIn("Simin (Simon) Yuan", text)
         self.assertIn("Permission is hereby granted, free of charge", text)
         self.assertNotIn("ALL RIGHTS RESERVED", text.upper())
 

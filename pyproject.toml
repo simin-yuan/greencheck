@@ -9,7 +9,7 @@ description = "Your validator passes inputs it should reject. greencheck finds t
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "Simin Yuan" }]
+authors = [{ name = "Simin (Simon) Yuan" }]
 keywords = [
     "mutation-testing",
     "observability",
@@ -39,6 +39,7 @@ classifiers = [
 dependencies = []
 
 [project.urls]
+ORCID = "https://orcid.org/0009-0002-6843-3390"
 Homepage = "https://github.com/simin-yuan/greencheck"
 Repository = "https://github.com/simin-yuan/greencheck"
 Issues = "https://github.com/simin-yuan/greencheck/issues"
