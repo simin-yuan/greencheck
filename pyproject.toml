@@ -9,7 +9,7 @@ description = "Your validator passes inputs it should reject. greencheck finds t
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "Simin (Simon) Yuan" }]
+authors = [{ name = "Simin Yuan" }]
 keywords = [
     "mutation-testing",
     "observability",
