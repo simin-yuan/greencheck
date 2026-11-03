@@ -37,7 +37,7 @@
 | 21 | §4 | 20 份 / 每份 5 / seed / 8 KB | O | `out/sample.json` → `n`、`cap_per_spec`、`seed=20261103`；8 KB = `study.py` 的 `MAX_EXAMPLE_BYTES=8192` |
 | 22 | §4 | 85 seeds | O | `out/stats.txt` → `cases`；`out/cases.csv` 行数 85 |
 | 23 | §4 | 71 / 4 / 10 | O | `out/stats.txt` → `baseline`（ACCEPT 71 / REJECT 4 / ENGINE-ERROR 10） |
-| 24 | §4 | 1,126 / 581（52%）/ 545 | O | `out/stats.txt` → `mutants`、`parse_broken`、`parse_broken_share` 0.516、`judged` |
+| 24 | §4 | 1,126 / 581（52%）/ 545 | O | `out/stats.txt` → `mutants`、`parse_broken`、`parse_broken_share` 0.516、`judged`。**字段对应**：`mutants` 是生成器吐出的总数，**含 `no_op`**；恒等式 `mutants = judged + parse_broken + no_op` 由 `check.py:152` 断言。两个运行的差别只有 `no_op`：冻结件里 `no_op=0`（545 + 581 + 0 = 1,126），`--fetch` 重跑 `mutants=1143`、`no_op=17`（545 + 581 + 17 = 1,143，`_fresh7/studies/openapi30-2026-11/out/summary.json`）。正文按可复现的那次写 1,143/17，52% = 581/1,126 用的是去掉 no_op 后的分母。`--fetch` 重跑时 `out/run.log` 末尾的 `wrote out/cases.csv (85 cases)` 对应同一批行；`stats.txt` 是它的汇总，两者不是两套分母。 |
 | 25 | §4 | 304 / 55.8% / 中位 0.54 | O | `out/stats.txt` → `escaped` 304、`escape_rate_pooled` 0.5578、`escape_rate_median_case` 0.5394 |
 | 26 | §4 | 225 / 68 / 11 | O | `out/stats.txt` → `classes`；明细 `out/escapes.jsonl` |
 | 27 | §4 | 4 个 example 冲突 | O | `out/baseline_rejects.txt`（四条 CLI 原文，位置 `/sms`、`/attendances/0/comment`、`/comment`、`/orderCustomDataAppId`） |
