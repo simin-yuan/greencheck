@@ -15,6 +15,11 @@ here="$(cd "$(dirname "$0")" && pwd)"
 py="${PYTHON:-python3}"
 export JSONSCHEMA_CLI="${JSONSCHEMA_CLI:-jsonschema}"
 export GREENCHECK_REPO="${GREENCHECK_REPO:-$(cd "$here/.." && { pwd -W 2>/dev/null || pwd; })}"
+if ! "$JSONSCHEMA_CLI" --version >/dev/null 2>&1; then
+  echo "JSONSCHEMA_CLI does not run: $JSONSCHEMA_CLI" >&2
+  echo "install sourcemeta/jsonschema and set JSONSCHEMA_CLI to the binary" >&2
+  exit 1
+fi
 
 if [ "${1:-}" = "--fetch" ]; then
   cd "$here/openapi30-2026-11"
