@@ -18,6 +18,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import os
 import statistics as st
 import subprocess
 import sys
@@ -26,7 +27,8 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, "<redacted-abs-path>")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                os.pardir, "schemastore-2026-10"))
 import greencheck.mutate as gm                                  # noqa: E402
 from study import CLI, CP, build_cases, run_gate                # noqa: E402
 

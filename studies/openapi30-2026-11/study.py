@@ -70,7 +70,7 @@ def run_gate(spec_path, entrypoint, texts):
             return ["ENGINE-ERROR"] * len(texts), out
         n_validated, _npass, nfail = (int(x) for x in summary.groups())
         if n_validated != len(texts):
-            raise SystemExit(f"gate saw {n_validated} of {len(texts)} entrie<redacted-abs-path>]}")
+            raise SystemExit(f"gate saw {n_validated} of {len(texts)} entries:\n{out[-2000:]}")
         if len(failed) != nfail:
             raise SystemExit(f"fail lines ({len(failed)}) != summary failed ({nfail}):\n{out[-2000:]}")
         return [("REJECT" if i + 1 in failed else "ACCEPT") for i in range(len(texts))], out

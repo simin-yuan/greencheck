@@ -50,7 +50,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # Pinned SchemaStore revision (commit exists upstream: SchemaStore/schemastore).
 SCHEMASTORE_COMMIT = "778278bb947af933582e6423fddeaf0c1cb97fc8"
 SCHEMASTORE_COMMIT_DATE = "2026-09-26T22:45:07Z"
-SCHEMASTORE_URL = "http<redacted-abs-path>"
+SCHEMASTORE_URL = "https://github.com/SchemaStore/schemastore.git"
 # Bare clone location. Prefer $SCHEMASTORE_BARE, then a local copy if present,
 # else a portable path next to this script (and auto-clone from SCHEMASTORE_URL).
 _LOCAL_BARE = "<redacted-abs-path>"

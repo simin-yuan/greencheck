@@ -27,7 +27,8 @@ SEED = 20261103
 MAX_EXAMPLE_BYTES = 8192
 N = 20
 CAP_PER_SPEC = 5
-V1 = "<redacted-abs-path>"
+V1 = os.environ.get("V1_DIR") or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                            os.pardir, "schemastore-2026-10", "out")
 
 
 def sha256(path):
@@ -101,7 +102,9 @@ def main():
 
     idx = os.path.join(HERE, "list.json")
     if not os.path.exists(idx):
-        shutil.copyfile(os.path.join(V1, "list.json"), idx)
+        fetch("https://api.apis.guru/v2/list.json", HERE)
+    if not os.path.exists(idx):
+        raise SystemExit("list.json: not shipped and not fetchable")
     data = json.load(open(idx, encoding="utf-8"))
     frame = sorted((f"{p}/{v}", info["swaggerUrl"])
                    for p, meta in data.items()

@@ -19,13 +19,15 @@ from __future__ import annotations
 import csv
 import json
 import os
+import os
 import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 V1 = os.environ.get("V1_DIR") or "<redacted-abs-path>"
 sys.path.insert(0, V1)
-sys.path.insert(0, "<redacted-abs-path>")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                os.pardir, "schemastore-2026-10"))
 from study import CLI, branches, resolve                        # noqa: E402
 
 
