@@ -31,9 +31,9 @@ curl -sS https://api.apis.guru/v2/specs/vtex.local/Marketplace-Protocol/1.0/open
 error: The Paths Object keys must not repeat a templated path
   at line 4219
   at column 5
-  at file path D:/temp/onecase/vtex.local_Marketplace-Protocol_1.0.json
+  at file path <workdir>/vtex.local_Marketplace-Protocol_1.0.json
   at location "/paths/~1{marketplaceServicesEndpoint}~1pvt~1orders~1{marketplaceOrderId}~1cancel"
-  at base uri file:///D:/temp/onecase/vtex.local_Marketplace-Protocol_1.0.json
+  at base uri file:///<workdir>/vtex.local_Marketplace-Protocol_1.0.json
 exit=4
 ```
 

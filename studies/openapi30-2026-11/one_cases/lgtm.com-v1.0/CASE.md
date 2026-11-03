@@ -41,9 +41,9 @@ curl -sS https://api.apis.guru/v2/specs/lgtm.com/v1.0/openapi.json -o lgtm.json 
 error: The Paths Object keys must not repeat a templated path
   at line 218
   at column 5
-  at file path D:/temp/onecase/lgtm.com_v1.0.json
+  at file path <workdir>/lgtm.com_v1.0.json
   at location "/paths/~1analyses~1{project-id}"
-  at base uri file:///D:/temp/onecase/lgtm.com_v1.0.json
+  at base uri file:///<workdir>/lgtm.com_v1.0.json
 exit=4
 ```
 
