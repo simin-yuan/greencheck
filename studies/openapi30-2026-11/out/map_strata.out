@@ -8,14 +8,10 @@
   499 + 308 + 510 = 1317
   unreachable 65 = 25 undeclared + 40 value
 
-== where 248 and 333 come from
-  248  keys with no declared position at the node the instance sat at      (LinkedIn, 2026-10-11)
-  + 49 declared optional in the definition the node's own chain reaches
-  - 49 counted as a stated absence once that chain is followed
-  + 85 removals no keyword along the chain declares
-  or: 382 (x12 undeclared class) - 49 = 333
-  both routes give 333; the two artifacts leaf-split 248+134 and 248+85 differently,
-  and the two 248s are counted on different partitions - see numbers_check.md, item 3
+== where 333 comes from
+  382  escapes in x12's undeclared-key class
+  - 49 declared optional in a definition the node's own chain reaches
+  = 333  keys no keyword anywhere the node reaches declares               (outline, 2026-10-14)
 
   [ok ] nine strata sum to the escaped population: 1382 vs 1382
   [ok ] value + removed + undeclared = 1382: 1382 vs 1382

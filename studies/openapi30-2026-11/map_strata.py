@@ -114,14 +114,10 @@ def main() -> int:
     print(f"  {expressed_499} + {reach_undeclared} + {reach_value} = {reach_total}")
     print(f"  unreachable {unreach} = {unreach_undeclared} undeclared + {unreach_value} value")
     print()
-    print("== where 248 and 333 come from")
-    print(f"  248  keys with no declared position at the node the instance sat at      (LinkedIn, 2026-10-11)")
-    print(f"  + 49 declared optional in the definition the node's own chain reaches")
-    print(f"  - 49 counted as a stated absence once that chain is followed")
-    print(f"  + 85 removals no keyword along the chain declares")
-    print(f"  or: 382 (x12 undeclared class) - 49 = 333")
-    print(f"  both routes give 333; the two artifacts leaf-split 248+134 and 248+85 differently,")
-    print(f"  and the two 248s are counted on different partitions - see numbers_check.md, item 3")
+    print("== where 333 comes from")
+    print(f"  382  escapes in x12's undeclared-key class")
+    print(f"  - 49 declared optional in a definition the node's own chain reaches")
+    print(f"  = 333  keys no keyword anywhere the node reaches declares               (outline, 2026-10-14)")
     print()
     bad = 0
     for name, got, want in checks:

@@ -20,7 +20,8 @@
 | 5 | §2 | CLI 载入 33 / 38 | S | `out/x3_compare3.json` → `population.pairs_eligible`=33、`pairs_excluded`=5、`excluded_reason` |
 | 6 | §2 | 1,681 / 1,699 | S | `out/x3_compare3.json` → `agreement.three_way_agree`、`population.mutants_eligible` |
 | 7 | §2 | 1,704 份 OpenAPI 3.0 | O | `out/sample.json` → `frame_size` |
-| 8 | §2 | Sourcemeta 17.3.2 | O | `jsonschema.exe --version`；`out/run.log` |
+| 8 | §2 | 第二个样本 Sourcemeta 17.3.2 | O | `jsonschema.exe --version`；`out/run.log` |
+| 8b | §2 | 第一个样本 Sourcemeta **17.2.0** | S | `out/x3_compare3.json` → `engines.sourcemeta`（`jsonschema v17.2.0 windows-x86_64, --format-assertion (primary)`） |
 | 9 | §3 | 1,791 judged | S | `out/results.json` → `aggregate.judged_total` |
 | 10 | §3 | 1,382 / 77% | S | `out/x3_compare3.json` → `engines.ci_ajv`（`release 1382 / reject 409`）；1382/1791 = 77.16% |
 | 11 | §3 | 1,402 / 78% | S | `out/results.json` → `aggregate.escaped`=1402、`escaped_ratio_judged`=0.78280 |
@@ -28,12 +29,12 @@
 | 13 | §3 | 18 处分歧 | S | `out/x3_compare3.json` → `agreement.divergences`=18、`divergences_within_ci_released`=0、`classification.D2_format_assertion`=18 |
 | 14 | §3 | **499** = 368 + 82 + 49 | S | `out/x16_merged_basis.json` → `summary.classes.already-expressed.escapes`；`summary.removal_breakdown` 三个分项 |
 | 15 | §3 | **333** = 248 + 85 | S | 同文件 `classes.undeclared-key.escapes`；`composition.added-undeclared-key`=248、`removed-undeclared-key`=85 |
-| 16 | §3 | 248 = 139 + 109 | S | `out/x3_strata_rebuilt.json` → `strata.UNDECLARED-KEY`=248；`out/x3_positions.json` 按 `label×op` 重算 = drop-line 139 / blank-value 109 |
+| 16 | §3 | ~~248 = 139 + 109~~ | S | **正文已删这组拆分**。留作推导：`strata.UNDECLARED-KEY`=248，按 `label×op` 拆 139 删行 + 109 清空 |
 | 17 | §3 | **550** | S | `out/x16_merged_basis.json` → `classes.unconstrained-value.escapes` |
 | 18 | §3 | **883** = 333 + 550 | S | 同文件 `summary.population.needs_annotation` |
 | 19 | §3 | 85 抽 / 83 接受 | S | `out/x12_annotation_basis.json` → `classes.already-expressed.real_tool_spot_check`；逐 case 重算见 `out/a_layer_split_v2.json`（83 接受 / 2 拒绝 / 85） |
 | 20 | §4 | 217（12.7%） | O | `out/sample.json` → `eligible_size`；217/1704 = 12.73% |
-| 21 | §4 | 20 份 / 每份 5 / seed | O | `out/sample.json` → `n`、`cap_per_spec`、`seed=20261103` |
+| 21 | §4 | 20 份 / 每份 5 / seed / 8 KB | O | `out/sample.json` → `n`、`cap_per_spec`、`seed=20261103`；8 KB = `study.py` 的 `MAX_EXAMPLE_BYTES=8192` |
 | 22 | §4 | 85 seeds | O | `out/stats.txt` → `cases`；`out/cases.csv` 行数 85 |
 | 23 | §4 | 71 / 4 / 10 | O | `out/stats.txt` → `baseline`（ACCEPT 71 / REJECT 4 / ENGINE-ERROR 10） |
 | 24 | §4 | 1,126 / 581（52%）/ 545 | O | `out/stats.txt` → `mutants`、`parse_broken`、`parse_broken_share` 0.516、`judged` |
@@ -49,7 +50,7 @@
 | 34 | §7 | 11/11 没写 `additionalProperties` | O | `out/bases.txt` → 写成 true / schema / false 各 0，缺省 11 |
 | 35 | §7 | 11 声明 properties / 9 声明 required | O | `out/bases.txt` 同段 |
 | 36 | §7 | 1,009 / 2,793（36.1%） | O | `out/bases.txt` → Scope C；1009/2793 = 36.12% |
-| 37 | §8 | 312 | S | `out/x3_positions.json` → `summary.coverage.lint_flags_the_same_node`=312 |
+| 37 | §8 | 312（17.2.0 口径） | S | `out/x3_positions.json` → `summary.coverage.lint_flags_the_same_node`=312；同文件 `summary.reading` 说明这是 Sourcemeta 自家规则，不是独立证据 |
 | 38 | §8 | #632 / #1975 | — | sourcemeta/jsonschema#632（规则已移除）、sourcemeta/core#1975（待办条目 `unbounded_collection_limits`） |
 | 39 | §9 | 54 / 16 / 10 / 4 | O | `out/stats.txt` → `cases_with_judged` 54；16 见第四节；10 = ENGINE-ERROR；4 = REJECT |
 | 40 | §9 | 197 / 217 未抽中 | O | `out/sample.json`：217 − 20 = 197 |
@@ -66,18 +67,24 @@
 x16 的逐字段原文在 `x16_numbers.py` / `x16_numbers.out`。两个脚本都在
 `studies/openapi30-2026-11/` 下，公开仓库里 `./studies/reproduce.sh` 一条命令跑完。
 
-## 二、248 与 333（口径差的 49）
+## 二、248 与 333：正文已删掉这组拆分
 
-两个数都对，答的是两个问题。
+**正文只用 333，不出现 248、不出现 382、不出现 139/109/85。** 这组拆分删掉的原因是它挡不住追问：
 
-- **248**（2026-10-11 领英原话）= `x3_positions.json` 里 `label = UNDECLARED-KEY` 的条数，
-  139 条删行 + 109 条清空。它答：**在实例当时所处的那个节点上，schema 一个字都没提这个键。**
-- **333**（10-14 大纲）= 248 + 85。多出的 85 是「顺着节点自己的 `$ref`/`allOf`/`anyOf`/`oneOf`
-  走到底，也没有任何关键字声明它」。它答：**在节点能到达的全部定义范围内都没人声明。**
+1. **两个 248 未必是同一批变异体。** `x3_positions` 的 248 是 `label=UNDECLARED-KEY`，
+   按算子拆 139 删行 + 109 清空；`x16` 的 248 挂在 `composition.added-undeclared-key` 下。
+   产物里没有逐条的 mutant id，所以**无法证明是同一批**（`map_strata.out` 旧版那句
+   「两个 248 在不同分区上计数」说的就是这件事，现已改成单线推导）。
+2. **"added" 这个标签与算子互斥。** 删行和清空都不是"新增了一个键"。若 x16 的 248 真的含
+   139 条删行，标签就是错的；若不含，两个 248 就是两个集合。两种情况下，正文里把
+   「139 + 109」挂到 333 上都不成立。
 
-差额来源：584 条 `removed-optional` 按链路口径重读——368 明说可选、82 落在 `patternProperties`、
-**49 落在链路可达的定义里且是可选的**、剩下 134 无任何声明。x12 把 134 全归 undeclared
-（382 = 248 + 134）；x16 把其中 49 收回「已声明」，于是 382 − 49 = 333 = 248 + 85。
+333 现在的单线来源：**382（x12 的 undeclared-key 类）− 49（x16 收回"已声明"的那批）
+= 333**。要追 333 就用这条路，不要绕 248。
+
+**对外产物怎么处理**：`x16_merged_basis.json` 是 write-once 冻结件，不改字段名；在
+`studies/README.md` 里加一段定义，说明 `added-undeclared-key` 指的是"变异后实例里存在、
+而 schema 在该位置及其链路上都没有声明的键"，并注明这个标签沿用旧产物、不精确。
 
 正文只用 333，不出现 248、不出现 382。领英那个 248 与大纲的 333 都能由同一批产物重推。
 
@@ -100,7 +107,27 @@ x16 的逐字段原文在 `x16_numbers.py` / `x16_numbers.out`。两个脚本都
 `drop-file` / `empty-file`，全部解析失败，可判变异 0。于是 85 − 16 − 10 − 4 = 55，
 再减 1 个「对象但四个算子全部不可判」的 case，得 54 = `stats.csv` 的 `cases_with_judged`。
 
-## 五、§4 那句 #926
+## 五、17.3.2 下的 lint 重跑：没跑出可用的数
+
+三样输出互相矛盾，所以 §8 只把 312 标成 17.2.0 口径，不声称它代表今天的 CLI。
+
+| 路径 | 结果 |
+|---|---|
+| 冻结的 17.2.0 artifact | 1,382 个逃逸里 **312** 个落在被标记的节点上，9 条规则 |
+| 用 17.3.2 重跑 `x3_positions.py` | **0**（明显是管道问题：1,955 条 finding 的指针都能解析） |
+| 我另写的独立匹配 `x3_lint_coverage_1732.py` | 17.3.2 上 **37**，17.2.0 上 **4** |
+
+第三行是关键的仪器自检：它在已知答案（312）的 17.2.0 数据上只给出 4，
+说明**这个匹配器本身是错的**，所以它的 37 也不能用。第一、三行都不是可用读数。
+
+规则数量本身是事实，且可复核：`x3_compare3.json` 记 17.2.0 有 103 条；
+`jsonschema lint --list` 数 17.3.2 有 310 条。**规则从 103 涨到 310，但这批逃逸在新规则下
+被标记多少，目前没有可信的数。**
+
+要拿到这个数，得先把 `x3_positions.py` 的 `idx2sch` / 节点比对在 17.3.2 上修通，
+或者用 17.2.0 当阳性对照重写匹配器。这是独立的一小块活，不含在交稿前的范围里。
+
+## 六、§4 那句 #926
 
 > These are the errors `valid_example` (sourcemeta/jsonschema#926) exists to catch;
 > at the time of writing the rule had not shipped in a release.

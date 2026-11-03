@@ -32,6 +32,14 @@ Source pinned 2026-10-11, seed `20261011`.
 | `out/x16_merged_basis.json` | the merge the article quotes (499 / 333 / 550, 883 need an annotation) |
 | `out/x13_owning_node_additional_properties.json` | what the owning node writes about keys it never declares |
 
+**A label to read carefully.** In `x16_merged_basis.json`, the key
+`classes.undeclared-key.composition.added-undeclared-key` (248) is a name carried over from an
+earlier artifact. It does not mean "a key the mutation added": the mutants behind it are key
+deletions and blanked values. Read it as "the mutated instance has, at this position, a key that
+the schema declares nowhere along the node's chain". The companion count,
+`removed-undeclared-key` (85), is the same situation reached from the removal side. The term is
+kept because the file is write-once; the article does not print either number.
+
 Scripts are numbered in the order they were written (`x3_` through `x16_`) and each
 reads the frozen artifacts rather than re-running the mutation.
 
