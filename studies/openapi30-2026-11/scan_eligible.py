@@ -102,7 +102,8 @@ def main():
 
     idx = os.path.join(HERE, "list.json")
     if not os.path.exists(idx):
-        fetch("https://api.apis.guru/v2/list.json", HERE)
+        tmp = fetch("https://api.apis.guru/v2/list.json", HERE)
+        shutil.move(tmp, idx)
     if not os.path.exists(idx):
         raise SystemExit("list.json: not shipped and not fetchable")
     data = json.load(open(idx, encoding="utf-8"))

@@ -27,8 +27,8 @@
 | 11 | §3 | 1,402 / 78% | S | `out/results.json` → `aggregate.escaped`=1402、`escaped_ratio_judged`=0.78280 |
 | 12 | §3 | 差 20 | S | 1402 − 1382，同分母 1791 |
 | 13 | §3 | 18 处分歧 | S | `out/x3_compare3.json` → `agreement.divergences`=18、`divergences_within_ci_released`=0、`classification.D2_format_assertion`=18 |
-| 14 | §3 | **499** = 368 + 82 + 49 | S | `out/x16_merged_basis.json` → `summary.classes.already-expressed.escapes`；`summary.removal_breakdown` 三个分项 |
-| 15 | §3 | **333** = 248 + 85 | S | 同文件 `classes.undeclared-key.escapes`；`composition.added-undeclared-key`=248、`removed-undeclared-key`=85 |
+| 14 | §3 | **499**（正文只印总数；368+82+49 是推导） | S | `out/x16_merged_basis.json` → `summary.classes.already-expressed.escapes`；`summary.removal_breakdown` 三个分项 |
+| 15 | §3 | **333**（正文只印总数；248+85 是推导，不在正文出现） | S | 同文件 `classes.undeclared-key.escapes`；`composition.added-undeclared-key`=248、`removed-undeclared-key`=85 |
 | 16 | §3 | ~~248 = 139 + 109~~ | S | **正文已删这组拆分**。留作推导：`strata.UNDECLARED-KEY`=248，按 `label×op` 拆 139 删行 + 109 清空 |
 | 17 | §3 | **550** | S | `out/x16_merged_basis.json` → `classes.unconstrained-value.escapes` |
 | 18 | §3 | **883** = 333 + 550 | S | 同文件 `summary.population.needs_annotation` |
