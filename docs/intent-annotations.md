@@ -67,10 +67,9 @@ author currently makes with `{}` or by omitting a subschema entirely.
 
 ## What changes, and what does not
 
-Nothing about validation. Both keywords are annotations: a validator
-that ignores unknown keywords produces the same verdicts with or without them. A schema
-can adopt them one node at a time, and removing them restores exactly the previous
-behaviour.
+Nothing about validation. Both keywords are annotations: a validator that ignores
+unknown keywords produces the same verdicts with or without them. A schema can adopt
+them one node at a time, and removing them restores exactly the previous behaviour.
 
 They are also not a substitute for what the schema already has. `required` is the
 existing instrument for "this declared key may be omitted"; a mapping node or a
