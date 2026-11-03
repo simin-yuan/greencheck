@@ -1,0 +1,880 @@
+{
+ "note": "Layer A ACCEPT/SILENT split stratified by mutation operator (§A.10)",
+ "ruling": "2026-10-11: deletion operators -> ACCEPT when the tool runs normally, probe not applicable; value operators -> per-key type probe, silent means 'the tool provides no evidence' and the case goes to Layer B",
+ "provenance": "post-hoc operationalisation: designed after the Layer A results were known and before the split was known; probe outcomes reused from the frozen out/a_layer_split.json, not re-run",
+ "operators_seen": {
+  "drop-line": 83,
+  "blank-value": 26
+ },
+ "pairs": {
+  "eslintrc.json": {
+   "cells": {
+    "drop-line": {
+     "ACCEPT": 38
+    },
+    "blank-value": {
+     "SILENT": 4,
+     "ACCEPT": 7
+    }
+   },
+   "detail": {
+    "drop-line": {
+     "ACCEPT": [
+      {
+       "id": 0,
+       "key": "jsx",
+       "path": "ecmaFeatures.jsx",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 1,
+       "key": "browser",
+       "path": "env.browser",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 2,
+       "key": "es6",
+       "path": "env.es6",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 4,
+       "key": "plugins",
+       "path": "plugins",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 6,
+       "key": "rules",
+       "path": "rules",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 7,
+       "key": "comma-dangle",
+       "path": "rules.comma-dangle",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 8,
+       "key": "eqeqeq",
+       "path": "rules.eqeqeq",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 9,
+       "key": "no-console",
+       "path": "rules.no-console",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 10,
+       "key": "no-debugger",
+       "path": "rules.no-debugger",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 11,
+       "key": "no-extra-parens",
+       "path": "rules.no-extra-parens",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 12,
+       "key": "no-extra-semi",
+       "path": "rules.no-extra-semi",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 13,
+       "key": "no-irregular-whitespace",
+       "path": "rules.no-irregular-whitespace",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 14,
+       "key": "no-undef",
+       "path": "rules.no-undef",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 15,
+       "key": "no-unused-vars",
+       "path": "rules.no-unused-vars",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 16,
+       "key": "react/display-name",
+       "path": "rules.react/display-name",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 17,
+       "key": "react/forbid-prop-types",
+       "path": "rules.react/forbid-prop-types",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 18,
+       "key": "react/jsx-boolean-value",
+       "path": "rules.react/jsx-boolean-value",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 19,
+       "key": "react/jsx-closing-bracket-location",
+       "path": "rules.react/jsx-closing-bracket-location",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 20,
+       "key": "react/jsx-curly-spacing",
+       "path": "rules.react/jsx-curly-spacing",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 21,
+       "key": "react/jsx-indent-props",
+       "path": "rules.react/jsx-indent-props",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 22,
+       "key": "react/jsx-max-props-per-line",
+       "path": "rules.react/jsx-max-props-per-line",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 23,
+       "key": "react/jsx-no-duplicate-props",
+       "path": "rules.react/jsx-no-duplicate-props",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 24,
+       "key": "react/jsx-no-literals",
+       "path": "rules.react/jsx-no-literals",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 26,
+       "key": "react/jsx-sort-props",
+       "path": "rules.react/jsx-sort-props",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 27,
+       "key": "react/jsx-uses-react",
+       "path": "rules.react/jsx-uses-react",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 28,
+       "key": "react/jsx-uses-vars",
+       "path": "rules.react/jsx-uses-vars",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 29,
+       "key": "react/no-danger",
+       "path": "rules.react/no-danger",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 30,
+       "key": "react/no-did-mount-set-state",
+       "path": "rules.react/no-did-mount-set-state",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 31,
+       "key": "react/no-did-update-set-state",
+       "path": "rules.react/no-did-update-set-state",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 32,
+       "key": "react/no-direct-mutation-state",
+       "path": "rules.react/no-direct-mutation-state",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 33,
+       "key": "react/no-multi-comp",
+       "path": "rules.react/no-multi-comp",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 34,
+       "key": "react/no-set-state",
+       "path": "rules.react/no-set-state",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 35,
+       "key": "react/no-unknown-property",
+       "path": "rules.react/no-unknown-property",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 36,
+       "key": "react/prop-types",
+       "path": "rules.react/prop-types",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 37,
+       "key": "react/react-in-jsx-scope",
+       "path": "rules.react/react-in-jsx-scope",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 39,
+       "key": "react/sort-comp",
+       "path": "rules.react/sort-comp",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 40,
+       "key": "semi",
+       "path": "rules.semi",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 42,
+       "key": "valid-jsdoc",
+       "path": "rules.valid-jsdoc",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      }
+     ]
+    },
+    "blank-value": {
+     "SILENT": [
+      {
+       "id": 46,
+       "key": "jsx",
+       "path": "ecmaFeatures.jsx",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 47,
+       "key": "browser",
+       "path": "env.browser",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 48,
+       "key": "es6",
+       "path": "env.es6",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 49,
+       "key": "node",
+       "path": "env.node",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      }
+     ],
+     "ACCEPT": [
+      {
+       "id": 51,
+       "key": "plugins",
+       "path": "plugins",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      },
+      {
+       "id": 52,
+       "key": "rules",
+       "path": "rules",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      },
+      {
+       "id": 53,
+       "key": "comma-dangle",
+       "path": "rules.comma-dangle",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      },
+      {
+       "id": 54,
+       "key": "no-console",
+       "path": "rules.no-console",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      },
+      {
+       "id": 55,
+       "key": "no-debugger",
+       "path": "rules.no-debugger",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      },
+      {
+       "id": 56,
+       "key": "no-extra-parens",
+       "path": "rules.no-extra-parens",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      },
+      {
+       "id": 57,
+       "key": "valid-jsdoc",
+       "path": "rules.valid-jsdoc",
+       "probe_status": "REJECT",
+       "why": "the tool rejects an illegal value on this key, so it is value-validated"
+      }
+     ]
+    }
+   },
+   "rejected_by_operator": {
+    "drop-line": 1
+   },
+   "non_rejected": 49
+  },
+  "jshintrc.json": {
+   "cells": {
+    "drop-line": {
+     "ACCEPT": 39
+    },
+    "blank-value": {
+     "SILENT": 11
+    }
+   },
+   "detail": {
+    "drop-line": {
+     "ACCEPT": [
+      {
+       "id": 1,
+       "key": "bitwise",
+       "path": "bitwise",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 2,
+       "key": "boss",
+       "path": "boss",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 3,
+       "key": "browser",
+       "path": "browser",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 4,
+       "key": "browserify",
+       "path": "browserify",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 5,
+       "key": "camelcase",
+       "path": null,
+       "probe_status": null,
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 6,
+       "key": "couch",
+       "path": "couch",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 7,
+       "key": "curly",
+       "path": "curly",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 8,
+       "key": "debug",
+       "path": "debug",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 9,
+       "key": "devel",
+       "path": "devel",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 10,
+       "key": "dojo",
+       "path": "dojo",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 11,
+       "key": "eqeqeq",
+       "path": "eqeqeq",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 12,
+       "key": "eqnull",
+       "path": "eqnull",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 13,
+       "key": "es5",
+       "path": "es5",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 14,
+       "key": "esnext",
+       "path": "esnext",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 15,
+       "key": "esversion",
+       "path": "esversion",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 16,
+       "key": "evil",
+       "path": "evil",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 17,
+       "key": "expr",
+       "path": "expr",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 18,
+       "key": "forin",
+       "path": "forin",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 20,
+       "key": "globals",
+       "path": "globals",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 21,
+       "key": "angular",
+       "path": "globals.angular",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 22,
+       "key": "globalstrict",
+       "path": "globalstrict",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 23,
+       "key": "indent",
+       "path": "indent",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 24,
+       "key": "iterator",
+       "path": "iterator",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 25,
+       "key": "jquery",
+       "path": "jquery",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 26,
+       "key": "lastsemic",
+       "path": "lastsemic",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 27,
+       "key": "latedef",
+       "path": "latedef",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 28,
+       "key": "laxbreak",
+       "path": "laxbreak",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 29,
+       "key": "laxcomma",
+       "path": "laxcomma",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 30,
+       "key": "leanswitch",
+       "path": "leanswitch",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 31,
+       "key": "loopfunc",
+       "path": "loopfunc",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 32,
+       "key": "maxcomplexity",
+       "path": "maxcomplexity",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 33,
+       "key": "maxdepth",
+       "path": "maxdepth",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 34,
+       "key": "maxerr",
+       "path": "maxerr",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 35,
+       "key": "maxlen",
+       "path": "maxlen",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 36,
+       "key": "maxparams",
+       "path": "maxparams",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 37,
+       "key": "maxstatements",
+       "path": "maxstatements",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 38,
+       "key": "mootools",
+       "path": "mootools",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 39,
+       "key": "moz",
+       "path": "moz",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 40,
+       "key": "multistr",
+       "path": "multistr",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      }
+     ]
+    },
+    "blank-value": {
+     "SILENT": [
+      {
+       "id": 67,
+       "key": "boss",
+       "path": "boss",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 68,
+       "key": "browserify",
+       "path": "browserify",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 69,
+       "key": "devel",
+       "path": "devel",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 70,
+       "key": "dojo",
+       "path": "dojo",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 71,
+       "key": "eqnull",
+       "path": "eqnull",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 73,
+       "key": "forin",
+       "path": "forin",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 75,
+       "key": "globals",
+       "path": "globals",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 76,
+       "key": "jquery",
+       "path": "jquery",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 77,
+       "key": "latedef",
+       "path": "latedef",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 78,
+       "key": "leanswitch",
+       "path": "leanswitch",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 79,
+       "key": "loopfunc",
+       "path": "loopfunc",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      }
+     ]
+    }
+   },
+   "rejected_by_operator": {},
+   "non_rejected": 50
+  },
+  "nightwatch.json": {
+   "cells": {
+    "drop-line": {
+     "ACCEPT": 3
+    },
+    "blank-value": {
+     "SILENT": 4
+    }
+   },
+   "detail": {
+    "drop-line": {
+     "ACCEPT": [
+      {
+       "id": 1,
+       "key": "default",
+       "path": "test_settings.default",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 2,
+       "key": "webdriver",
+       "path": "webdriver",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 3,
+       "key": "webdriver",
+       "path": "webdriver",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      }
+     ]
+    },
+    "blank-value": {
+     "SILENT": [
+      {
+       "id": 4,
+       "key": "default",
+       "path": "test_settings.default",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 5,
+       "key": "webdriver",
+       "path": "webdriver",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 6,
+       "key": "webdriver",
+       "path": "webdriver",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      },
+      {
+       "id": 7,
+       "key": "port",
+       "path": "webdriver.port",
+       "probe_status": "ACCEPT",
+       "why": "no value validation on this key: the tool provides no evidence, so Layer A cannot judge it"
+      }
+     ]
+    }
+   },
+   "rejected_by_operator": {
+    "drop-line": 1
+   },
+   "non_rejected": 7
+  },
+  "size-limit.json": {
+   "cells": {
+    "drop-line": {
+     "ACCEPT": 2
+    }
+   },
+   "detail": {
+    "drop-line": {
+     "ACCEPT": [
+      {
+       "id": 0,
+       "key": "import",
+       "path": "0.import",
+       "probe_status": "ACCEPT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      },
+      {
+       "id": 1,
+       "key": "limit",
+       "path": "0.limit",
+       "probe_status": "GATE-ENV",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      }
+     ]
+    }
+   },
+   "rejected_by_operator": {
+    "blank-value": 1
+   },
+   "non_rejected": 2
+  },
+  "mdxlintrc.json": {
+   "cells": {
+    "drop-line": {
+     "ACCEPT": 1
+    }
+   },
+   "detail": {
+    "drop-line": {
+     "ACCEPT": [
+      {
+       "id": 0,
+       "key": "bullet",
+       "path": "settings.bullet",
+       "probe_status": "REJECT",
+       "why": "deletion of a key the tool does not require: it ran on the remaining config, so the config is legal; the type probe does not apply"
+      }
+     ]
+    }
+   },
+   "rejected_by_operator": {},
+   "non_rejected": 1
+  }
+ },
+ "why": "operator-stratified ACCEPT/SILENT split per the 2026-10-11 ruling"
+}

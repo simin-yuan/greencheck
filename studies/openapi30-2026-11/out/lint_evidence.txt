@@ -1,0 +1,22 @@
+$ jsonschema lint --list  (17.3.2)
+duplicate_examples
+  Setting duplicate values in `examples` is redundant
+--
+top_level_examples
+  Set a non-empty examples array at the top level of the schema to illustrate the expected data
+--
+valid_examples
+  Only include instances in the `examples` array that validate against the schema
+
+$ jsonschema lint specs/isendpro.com_1.1.1.json --only valid_example
+error: The following linting rule does not exist
+  at rule valid_example
+exit=5
+
+$ gh api 'repos/sourcemeta/jsonschema/releases?per_page=3' --jq '.[] | "  \(.tag_name)  published \(.published_at)"'
+v17.3.2  published 2026-10-28T22:54:08Z
+  v17.3.1  published 2026-10-27T19:45:01Z
+  v17.3.0  published 2026-10-24T19:14:32Z
+$ curl -s http<redacted-abs-path>
+title: Lint the `example` keyword in OpenAPI schema objects
+merged_at: 2026-10-29T14:35:27Z

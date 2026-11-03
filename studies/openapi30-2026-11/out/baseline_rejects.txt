@@ -1,0 +1,72 @@
+======================================================================
+isendpro.com_1.1.1.json :: SMSRequest
+exit: 2
+
+stderr: fail: <redacted-abs-path>
+
+error: Schema validation failure
+
+  The value was expected to be of type array but it was of type string
+
+    at instance location "/sms" (line 1, column 87)
+
+    at evaluate path "/properties/sms/type"
+
+  The object value was expected to validate against the 12 defined properties subschemas
+
+    at instance location "" (line 1, column 1)
+
+    at evaluate path 
+======================================================================
+personio.de_personnel_1.0.json :: NewAttendancePeriodRequest
+exit: 2
+
+stderr: fail: <redacted-abs-path>
+
+error: Schema validation failure
+
+  The value was expected to be of type string but it was of type object
+
+    at instance location "/attendances/0/comment" (line 1, column 33)
+
+    at evaluate path "/properties/attendances/items/properties/comment/type"
+
+  The object value was expected to validate against the defined properties subschemas
+
+    at instance loca
+======================================================================
+personio.de_personnel_1.0.json :: UpdateAttendancePeriodRequest
+exit: 2
+
+stderr: fail: <redacted-abs-path>
+
+error: Schema validation failure
+
+  The value was expected to be of type string but it was of type null
+
+    at instance location "/comment" (line 1, column 15)
+
+    at evaluate path "/properties/comment/type"
+
+  The object value was expected to validate against the defined properties subschemas
+
+    at instance location "" (line 1, column 1)
+
+    at evaluate p
+======================================================================
+vtex.local_Subscriptions-API-(v2)_1.0.json :: settings
+exit: 2
+
+stderr: fail: <redacted-abs-path>
+
+error: Schema validation failure
+
+  The value was expected to be of type string but it was of type null
+
+    at instance location "/orderCustomDataAppId" (line 1, column 256)
+
+    at evaluate path "/properties/orderCustomDataAppId/type"
+
+  The object value was expected to validate against the defined properties subschemas
+
+    at instance location "" (line 1, c

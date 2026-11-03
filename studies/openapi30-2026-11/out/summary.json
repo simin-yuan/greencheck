@@ -1,0 +1,135 @@
+{
+ "specs_sampled": 20,
+ "specs_contributing_cases": 20,
+ "cases": 85,
+ "baseline": {
+  "ACCEPT": 71,
+  "REJECT": 4,
+  "ENGINE-ERROR": 10
+ },
+ "mutants": 1126,
+ "parse_broken": 581,
+ "parse_broken_share": 0.516,
+ "no_op": 0,
+ "judged": 545,
+ "escaped": 304,
+ "schema_rejected": 241,
+ "engine_error": 0,
+ "escape_rate_pooled": 0.5578,
+ "escape_rate_median_case": 0.5394,
+ "cases_with_judged": 54,
+ "classes": {
+  "declared-optional-removed": 68,
+  "value-level": 225,
+  "undeclared-key": 11
+ },
+ "allof_base_escapes": 7,
+ "allof_base_share": 0.023,
+ "xcheck_compared": 545,
+ "xcheck_divergence": 0,
+ "xcheck_error": 0,
+ "per_spec": {
+  "amazonaws.com:ec2-instance-connect/2018-04-02": {
+   "cases": 1,
+   "escaped": 3,
+   "judged": 3
+  },
+  "amazonaws.com:email/2010-12-01": {
+   "cases": 5,
+   "escaped": 21,
+   "judged": 37
+  },
+  "amazonaws.com:organizations/2016-11-28": {
+   "cases": 5,
+   "escaped": 27,
+   "judged": 59
+  },
+  "amazonaws.com:s3/2006-03-01": {
+   "cases": 5,
+   "escaped": 16,
+   "judged": 22
+  },
+  "amazonaws.com:securityhub/2018-10-26": {
+   "cases": 5,
+   "escaped": 7,
+   "judged": 14
+  },
+  "amazonaws.com:sts/2011-06-15": {
+   "cases": 5,
+   "escaped": 29,
+   "judged": 55
+  },
+  "apicurio.local:registry/1.3.2.Final": {
+   "cases": 5,
+   "escaped": 29,
+   "judged": 43
+  },
+  "apideck.com:ats/9.3.0": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "apideck.com:connector/9.3.0": {
+   "cases": 5,
+   "escaped": 2,
+   "judged": 4
+  },
+  "archive.org:wayback/1.0.0": {
+   "cases": 1,
+   "escaped": 13,
+   "judged": 13
+  },
+  "hubapi.com:auth/v1": {
+   "cases": 1,
+   "escaped": 6,
+   "judged": 8
+  },
+  "isendpro.com/1.1.1": {
+   "cases": 5,
+   "escaped": 18,
+   "judged": 30
+  },
+  "lgtm.com/v1.0": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "personio.de:personnel/1.0": {
+   "cases": 2,
+   "escaped": 0,
+   "judged": 0
+  },
+  "pinecone.io/20230401.1": {
+   "cases": 5,
+   "escaped": 5,
+   "judged": 5
+  },
+  "svix.com/1.4": {
+   "cases": 5,
+   "escaped": 26,
+   "judged": 55
+  },
+  "twitter.com:current/2.61": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "vtex.local:Giftcard-API/1.0": {
+   "cases": 5,
+   "escaped": 65,
+   "judged": 120
+  },
+  "vtex.local:Marketplace-Protocol/1.0": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "vtex.local:Subscriptions-API-(v2)/1.0": {
+   "cases": 5,
+   "escaped": 37,
+   "judged": 77
+  }
+ },
+ "rejudged_instances": 545,
+ "rejudge_mismatches": 0
+}

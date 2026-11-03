@@ -1,0 +1,209 @@
+  re-judged    3  amazonaws.com:ec2-instance-connect/2 SendSSHPublicKeyResponse
+  re-judged   13  amazonaws.com:email/2010-12-01       DescribeReceiptRuleSetResp
+  re-judged    7  amazonaws.com:email/2010-12-01       GetIdentityDkimAttributesR
+  re-judged    5  amazonaws.com:email/2010-12-01       GetIdentityMailFromDomainA
+  re-judged   10  amazonaws.com:email/2010-12-01       GetIdentityNotificationAtt
+  re-judged    2  amazonaws.com:email/2010-12-01       SendRawEmailResponse
+  re-judged    4  amazonaws.com:organizations/2016-11- CreateAccountResponse
+  re-judged    5  amazonaws.com:organizations/2016-11- CreateOrganizationalUnitRe
+  re-judged    9  amazonaws.com:organizations/2016-11- CreatePolicyResponse
+  re-judged   34  amazonaws.com:organizations/2016-11- DeclineHandshakeResponse
+  re-judged    7  amazonaws.com:organizations/2016-11- ListChildrenResponse
+  re-judged    0  amazonaws.com:s3/2006-03-01          DeleteObjectOutput
+  re-judged    4  amazonaws.com:s3/2006-03-01          GetBucketCorsOutput
+  re-judged   10  amazonaws.com:s3/2006-03-01          GetBucketLifecycleConfigur
+  re-judged    7  amazonaws.com:s3/2006-03-01          GetBucketLifecycleOutput
+  re-judged    1  amazonaws.com:s3/2006-03-01          GetBucketPolicyOutput
+  re-judged    8  amazonaws.com:securityhub/2018-10-26 CreateFindingAggregatorRes
+  re-judged    1  amazonaws.com:securityhub/2018-10-26 DeclineInvitationsResponse
+  re-judged    2  amazonaws.com:securityhub/2018-10-26 DeleteActionTargetResponse
+  re-judged    2  amazonaws.com:securityhub/2018-10-26 DeleteInsightResponse
+  re-judged    1  amazonaws.com:securityhub/2018-10-26 DeleteMembersResponse
+  re-judged   11  amazonaws.com:sts/2011-06-15         AssumeRoleResponse
+  re-judged   21  amazonaws.com:sts/2011-06-15         AssumeRoleWithSAMLResponse
+  re-judged    5  amazonaws.com:sts/2011-06-15         GetCallerIdentityResponse
+  re-judged   11  amazonaws.com:sts/2011-06-15         GetFederationTokenResponse
+  re-judged    7  amazonaws.com:sts/2011-06-15         GetSessionTokenResponse
+  re-judged    0  apicurio.local:registry/1.3.2.Final  ArtifactType
+  re-judged    8  apicurio.local:registry/1.3.2.Final  EditableMetaData
+  re-judged   14  apicurio.local:registry/1.3.2.Final  SearchedArtifact
+  re-judged    2  apicurio.local:registry/1.3.2.Final  UpdateState
+  re-judged   19  apicurio.local:registry/1.3.2.Final  VersionMetaData
+  re-judged    0  apideck.com:ats/9.3.0                Archived
+  re-judged    0  apideck.com:ats/9.3.0                Code
+  re-judged    0  apideck.com:ats/9.3.0                CreatedAt
+  re-judged    0  apideck.com:ats/9.3.0                CreatedBy
+  re-judged    0  apideck.com:ats/9.3.0                PublishedAt
+  re-judged    2  apideck.com:connector/9.3.0          ApisFilter
+  re-judged    2  apideck.com:connector/9.3.0          ConnectorsFilter
+  re-judged    0  apideck.com:connector/9.3.0          Id
+  re-judged    0  apideck.com:connector/9.3.0          UnifiedApiId
+  re-judged    0  apideck.com:connector/9.3.0          UnifiedProperty
+  re-judged   13  archive.org:wayback/1.0.0            AvailabilityRequests
+  re-judged    8  hubapi.com:auth/v1                   Error
+  re-judged   10  isendpro.com/1.1.1                   ComptageRequest
+  re-judged    6  isendpro.com/1.1.1                   HLRrequest
+  re-judged    6  isendpro.com/1.1.1                   REPERTOIREcreaterequest
+  re-judged    8  isendpro.com/1.1.1                   SmsUniqueRequest
+  re-judged    0  pinecone.io/20230401.1               CollectionState
+  re-judged    0  pinecone.io/20230401.1               IndexName
+  re-judged    2  pinecone.io/20230401.1               VectorData
+  re-judged    1  pinecone.io/20230401.1               VectorFilter
+  re-judged    2  pinecone.io/20230401.1               VectorMetadata
+  re-judged    9  svix.com/1.4                         BackgroundTaskFinishedEven
+  re-judged    8  svix.com/1.4                         EndpointCreatedEvent
+  re-judged    8  svix.com/1.4                         EndpointUpdatedEvent
+  re-judged   15  svix.com/1.4                         MessageAttemptExhaustedEve
+  re-judged   15  svix.com/1.4                         MessageAttemptFailingEvent
+  re-judged    0  twitter.com:current/2.61             CreatedAt
+  re-judged    0  twitter.com:current/2.61             DmEventId
+  re-judged    0  twitter.com:current/2.61             DownloadExpiration
+  re-judged    0  twitter.com:current/2.61             JobId
+  re-judged    0  twitter.com:current/2.61             TweetText
+  re-judged    5  vtex.local:Giftcard-API/1.0          Client
+  re-judged   15  vtex.local:Giftcard-API/1.0          CreateGiftCardRequest
+  re-judged   68  vtex.local:Giftcard-API/1.0          CreateGiftCardTransactionR
+  re-judged   25  vtex.local:Giftcard-API/1.0          GetGiftCardusingJSONReques
+  re-judged    7  vtex.local:Giftcard-API/1.0          response5
+  re-judged    2  vtex.local:Subscriptions-API-(v2)/1. Frequency
+  re-judged   33  vtex.local:Subscriptions-API-(v2)/1. InsertAddressesbygroupIdRe
+  re-judged   26  vtex.local:Subscriptions-API-(v2)/1. InsertAddressesforSubscrip
+  re-judged   16  vtex.local:Subscriptions-API-(v2)/1. Item
+{
+ "specs_sampled": 20,
+ "specs_contributing_cases": 20,
+ "cases": 85,
+ "baseline": {
+  "ACCEPT": 71,
+  "REJECT": 4,
+  "ENGINE-ERROR": 10
+ },
+ "mutants": 1126,
+ "parse_broken": 581,
+ "parse_broken_share": 0.516,
+ "no_op": 0,
+ "judged": 545,
+ "escaped": 304,
+ "schema_rejected": 241,
+ "engine_error": 0,
+ "escape_rate_pooled": 0.5578,
+ "escape_rate_median_case": 0.5394,
+ "cases_with_judged": 54,
+ "classes": {
+  "declared-optional-removed": 68,
+  "value-level": 225,
+  "undeclared-key": 11
+ },
+ "allof_base_escapes": 7,
+ "allof_base_share": 0.023,
+ "xcheck_compared": 545,
+ "xcheck_divergence": 0,
+ "xcheck_error": 0,
+ "per_spec": {
+  "amazonaws.com:ec2-instance-connect/2018-04-02": {
+   "cases": 1,
+   "escaped": 3,
+   "judged": 3
+  },
+  "amazonaws.com:email/2010-12-01": {
+   "cases": 5,
+   "escaped": 21,
+   "judged": 37
+  },
+  "amazonaws.com:organizations/2016-11-28": {
+   "cases": 5,
+   "escaped": 27,
+   "judged": 59
+  },
+  "amazonaws.com:s3/2006-03-01": {
+   "cases": 5,
+   "escaped": 16,
+   "judged": 22
+  },
+  "amazonaws.com:securityhub/2018-10-26": {
+   "cases": 5,
+   "escaped": 7,
+   "judged": 14
+  },
+  "amazonaws.com:sts/2011-06-15": {
+   "cases": 5,
+   "escaped": 29,
+   "judged": 55
+  },
+  "apicurio.local:registry/1.3.2.Final": {
+   "cases": 5,
+   "escaped": 29,
+   "judged": 43
+  },
+  "apideck.com:ats/9.3.0": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "apideck.com:connector/9.3.0": {
+   "cases": 5,
+   "escaped": 2,
+   "judged": 4
+  },
+  "archive.org:wayback/1.0.0": {
+   "cases": 1,
+   "escaped": 13,
+   "judged": 13
+  },
+  "hubapi.com:auth/v1": {
+   "cases": 1,
+   "escaped": 6,
+   "judged": 8
+  },
+  "isendpro.com/1.1.1": {
+   "cases": 5,
+   "escaped": 18,
+   "judged": 30
+  },
+  "lgtm.com/v1.0": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "personio.de:personnel/1.0": {
+   "cases": 2,
+   "escaped": 0,
+   "judged": 0
+  },
+  "pinecone.io/20230401.1": {
+   "cases": 5,
+   "escaped": 5,
+   "judged": 5
+  },
+  "svix.com/1.4": {
+   "cases": 5,
+   "escaped": 26,
+   "judged": 55
+  },
+  "twitter.com:current/2.61": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "vtex.local:Giftcard-API/1.0": {
+   "cases": 5,
+   "escaped": 65,
+   "judged": 120
+  },
+  "vtex.local:Marketplace-Protocol/1.0": {
+   "cases": 5,
+   "escaped": 0,
+   "judged": 0
+  },
+  "vtex.local:Subscriptions-API-(v2)/1.0": {
+   "cases": 5,
+   "escaped": 37,
+   "judged": 77
+  }
+ },
+ "rejudged_instances": 545,
+ "rejudge_mismatches": 0
+}
+
+all checks agree
+rc=0

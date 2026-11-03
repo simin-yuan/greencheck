@@ -1,0 +1,315 @@
+{
+ "index_sha256": "dfac835d2d1f13dfdb82723d72be1acf567df53c1b710bf6d68e28b795696e66",
+ "seed": 20261103,
+ "n": 20,
+ "cap_per_spec": 5,
+ "frame_size": 1704,
+ "eligible_size": 217,
+ "specs": [
+  {
+   "name": "amazonaws.com:ec2-instance-connect/2018-04-02",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\amazonaws.com_ec2-instance-connect_2018-04-02.json",
+   "sha256": "3f2695cd82e065a60d4b52459fbfbd7f8956423a17ad9b33115a0eb722121cb2",
+   "bytes": 21318,
+   "openapi": "3.0.0",
+   "eligible_schemas": 1,
+   "chosen": [
+    "SendSSHPublicKeyResponse"
+   ]
+  },
+  {
+   "name": "amazonaws.com:email/2010-12-01",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\amazonaws.com_email_2010-12-01.json",
+   "sha256": "75e96720ecafa4bb981f316d673a01b96a6f45f385eb7dd944c9ecd4602e1a7a",
+   "bytes": 695230,
+   "openapi": "3.0.0",
+   "eligible_schemas": 20,
+   "chosen": [
+    "DescribeReceiptRuleSetResponse",
+    "GetIdentityDkimAttributesResponse",
+    "GetIdentityMailFromDomainAttributesResponse",
+    "GetIdentityNotificationAttributesResponse",
+    "SendRawEmailResponse"
+   ]
+  },
+  {
+   "name": "amazonaws.com:organizations/2016-11-28",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\amazonaws.com_organizations_2016-11-28.json",
+   "sha256": "106b083308ce353a72f192c6def879536974f32576b800c9b43301a4d751f645",
+   "bytes": 494456,
+   "openapi": "3.0.0",
+   "eligible_schemas": 31,
+   "chosen": [
+    "CreateAccountResponse",
+    "CreateOrganizationalUnitResponse",
+    "CreatePolicyResponse",
+    "DeclineHandshakeResponse",
+    "ListChildrenResponse"
+   ]
+  },
+  {
+   "name": "amazonaws.com:s3/2006-03-01",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\amazonaws.com_s3_2006-03-01.json",
+   "sha256": "1503e59f693ab475b165ab210a3f330fbeceff42e6edf5e9eda02eefa3a23e8c",
+   "bytes": 1027748,
+   "openapi": "3.0.0",
+   "eligible_schemas": 36,
+   "chosen": [
+    "DeleteObjectOutput",
+    "GetBucketCorsOutput",
+    "GetBucketLifecycleConfigurationOutput",
+    "GetBucketLifecycleOutput",
+    "GetBucketPolicyOutput"
+   ]
+  },
+  {
+   "name": "amazonaws.com:securityhub/2018-10-26",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\amazonaws.com_securityhub_2018-10-26.json",
+   "sha256": "1b7828a94da237db3946c4ec12e62b1efe76a50f21de3b7a6570878cfd1b0b68",
+   "bytes": 1659648,
+   "openapi": "3.0.0",
+   "eligible_schemas": 38,
+   "chosen": [
+    "CreateFindingAggregatorResponse",
+    "DeclineInvitationsResponse",
+    "DeleteActionTargetResponse",
+    "DeleteInsightResponse",
+    "DeleteMembersResponse"
+   ]
+  },
+  {
+   "name": "amazonaws.com:sts/2011-06-15",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\amazonaws.com_sts_2011-06-15.json",
+   "sha256": "1dbeffb5f35dae8f3a8c8453cbcbe68cf1851bbbb76f89fdb084dd235f95dd0d",
+   "bytes": 243810,
+   "openapi": "3.0.0",
+   "eligible_schemas": 7,
+   "chosen": [
+    "AssumeRoleResponse",
+    "AssumeRoleWithSAMLResponse",
+    "GetCallerIdentityResponse",
+    "GetFederationTokenResponse",
+    "GetSessionTokenResponse"
+   ]
+  },
+  {
+   "name": "apicurio.local:registry/1.3.2.Final",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\apicurio.local_registry_1.3.2.Final.json",
+   "sha256": "3c8994a88e4959ee7cc58f51643bed2f1eb8b383ad286753b5203f6ebf9b119b",
+   "bytes": 89910,
+   "openapi": "3.0.2",
+   "eligible_schemas": 10,
+   "chosen": [
+    "ArtifactType",
+    "EditableMetaData",
+    "SearchedArtifact",
+    "UpdateState",
+    "VersionMetaData"
+   ]
+  },
+  {
+   "name": "apideck.com:ats/9.3.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\apideck.com_ats_9.3.0.json",
+   "sha256": "917f83ef9741061f13e199175bd2288956076bee398d7b19ca6b7cc472c47803",
+   "bytes": 143196,
+   "openapi": "3.0.0",
+   "eligible_schemas": 27,
+   "chosen": [
+    "Archived",
+    "Code",
+    "CreatedAt",
+    "CreatedBy",
+    "PublishedAt"
+   ]
+  },
+  {
+   "name": "apideck.com:connector/9.3.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\apideck.com_connector_9.3.0.json",
+   "sha256": "b4c3a19b7799301a903254db0712162d99a82f51778146e6a7e599d864ca398d",
+   "bytes": 93217,
+   "openapi": "3.0.0",
+   "eligible_schemas": 6,
+   "chosen": [
+    "ApisFilter",
+    "ConnectorsFilter",
+    "Id",
+    "UnifiedApiId",
+    "UnifiedProperty"
+   ]
+  },
+  {
+   "name": "archive.org:wayback/1.0.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\archive.org_wayback_1.0.0.json",
+   "sha256": "65811db19834a32d2bdbcd55d4cc06aaef756c8997fa62abbf9a0446fa7d9337",
+   "bytes": 12306,
+   "openapi": "3.0.0",
+   "eligible_schemas": 1,
+   "chosen": [
+    "AvailabilityRequests"
+   ]
+  },
+  {
+   "name": "hubapi.com:auth/v1",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\hubapi.com_auth_v1.json",
+   "sha256": "5f5c0d8785a5c61bfbe86609a6079ad7785e586a34c32a6154cc5d5a8febadc0",
+   "bytes": 11861,
+   "openapi": "3.0.1",
+   "eligible_schemas": 1,
+   "chosen": [
+    "Error"
+   ]
+  },
+  {
+   "name": "isendpro.com/1.1.1",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\isendpro.com_1.1.1.json",
+   "sha256": "a1b2c799592b6c5506cd9d79267d0154115f6ccc790ed569df27843d56376a8c",
+   "bytes": 66803,
+   "openapi": "3.0.0",
+   "eligible_schemas": 6,
+   "chosen": [
+    "ComptageRequest",
+    "HLRrequest",
+    "REPERTOIREcreaterequest",
+    "SMSRequest",
+    "SmsUniqueRequest"
+   ]
+  },
+  {
+   "name": "lgtm.com/v1.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\lgtm.com_v1.0.json",
+   "sha256": "69a1c8a4de6c09fa1fa8ec54b55b0b43904c29b0d51d2f44a4246a2474af9ad0",
+   "bytes": 119083,
+   "openapi": "3.0.1",
+   "eligible_schemas": 17,
+   "chosen": [
+    "health",
+    "language-stats",
+    "measurement",
+    "queryjob_stats",
+    "version"
+   ]
+  },
+  {
+   "name": "personio.de:personnel/1.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\personio.de_personnel_1.0.json",
+   "sha256": "3ae4db25e79f22b957420839ffc0d41b942a8c1d594c36898bfaeedcbf95047c",
+   "bytes": 87165,
+   "openapi": "3.0.0",
+   "eligible_schemas": 2,
+   "chosen": [
+    "NewAttendancePeriodRequest",
+    "UpdateAttendancePeriodRequest"
+   ]
+  },
+  {
+   "name": "pinecone.io/20230401.1",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\pinecone.io_20230401.1.json",
+   "sha256": "d9707c42cf0fe868aadbeaab5c8ec7b0378d3b6657cc3507292ac4d23fd88423",
+   "bytes": 37605,
+   "openapi": "3.0.2",
+   "eligible_schemas": 9,
+   "chosen": [
+    "CollectionState",
+    "IndexName",
+    "VectorData",
+    "VectorFilter",
+    "VectorMetadata"
+   ]
+  },
+  {
+   "name": "svix.com/1.4",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\svix.com_1.4.json",
+   "sha256": "3113a9cdc3103acfeada8965eedd8b559dc13b1e85729c0fb3ca12344c8eb2a9",
+   "bytes": 441046,
+   "openapi": "3.0.2",
+   "eligible_schemas": 7,
+   "chosen": [
+    "BackgroundTaskFinishedEvent",
+    "EndpointCreatedEvent",
+    "EndpointUpdatedEvent",
+    "MessageAttemptExhaustedEvent",
+    "MessageAttemptFailingEvent"
+   ]
+  },
+  {
+   "name": "twitter.com:current/2.61",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\twitter.com_current_2.61.json",
+   "sha256": "8e912c4f563b3bdbec0213054bf85dda4c33659cd4378527567883c8fa6ea469",
+   "bytes": 395148,
+   "openapi": "3.0.0",
+   "eligible_schemas": 25,
+   "chosen": [
+    "CreatedAt",
+    "DmEventId",
+    "DownloadExpiration",
+    "JobId",
+    "TweetText"
+   ]
+  },
+  {
+   "name": "vtex.local:Giftcard-API/1.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\vtex.local_Giftcard-API_1.0.json",
+   "sha256": "81037129ec1b99afde10785602b7c14be3e61b359378de473a1aae6c173a8206",
+   "bytes": 59708,
+   "openapi": "3.0.0",
+   "eligible_schemas": 21,
+   "chosen": [
+    "Client",
+    "CreateGiftCardRequest",
+    "CreateGiftCardTransactionRequest",
+    "GetGiftCardusingJSONRequest",
+    "response5"
+   ]
+  },
+  {
+   "name": "vtex.local:Marketplace-Protocol/1.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\vtex.local_Marketplace-Protocol_1.0.json",
+   "sha256": "9394968389f980876ea29734592b1bd7edd6ff1b3ad9fa124d6459cc8bd66ac2",
+   "bytes": 308940,
+   "openapi": "3.0.0",
+   "eligible_schemas": 15,
+   "chosen": [
+    "CustomApp",
+    "CustomData",
+    "DeliveryIds",
+    "Pickup-in-pointfranchise",
+    "UpdateOrderStatusRequest"
+   ]
+  },
+  {
+   "name": "vtex.local:Subscriptions-API-(v2)/1.0",
+   "url": "<redacted-abs-path>",
+   "path": "specs\\vtex.local_Subscriptions-API-(v2)_1.0.json",
+   "sha256": "5c8eca9e61dcb2942ef32f9f746301354143e8433c150569c63143e5d177f960",
+   "bytes": 93958,
+   "openapi": "3.0.0",
+   "eligible_schemas": 18,
+   "chosen": [
+    "Frequency",
+    "InsertAddressesbygroupIdRequest",
+    "InsertAddressesforSubscriptionRequest",
+    "Item",
+    "settings"
+   ]
+  }
+ ]
+}

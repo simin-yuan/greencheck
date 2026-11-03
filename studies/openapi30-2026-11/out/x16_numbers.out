@@ -1,0 +1,51 @@
+population
+  escaped_mutants          1382
+  already_expressed        499
+  needs_annotation         883
+  coverable                818
+  unreachable              65
+  unreachable_by_reason    {"declared-keyword-out-of-scope": 31, "ancestor-reached-by-index": 25, "non-asserting-metadata": 9}
+  schemas                  36
+  write_sites              284
+
+classes
+  already-expressed  escapes=499  keyword=None  composition={"declared-and-not-required": 368, "pattern-property": 82, "declared-optional-after-resolving-the-nodes-own-chain": 49}
+  undeclared-key     escapes=333  keyword=x-open-object  composition={"added-undeclared-key": 248, "removed-undeclared-key": 85}
+  unconstrained-value escapes=550  keyword=x-open-value  composition=null
+
+sites_to_half
+  unit                             "write sites to classify >= 50% of that schema's own needed escapes"
+  n_schemas_with_needed_escapes    36
+  n_reaching_half                  36
+  min                              1
+  q1                               1.0
+  median                           2.0
+  q3                               4.25
+  max                              13
+  distribution                     {"1": 14, "2": 7, "3": 3, "4": 3, "5": 2, "6": 3, "7": 1, "8": 2, "13": 1}
+  estimator                        "statistics.quantiles(xs, n=4, method=\"inclusive\")"
+  schemas_without_needed_escapes  {"n": 2, "list": ["github-funding.json", "mdxlintrc.json"]}
+
+by_write_site
+  annotation_acts_total      284
+  annotated_nodes_total      282
+  acts_covering_exactly_one  174
+  largest_single_act         {"schema": "minecraft-loot-table.json", "node": "/properties/pools/items/properties/entries/items/properties/functions/items/additionalProperties", "keyword": "x-open-object", "covers": 55}
+  cumulative_at[ 1]         {"escaped_mutants": 55, "of_all_escapes": 0.062288, "of_reachable": 0.067237}
+  cumulative_at[10]         {"escaped_mutants": 287, "of_all_escapes": 0.325028, "of_reachable": 0.350856}
+  cumulative_at[20]         {"escaped_mutants": 401, "of_all_escapes": 0.454134, "of_reachable": 0.49022}
+  cumulative_at[50]         {"escaped_mutants": 517, "of_all_escapes": 0.585504, "of_reachable": 0.632029}
+
+by_instance_path
+  annotation_acts_total      707
+  largest_single_act         {"schema": "codeclimate.json", "node": "/exclude_patterns", "keyword": "x-open-value", "covers": 19}
+  cumulative_at[10]         {"escaped_mutants": 40, "of_all_escapes": 0.0453, "of_reachable": 0.0489}
+  cumulative_at[20]         {"escaped_mutants": 60, "of_all_escapes": 0.06795, "of_reachable": 0.07335}
+  cumulative_at[50]         {"escaped_mutants": 120, "of_all_escapes": 0.1359, "of_reachable": 0.146699}
+
+identities
+  already_expressed + needs_annotation = 1382  (escaped_mutants 1382)
+  classes: 499 + 333 + 550
+  needs_annotation - unreachable = 818  (coverable 818)
+  escaped - unreachable = 1317  (= 499 already stated + 818 annotated)
+  all hold

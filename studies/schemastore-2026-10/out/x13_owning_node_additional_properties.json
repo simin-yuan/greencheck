@@ -1,0 +1,506 @@
+{
+ "question": "Of the 382 escapes whose key the owning node never declares, what does that node write about keys it does not declare — additionalProperties: true, another schema, or nothing at all?",
+ "population": {
+  "undeclared_key_escapes": 382,
+  "added": 248,
+  "removed": 134,
+  "source": "out/x12_annotation_basis.json class composition, recomputed from out/x3_positions.json with x12's own mechanism rule",
+  "class_total_matches_x12": true
+ },
+ "node_statement": {
+  "unit": "the keyword written on the owning node itself, no branch or $ref resolution",
+  "buckets": {
+   "written-true": {
+    "escapes": 15,
+    "added": 15,
+    "removed": 0,
+    "distinct_nodes": 6,
+    "schemas": [
+     "boyka-config.json",
+     "docfx.json",
+     "staticwebapp.config.json",
+     "typings.json"
+    ],
+    "of_which_empty_schema": 0
+   },
+   "written-other-schema": {
+    "escapes": 84,
+    "added": 0,
+    "removed": 84,
+    "distinct_nodes": 8,
+    "schemas": [
+     "aiconfig-1.0.json",
+     "boyka-config.json",
+     "jshintrc.json",
+     "minecraft-loot-table.json",
+     "project.json",
+     "typings.json"
+    ],
+    "of_which_empty_schema": 5
+   },
+   "nothing-written": {
+    "escapes": 283,
+    "added": 233,
+    "removed": 50,
+    "distinct_nodes": 37,
+    "schemas": [
+     "aiconfig-1.0.json",
+     "bigquery-table.json",
+     "codeclimate.json",
+     "dart-test.json",
+     "docfx.json",
+     "eslintrc.json",
+     "function.json",
+     "github-action.json",
+     "github-issue-forms.json",
+     "grunt-jshint-task.json",
+     "jshintrc.json",
+     "minecraft-item-modifier.json",
+     "minecraft-loot-table.json",
+     "nightwatch.json",
+     "project.json",
+     "pterodactyl.json",
+     "schema-org-contact-point.json",
+     "size-limit.json",
+     "solidaritySchema.json",
+     "staticwebapp.config.json"
+    ],
+    "of_which_empty_schema": 0
+   }
+  }
+ },
+ "resolved_statement": {
+  "unit": "the same question consulting the node's own $ref/allOf/anyOf/oneOf branches — the view in which a statement living in a shared definition is visible",
+  "buckets": {
+   "written-true": {
+    "escapes": 24,
+    "added": 17,
+    "removed": 7,
+    "distinct_nodes": 7,
+    "schemas": [
+     "boyka-config.json",
+     "docfx.json",
+     "solidaritySchema.json",
+     "staticwebapp.config.json",
+     "typings.json"
+    ],
+    "of_which_empty_schema": 0
+   },
+   "written-other-schema": {
+    "escapes": 85,
+    "added": 0,
+    "removed": 85,
+    "distinct_nodes": 9,
+    "schemas": [
+     "aiconfig-1.0.json",
+     "boyka-config.json",
+     "github-action.json",
+     "jshintrc.json",
+     "minecraft-loot-table.json",
+     "project.json",
+     "typings.json"
+    ],
+    "of_which_empty_schema": 5
+   },
+   "nothing-written": {
+    "escapes": 256,
+    "added": 228,
+    "removed": 28,
+    "distinct_nodes": 33,
+    "schemas": [
+     "aiconfig-1.0.json",
+     "bigquery-table.json",
+     "codeclimate.json",
+     "dart-test.json",
+     "docfx.json",
+     "eslintrc.json",
+     "function.json",
+     "github-action.json",
+     "github-issue-forms.json",
+     "jshintrc.json",
+     "minecraft-item-modifier.json",
+     "minecraft-loot-table.json",
+     "nightwatch.json",
+     "project.json",
+     "pterodactyl.json",
+     "schema-org-contact-point.json",
+     "size-limit.json",
+     "solidaritySchema.json",
+     "staticwebapp.config.json"
+    ],
+    "of_which_empty_schema": 0
+   },
+   "written-false": {
+    "escapes": 17,
+    "added": 3,
+    "removed": 14,
+    "distinct_nodes": 2,
+    "schemas": [
+     "grunt-jshint-task.json",
+     "staticwebapp.config.json"
+    ],
+    "of_which_empty_schema": 0
+   }
+  },
+  "note": "`written-false` is not a fourth kind of silence: it is a node that says the opposite. Its escapes passed because a removal never violates `additionalProperties` (only `required` can catch it), or because the key was accepted through a sibling branch the released gate resolved differently."
+ },
+ "per_schema": {
+  "aiconfig-1.0.json": {
+   "added:nothing-written": 32,
+   "removed:nothing-written": 2,
+   "removed:written-other-schema": 5
+  },
+  "bigquery-table.json": {
+   "added:nothing-written": 14
+  },
+  "boyka-config.json": {
+   "added:written-true": 1,
+   "removed:written-other-schema": 23
+  },
+  "codeclimate.json": {
+   "added:nothing-written": 7
+  },
+  "dart-test.json": {
+   "removed:nothing-written": 8
+  },
+  "docfx.json": {
+   "added:nothing-written": 1,
+   "added:written-true": 5
+  },
+  "eslintrc.json": {
+   "added:nothing-written": 28,
+   "removed:nothing-written": 11
+  },
+  "function.json": {
+   "removed:nothing-written": 2
+  },
+  "github-action.json": {
+   "added:nothing-written": 4,
+   "removed:nothing-written": 1
+  },
+  "github-issue-forms.json": {
+   "added:nothing-written": 27
+  },
+  "grunt-jshint-task.json": {
+   "added:nothing-written": 3
+  },
+  "jshintrc.json": {
+   "added:nothing-written": 23,
+   "removed:written-other-schema": 1
+  },
+  "minecraft-item-modifier.json": {
+   "added:nothing-written": 7
+  },
+  "minecraft-loot-table.json": {
+   "added:nothing-written": 63,
+   "removed:written-other-schema": 33
+  },
+  "nightwatch.json": {
+   "added:nothing-written": 2
+  },
+  "project.json": {
+   "added:nothing-written": 3,
+   "removed:written-other-schema": 21
+  },
+  "pterodactyl.json": {
+   "added:nothing-written": 11
+  },
+  "schema-org-contact-point.json": {
+   "added:nothing-written": 5
+  },
+  "size-limit.json": {
+   "removed:nothing-written": 2
+  },
+  "solidaritySchema.json": {
+   "added:nothing-written": 3,
+   "removed:nothing-written": 7
+  },
+  "staticwebapp.config.json": {
+   "added:written-true": 7,
+   "removed:nothing-written": 17
+  },
+  "typings.json": {
+   "added:written-true": 2,
+   "removed:written-other-schema": 1
+  }
+ },
+ "examples": {
+  "written-true": [
+   {
+    "pair": "boyka-config.json",
+    "path": [
+     "$schema"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "docfx.json",
+    "path": [
+     "build",
+     "globalMetadata",
+     "_navPath"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "docfx.json",
+    "path": [
+     "build",
+     "globalMetadata",
+     "_navRel"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "docfx.json",
+    "path": [
+     "build",
+     "globalMetadata",
+     "_navPath"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "docfx.json",
+    "path": [
+     "build",
+     "globalMetadata",
+     "_navRel"
+    ],
+    "kind": "added"
+   }
+  ],
+  "written-other-schema": [
+   {
+    "pair": "aiconfig-1.0.json",
+    "path": [
+     "prompts",
+     0,
+     "metadata",
+     "model",
+     "settings",
+     "model"
+    ],
+    "kind": "removed",
+    "empty_schema": true
+   },
+   {
+    "pair": "aiconfig-1.0.json",
+    "path": [
+     "prompts",
+     0,
+     "metadata",
+     "parameters",
+     "book"
+    ],
+    "kind": "removed",
+    "empty_schema": true
+   },
+   {
+    "pair": "aiconfig-1.0.json",
+    "path": [
+     "prompts",
+     0,
+     "outputs",
+     0,
+     "metadata",
+     "finish_reason"
+    ],
+    "kind": "removed",
+    "empty_schema": true
+   },
+   {
+    "pair": "aiconfig-1.0.json",
+    "path": [
+     "prompts",
+     1,
+     "metadata",
+     "model",
+     "settings",
+     "model"
+    ],
+    "kind": "removed",
+    "empty_schema": true
+   },
+   {
+    "pair": "aiconfig-1.0.json",
+    "path": [
+     "prompts",
+     1,
+     "outputs",
+     0,
+     "metadata",
+     "finish_reason"
+    ],
+    "kind": "removed",
+    "empty_schema": true
+   }
+  ],
+  "resolved-written-false": [
+   {
+    "pair": "grunt-jshint-task.json",
+    "path": [
+     "default",
+     "options",
+     "asi"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "grunt-jshint-task.json",
+    "path": [
+     "options",
+     "quotmark"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "grunt-jshint-task.json",
+    "path": [
+     "options",
+     "quotmark"
+    ],
+    "kind": "added"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     0,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     1,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     2,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     3,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     4,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     5,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     6,
+     "redirect"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     7,
+     "rewrite"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     8,
+     "rewrite"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     9,
+     "rewrite"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     10,
+     "rewrite"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     11,
+     "rewrite"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     15,
+     "allowedRoles"
+    ],
+    "kind": "removed"
+   },
+   {
+    "pair": "staticwebapp.config.json",
+    "path": [
+     "routes",
+     15,
+     "rewrite"
+    ],
+    "kind": "removed"
+   }
+  ]
+ },
+ "reading": "A statement of the schema, not of the author's intent: a node that writes `true` may still be careless, and a node that writes nothing may be deliberate. Read on the nodes themselves, 283 of the 382 write nothing, 84 write another schema (5 of them the empty `{}`, which permits anything a `true` would) and 15 write `true`; consulting `$ref` definitions and `anyOf`/`oneOf` arms, the explicit ones rise to 126 (24 true, 85 another schema, 17 the opposite). So the class `undeclared-key` is not one situation: at 99 of the 382 the node has already said something about unknown keys, which is the same instrument `x-open-object` proposes to add.",
+ "gate": {
+  "annotate_py_sha256": "5212471b6b6237069872deefe4dcb492b8bac163adadadfaa7fbc2b75e1128ca",
+  "annot_py_unchanged": true,
+  "x3_positions_sha256": "0a40ae2ba449ec70227f17db652fc2843bdeb8a482d69aaf1be06128a9736ece",
+  "x3_positions_is_frozen_copy": true,
+  "x12_annotation_basis_sha256": "8881cc51429b2b9e90b0329079dc12569ae695378420d972ecf78031a3736f07",
+  "x12_matches_manifest": true,
+  "reconciled_with_x12_class": true,
+  "no_mutation_rerun": true,
+  "no_validator_rerun": true
+ },
+ "why": "what the owning object node writes about keys it does not declare, over the 382 undeclared-key escapes of the frozen x12 basis"
+}

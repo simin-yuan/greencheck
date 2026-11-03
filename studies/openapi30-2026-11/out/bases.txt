@@ -1,0 +1,25 @@
+== A. the corpus the mutation ran on
+entry schemas: 85
+entry schemas whose own allOf references a component base: 0
+
+== B. all 20 documents, every component schema
+component schemas using allOf: 41
+distinct base schemas reached through allOf: 11
+additionalProperties on those bases:
+  absent   11
+bases declaring properties: 11
+bases declaring required:   9
+
+== C. object schemas that never say which properties are required
+component schemas: 2793
+declare properties (own or via allOf): 1620
+declare properties and no required at all: 1009  (36.1% of all component schemas)
+  of which composite (allOf): 3
+  amazonaws.com:securityhub/2018-10-26          563 /  972
+  amazonaws.com:s3/2006-03-01                   141 /  574
+  twitter.com:current/2.61                       75 /  235
+  amazonaws.com:organizations/2016-11-28         67 /  233
+  amazonaws.com:email/2010-12-01                 36 /  312
+  lgtm.com/v1.0                                  24 /   25
+  apideck.com:connector/9.3.0                    22 /   36
+  isendpro.com/1.1.1                             20 /   35

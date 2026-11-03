@@ -1,0 +1,68 @@
+== baseline (example against its own schema)
+ACCEPT         71
+ENGINE-ERROR   10
+REJECT         4
+documents the CLI refused to read at all: 2 -> ['lgtm.com/v1.0', 'vtex.local:Marketplace-Protocol/1.0']
+
+== headline
+specs_sampled                20
+specs_contributing_cases     20
+cases                        85
+baseline                     {'ACCEPT': 71, 'REJECT': 4, 'ENGINE-ERROR': 10}
+mutants                      1126
+parse_broken                 581
+parse_broken_share           0.516
+judged                       545
+escaped                      304
+schema_rejected              241
+engine_error                 0
+escape_rate_pooled           0.5578
+escape_rate_median_case      0.5394
+cases_with_judged            54
+classes                      {'declared-optional-removed': 68, 'value-level': 225, 'undeclared-key': 11}
+allof_base_escapes           7
+allof_base_share             0.023
+xcheck_compared              545
+xcheck_divergence            0
+xcheck_error                 0
+
+== parse-broken split
+file-level (drop-file / empty-file)  170
+json syntax broken by drop-line      411
+
+== intent density of the 91 entry schemas
+schemas                      85
+required (any branch)        35
+enum/const                   2
+minLength/maxLength/pattern  3
+its own properties           64
+
+== cases where every judged mutant escaped
+10 of 54 cases with a judged mutant
+
+== per spec
+vtex.local:Giftcard-API/1.0                  cases=  5 judged= 120 esc=  65 rate=0.542
+vtex.local:Subscriptions-API-(v2)/1.0        cases=  5 judged=  77 esc=  37 rate=0.481
+amazonaws.com:organizations/2016-11-28       cases=  5 judged=  59 esc=  27 rate=0.458
+amazonaws.com:sts/2011-06-15                 cases=  5 judged=  55 esc=  29 rate=0.527
+svix.com/1.4                                 cases=  5 judged=  55 esc=  26 rate=0.473
+apicurio.local:registry/1.3.2.Final          cases=  5 judged=  43 esc=  29 rate=0.674
+amazonaws.com:email/2010-12-01               cases=  5 judged=  37 esc=  21 rate=0.568
+isendpro.com/1.1.1                           cases=  5 judged=  30 esc=  18 rate=0.600
+amazonaws.com:s3/2006-03-01                  cases=  5 judged=  22 esc=  16 rate=0.727
+amazonaws.com:securityhub/2018-10-26         cases=  5 judged=  14 esc=   7 rate=0.500
+archive.org:wayback/1.0.0                    cases=  1 judged=  13 esc=  13 rate=1.000
+hubapi.com:auth/v1                           cases=  1 judged=   8 esc=   6 rate=0.750
+pinecone.io/20230401.1                       cases=  5 judged=   5 esc=   5 rate=1.000
+apideck.com:connector/9.3.0                  cases=  5 judged=   4 esc=   2 rate=0.500
+amazonaws.com:ec2-instance-connect/2018-04-0 cases=  1 judged=   3 esc=   3 rate=1.000
+apideck.com:ats/9.3.0                        cases=  5 judged=   0 esc=   0 rate=nan
+lgtm.com/v1.0                                cases=  5 judged=   0 esc=   0 rate=nan
+personio.de:personnel/1.0                    cases=  2 judged=   0 esc=   0 rate=nan
+twitter.com:current/2.61                     cases=  5 judged=   0 esc=   0 rate=nan
+vtex.local:Marketplace-Protocol/1.0          cases=  5 judged=   0 esc=   0 rate=nan
+
+== example escape rows by class
+declared-optional-removed  amazonaws.com:ec2-instance-connect/2018-04-02 / SendSSHPublicKeyResponse / RequestId (declared,not-required)
+value-level                amazonaws.com:ec2-instance-connect/2018-04-02 / SendSSHPublicKeyResponse / RequestId (string->empty)
+undeclared-key             apicurio.local:registry/1.3.2.Final / EditableMetaData / properties/custom-1 (container-declared,key-not)

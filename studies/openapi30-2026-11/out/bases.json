@@ -1,0 +1,104 @@
+{
+ "A": {
+  "entry_schemas": 85,
+  "with_allof_base": 0
+ },
+ "B": {
+  "allof_schemas": 41,
+  "distinct_bases": 11,
+  "additionalProperties": {
+   "absent": 11
+  },
+  "bases_with_properties": 11,
+  "bases_with_required": 9
+ },
+ "C": {
+  "component_schemas": 2793,
+  "with_properties": 1620,
+  "properties_without_required": 1009,
+  "share": 0.36126029359112066,
+  "of_which_allof": 3,
+  "per_doc": {
+   "amazonaws.com:ec2-instance-connect/2018-04-02": {
+    "schemas": 22,
+    "props_no_required": 2
+   },
+   "amazonaws.com:email/2010-12-01": {
+    "schemas": 312,
+    "props_no_required": 36
+   },
+   "amazonaws.com:organizations/2016-11-28": {
+    "schemas": 233,
+    "props_no_required": 67
+   },
+   "amazonaws.com:s3/2006-03-01": {
+    "schemas": 574,
+    "props_no_required": 141
+   },
+   "amazonaws.com:securityhub/2018-10-26": {
+    "schemas": 972,
+    "props_no_required": 563
+   },
+   "amazonaws.com:sts/2011-06-15": {
+    "schemas": 64,
+    "props_no_required": 10
+   },
+   "apicurio.local:registry/1.3.2.Final": {
+    "schemas": 16,
+    "props_no_required": 2
+   },
+   "apideck.com:ats/9.3.0": {
+    "schemas": 56,
+    "props_no_required": 19
+   },
+   "apideck.com:connector/9.3.0": {
+    "schemas": 36,
+    "props_no_required": 22
+   },
+   "archive.org:wayback/1.0.0": {
+    "schemas": 6,
+    "props_no_required": 2
+   },
+   "hubapi.com:auth/v1": {
+    "schemas": 5,
+    "props_no_required": 0
+   },
+   "isendpro.com/1.1.1": {
+    "schemas": 35,
+    "props_no_required": 20
+   },
+   "lgtm.com/v1.0": {
+    "schemas": 25,
+    "props_no_required": 24
+   },
+   "personio.de:personnel/1.0": {
+    "schemas": 23,
+    "props_no_required": 3
+   },
+   "pinecone.io/20230401.1": {
+    "schemas": 40,
+    "props_no_required": 13
+   },
+   "svix.com/1.4": {
+    "schemas": 72,
+    "props_no_required": 6
+   },
+   "twitter.com:current/2.61": {
+    "schemas": 235,
+    "props_no_required": 75
+   },
+   "vtex.local:Giftcard-API/1.0": {
+    "schemas": 24,
+    "props_no_required": 1
+   },
+   "vtex.local:Marketplace-Protocol/1.0": {
+    "schemas": 25,
+    "props_no_required": 3
+   },
+   "vtex.local:Subscriptions-API-(v2)/1.0": {
+    "schemas": 18,
+    "props_no_required": 0
+   }
+  }
+ }
+}

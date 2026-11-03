@@ -1,0 +1,298 @@
+{
+ "purpose": "Appendix B, items 1-2 — third engine (Sourcemeta) vs CI-ajv vs Python",
+ "engines": {
+  "sourcemeta": "jsonschema v17.2.0 windows-x86_64, --format-assertion (primary)",
+  "ci_ajv": "out/_xcheck_ci/ajv.json (CI gate, release 1382 / reject 409)",
+  "python": "out/_xcheck/p*.json ['py'] (Python jsonschema)"
+ },
+ "population": {
+  "pairs_total": 38,
+  "pairs_eligible": 33,
+  "pairs_excluded": 5,
+  "excluded_reason": "engine_refuses_schema (top-level $ref + siblings, draft-07), rc=4",
+  "excluded": [
+   "dart-test.json",
+   "eslintrc.json",
+   "grunt-jshint-task.json",
+   "mdxlintrc.json",
+   "schema-org-contact-point.json"
+  ],
+  "mutants_eligible": 1699,
+  "mutants_excluded": 92
+ },
+ "agreement": {
+  "three_way_agree": 1681,
+  "divergences": 18,
+  "divergences_within_ci_released": 0
+ },
+ "divergences": [
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 210,
+   "name": "blank-value:instance.json:73:\"expirationDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 213,
+   "name": "blank-value:instance.json:76:\"manufactureDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 214,
+   "name": "blank-value:instance.json:77:\"releaseDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 215,
+   "name": "blank-value:instance.json:80:\"expirationDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 218,
+   "name": "blank-value:instance.json:83:\"manufactureDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 219,
+   "name": "blank-value:instance.json:84:\"releaseDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 220,
+   "name": "blank-value:instance.json:87:\"expirationDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 223,
+   "name": "blank-value:instance.json:90:\"manufactureDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 224,
+   "name": "blank-value:instance.json:91:\"releaseDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 225,
+   "name": "blank-value:instance.json:94:\"expirationDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 228,
+   "name": "blank-value:instance.json:97:\"manufactureDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 229,
+   "name": "blank-value:instance.json:98:\"releaseDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 230,
+   "name": "blank-value:instance.json:101:\"expirationDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 233,
+   "name": "blank-value:instance.json:104:\"manufactureDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 234,
+   "name": "blank-value:instance.json:105:\"releaseDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 236,
+   "name": "blank-value:instance.json:111:\"expirationDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 239,
+   "name": "blank-value:instance.json:114:\"manufactureDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  },
+  {
+   "pair": 0,
+   "schema": "abc-supply-plan-2.0.0.json",
+   "mid": 276,
+   "name": "blank-value:instance.json:273:\"planDate\":",
+   "sourcemeta_fmt_assert": "invalid",
+   "sourcemeta_fmt_annot": "valid",
+   "ci_ajv": "invalid",
+   "python": "valid",
+   "class": "D2"
+  }
+ ],
+ "classification": {
+  "D1_draft_semantics": 0,
+  "D2_format_assertion": 18,
+  "D3_candidate_engine_bug": 0,
+  "D4_undecidable": 0
+ },
+ "D2_evidence": {
+  "position": "abc-supply-plan-2.0.0.json → properties.expirationDate (and 3 sibling date fields)",
+  "schema_declares": "{\"type\": \"string\", \"format\": \"date\"}",
+  "mutation": "blank-value sets the field to \"\"",
+  "reading": "both other engines accept; only Sourcemeta with --format-assertion rejects => the difference is the format policy, not the schema text"
+ },
+ "lint": {
+  "rules_in_v17_2_0": 103,
+  "distinct_rules_hit": 23,
+  "findings_total": 2025,
+  "top_rules": [
+   [
+    "description_trailing_period",
+    1061
+   ],
+   [
+    "simple_properties_identifiers",
+    307
+   ],
+   [
+    "enum_with_type",
+    260
+   ],
+   [
+    "valid_default",
+    91
+   ],
+   [
+    "draft_ref_siblings",
+    52
+   ],
+   [
+    "top_level_examples",
+    37
+   ],
+   [
+    "oneof_to_anyof_disjoint_types",
+    34
+   ],
+   [
+    "unknown_keywords_prefix",
+    33
+   ],
+   [
+    "empty_object_as_true",
+    23
+   ],
+   [
+    "single_type_array",
+    21
+   ]
+  ],
+  "laxness_family_hits": {
+   "empty_object_as_true": 23,
+   "non_applicable_additional_items": 0,
+   "valid_default": 91
+  },
+  "schemas_refused_by_lint": [
+   "dart-test.json"
+  ]
+ },
+ "blocked": {
+  "B7_3_position_mapping": "BLOCKED — the pre-registration assumed annotate.py emits per-mutant schema positions; out/annotation.json and out/annotation_ci.json are aggregate-only (no pointers). The substitute (mutant name -> instance line/key -> schema path walk) is NOT pre-registered and is left for the maintainer's decision."
+ }
+}

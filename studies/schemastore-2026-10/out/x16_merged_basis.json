@@ -1,0 +1,920 @@
+{
+ "summary": {
+  "question": "What does the basis become when a removed key that the node's own chain declares — optionally — is counted as stated rather than undeclared?",
+  "answer": "x12's 450 already-expressed and 382 undeclared-key become 499 and 333: the 49 removals x15 showed are declared as optional properties in the definition the node resolves to (11 of them only inside one arm of a multi-arm anyOf/oneOf) move into `already-expressed` under the same rule that put the 368 there. Needs-annotation falls 932 → 883 (= 333 + 550); coverable falls 867 → 818; the unreachable 65 is unchanged. The number moves in the proposal's favour, and the reason is that the class label was reading the node's own level only — not that a threshold was relaxed.",
+  "gate": {
+   "out/x3_positions.json": "0a40ae2ba449ec70227f17db652fc2843bdeb8a482d69aaf1be06128a9736ece",
+   "out/x4_annotation_ceiling.json": "e593afd33adc4b606497461e5a4b71ffe3a3f35c6dbbee17897860566d0f7c2c",
+   "out/x6_annotation_write_sites.json": "0925b51db831ed3984c34e2eba5af785083a8667fba6571b5610fb21cc2db48d",
+   "out/a_layer_truth.json": "8a3fe4953d21707fb988db3f7932688e201073043acd055518918b7ac9a36857",
+   "out/a_layer_split_v2.json": "f90f4a0899e9ce3a5e1c8029203d21a12e39ef74e35c7efdfa7bfbf02d54557f",
+   "out/x12_annotation_basis.json": "8881cc51429b2b9e90b0329079dc12569ae695378420d972ecf78031a3736f07",
+   "out/x13_owning_node_additional_properties.json": "63482b477eb721c09d0042e5173d20a2badd04a7b5d2b40714b013080bf65a59",
+   "out/x15_removed_key_whence.json": "e8e69e447eddef4e67ca3d33ca6c6fc24a16a527f891be699508fea479c91fe2",
+   "annotate.py": "5212471b6b6237069872deefe4dcb492b8bac163adadadfaa7fbc2b75e1128ca"
+  },
+  "population": {
+   "escaped_mutants": 1382,
+   "already_expressed": 499,
+   "needs_annotation": 883,
+   "needs_share_of_all": 0.638929,
+   "coverable": 818,
+   "coverable_ratio": 0.926387,
+   "unreachable": 65,
+   "unreachable_ratio": 0.073613,
+   "unreachable_by_reason": {
+    "declared-keyword-out-of-scope": 31,
+    "ancestor-reached-by-index": 25,
+    "non-asserting-metadata": 9
+   },
+   "schemas": 36,
+   "write_sites": 284
+  },
+  "classes": {
+   "already-expressed": {
+    "escapes": 499,
+    "share_of_all": 0.361071,
+    "keyword": null,
+    "composition": {
+     "declared-and-not-required": 368,
+     "pattern-property": 82,
+     "declared-optional-after-resolving-the-nodes-own-chain": 49
+    },
+    "merged_from_undeclared_key": {
+     "escapes": 49,
+     "declared_along_a_chain_with_no_multi_arm_choice": 38,
+     "declared_only_inside_one_arm_of_a_multi_arm_anyOf_oneOf": 11,
+     "which_standard": "the same `properties` + missing-`required` rule x12 used for the 368, applied to the definition the node's own $ref/allOf/anyOf/oneOf chain reaches — no separate rule for the 11",
+     "why": "x15 asked why the ORIGINAL instance passed for the 134 removals; for these 49 the key is declared, as an optional property, in the definition the node resolves to, so it was never an `additional` key and its absence is exactly what the schema states"
+    },
+    "why": "`required` is the instrument the author already used to say a declared key may be omitted, and a mapping/`patternProperties` node says its entries come and go; an annotation on top would restate either. The real tools agree — of the sampled deletion mutants every one that ran was accepted, apart from two where the remaining configuration genuinely stopped working.",
+    "real_tool_spot_check": {
+     "sampled_cases": 112,
+     "deletions_released_and_accepted": 83,
+     "deletions_rejected": 2,
+     "deletions_sampled": 85,
+     "blank_values_released": 26,
+     "source": "out/a_layer_truth.json + out/a_layer_split_v2.json"
+    }
+   },
+   "undeclared-key": {
+    "escapes": 333,
+    "keyword": "x-open-object",
+    "composition": {
+     "added-undeclared-key": 248,
+     "removed-undeclared-key": 85
+    },
+    "coverable": 308,
+    "unreachable": 25,
+    "why": "the schema never mentions the key — whether the instance gained it or lost it — so nothing expressed an opinion; the containing node's openness is the statement `x-open-object` records"
+   },
+   "unconstrained-value": {
+    "escapes": 550,
+    "keyword": "x-open-value",
+    "coverable": 510,
+    "unreachable": 40,
+    "why": "nothing constrains the perturbed value; `x-open-value` records that the openness is deliberate, or the author writes the missing constraint"
+   }
+  },
+  "removal_breakdown": {
+   "removed-optional-escapes": 584,
+   "declared-and-not-required": 368,
+   "pattern-property": 82,
+   "declared-optional-after-resolving-the-nodes-own-chain": 49,
+   "open-object-undeclared-key": 85,
+   "note": "the 584 removals read against the schemas: 368 state the absence through `properties` plus a missing `required`, 82 match a `patternProperties` regex, and 85 are declared nowhere the node's own chain reaches — those carry work. The 49 x15 found declared in the resolved definition are a stated absence like the 368."
+  },
+  "undeclared_class_statement": {
+   "unit": "what the object node owning an undeclared key writes about the keys it does not declare — the x13 view, recomputed on the merged class",
+   "node_statement": {
+    "written-true": {
+     "escapes": 15,
+     "added": 15,
+     "removed": 0,
+     "distinct_nodes": 6,
+     "schemas": [
+      "boyka-config.json",
+      "docfx.json",
+      "staticwebapp.config.json",
+      "typings.json"
+     ],
+     "of_which_empty_schema": 0
+    },
+    "written-other-schema": {
+     "escapes": 84,
+     "added": 0,
+     "removed": 84,
+     "distinct_nodes": 8,
+     "schemas": [
+      "aiconfig-1.0.json",
+      "boyka-config.json",
+      "jshintrc.json",
+      "minecraft-loot-table.json",
+      "project.json",
+      "typings.json"
+     ],
+     "of_which_empty_schema": 5
+    },
+    "nothing-written": {
+     "escapes": 234,
+     "added": 233,
+     "removed": 1,
+     "distinct_nodes": 31,
+     "schemas": [
+      "aiconfig-1.0.json",
+      "bigquery-table.json",
+      "codeclimate.json",
+      "docfx.json",
+      "eslintrc.json",
+      "github-action.json",
+      "github-issue-forms.json",
+      "grunt-jshint-task.json",
+      "jshintrc.json",
+      "minecraft-item-modifier.json",
+      "minecraft-loot-table.json",
+      "nightwatch.json",
+      "project.json",
+      "pterodactyl.json",
+      "schema-org-contact-point.json",
+      "solidaritySchema.json"
+     ],
+     "of_which_empty_schema": 0
+    }
+   },
+   "resolved_statement": {
+    "written-true": {
+     "escapes": 17,
+     "added": 17,
+     "removed": 0,
+     "distinct_nodes": 7,
+     "schemas": [
+      "boyka-config.json",
+      "docfx.json",
+      "solidaritySchema.json",
+      "staticwebapp.config.json",
+      "typings.json"
+     ],
+     "of_which_empty_schema": 0
+    },
+    "written-other-schema": {
+     "escapes": 85,
+     "added": 0,
+     "removed": 85,
+     "distinct_nodes": 9,
+     "schemas": [
+      "aiconfig-1.0.json",
+      "boyka-config.json",
+      "github-action.json",
+      "jshintrc.json",
+      "minecraft-loot-table.json",
+      "project.json",
+      "typings.json"
+     ],
+     "of_which_empty_schema": 5
+    },
+    "nothing-written": {
+     "escapes": 228,
+     "added": 228,
+     "removed": 0,
+     "distinct_nodes": 28,
+     "schemas": [
+      "aiconfig-1.0.json",
+      "bigquery-table.json",
+      "codeclimate.json",
+      "docfx.json",
+      "eslintrc.json",
+      "github-action.json",
+      "github-issue-forms.json",
+      "jshintrc.json",
+      "minecraft-item-modifier.json",
+      "minecraft-loot-table.json",
+      "nightwatch.json",
+      "project.json",
+      "pterodactyl.json",
+      "schema-org-contact-point.json",
+      "solidaritySchema.json"
+     ],
+     "of_which_empty_schema": 0
+    },
+    "written-false": {
+     "escapes": 3,
+     "added": 3,
+     "removed": 0,
+     "distinct_nodes": 1,
+     "schemas": [
+      "grunt-jshint-task.json"
+     ],
+     "of_which_empty_schema": 0
+    }
+   },
+   "moved_from_the_old_382": {
+    "old_class": 382,
+    "now": 333,
+    "node_level_before": {
+     "written-true": 15,
+     "written-other-schema": 84,
+     "nothing-written": 283
+    },
+    "node_level_after": {
+     "written-true": 15,
+     "written-other-schema": 84,
+     "nothing-written": 234
+    },
+    "resolved_before": {
+     "written-true": 24,
+     "written-other-schema": 85,
+     "nothing-written": 256,
+     "written-false": 17
+    },
+    "resolved_after": {
+     "written-true": 17,
+     "written-other-schema": 85,
+     "nothing-written": 228,
+     "written-false": 3
+    },
+    "explicit_before": 109,
+    "explicit_after": 102,
+    "note": "a statement of the schema, not of the author's intent; `written-false` is not a fourth kind of silence but the opposite statement"
+   },
+   "open_question_readings": {
+    "strict": {
+     "basis": [
+      "undeclared-key",
+      "unconstrained-value"
+     ],
+     "declaration_standard": {
+      "stated": 499,
+      "decide": 883
+     }
+    },
+    "sourcemeta_jsonschema_632": {
+     "note": "counting only an explicit `additionalProperties: true` or a written schema as a statement about unknown keys",
+     "stated_in_the_undeclared_class": 102,
+     "still_undeclared": 231,
+     "needs_decision_total": 781,
+     "of_which_value_level": 550,
+     "formula": "needs_decision_total = (undeclared-key - explicit) + unconstrained-value",
+     "before_merge": {
+      "stated_in_the_undeclared_class": 109,
+      "needs_decision_total": 823,
+      "as_documented_in_the_write_up": 823
+     }
+    }
+   }
+  },
+  "by_write_site": {
+   "annotation_acts_total": 284,
+   "annotated_nodes_total": 282,
+   "acts_covering_exactly_one": 174,
+   "largest_single_act": {
+    "schema": "minecraft-loot-table.json",
+    "node": "/properties/pools/items/properties/entries/items/properties/functions/items/additionalProperties",
+    "keyword": "x-open-object",
+    "covers": 55
+   },
+   "annotation_acts": {
+    "cumulative_at": {
+     "1": {
+      "escaped_mutants": 55,
+      "of_all_escapes": 0.062288,
+      "of_reachable": 0.067237
+     },
+     "2": {
+      "escaped_mutants": 88,
+      "of_all_escapes": 0.09966,
+      "of_reachable": 0.107579
+     },
+     "3": {
+      "escaped_mutants": 121,
+      "of_all_escapes": 0.137033,
+      "of_reachable": 0.147922
+     },
+     "5": {
+      "escaped_mutants": 175,
+      "of_all_escapes": 0.198188,
+      "of_reachable": 0.213936
+     },
+     "10": {
+      "escaped_mutants": 287,
+      "of_all_escapes": 0.325028,
+      "of_reachable": 0.350856
+     },
+     "20": {
+      "escaped_mutants": 401,
+      "of_all_escapes": 0.454134,
+      "of_reachable": 0.49022
+     },
+     "50": {
+      "escaped_mutants": 517,
+      "of_all_escapes": 0.585504,
+      "of_reachable": 0.632029
+     },
+     "100": {
+      "escaped_mutants": 624,
+      "of_all_escapes": 0.706682,
+      "of_reachable": 0.762836
+     },
+     "200": {
+      "escaped_mutants": 734,
+      "of_all_escapes": 0.831257,
+      "of_reachable": 0.897311
+     }
+    },
+    "annotations_needed_for": {
+     "10%": {
+      "annotations": 2,
+      "escaped_mutants": 88,
+      "of_all_escapes": 0.09966
+     },
+     "25%": {
+      "annotations": 7,
+      "escaped_mutants": 223,
+      "of_all_escapes": 0.252548
+     },
+     "50%": {
+      "annotations": 22,
+      "escaped_mutants": 412,
+      "of_all_escapes": 0.466591
+     },
+     "75%": {
+      "annotations": 95,
+      "escaped_mutants": 614,
+      "of_all_escapes": 0.695357
+     },
+     "90%": {
+      "annotations": 203,
+      "escaped_mutants": 737,
+      "of_all_escapes": 0.834655
+     }
+    }
+   }
+  },
+  "by_instance_path": {
+   "annotation_acts_total": 707,
+   "annotated_nodes_total": 643,
+   "acts_covering_exactly_one": 616,
+   "largest_single_act": {
+    "schema": "codeclimate.json",
+    "node": "/exclude_patterns",
+    "keyword": "x-open-value",
+    "covers": 19
+   },
+   "annotation_acts": {
+    "cumulative_at": {
+     "1": {
+      "escaped_mutants": 19,
+      "of_all_escapes": 0.021518,
+      "of_reachable": 0.023227
+     },
+     "2": {
+      "escaped_mutants": 22,
+      "of_all_escapes": 0.024915,
+      "of_reachable": 0.026895
+     },
+     "3": {
+      "escaped_mutants": 25,
+      "of_all_escapes": 0.028313,
+      "of_reachable": 0.030562
+     },
+     "5": {
+      "escaped_mutants": 30,
+      "of_all_escapes": 0.033975,
+      "of_reachable": 0.036675
+     },
+     "10": {
+      "escaped_mutants": 40,
+      "of_all_escapes": 0.0453,
+      "of_reachable": 0.0489
+     },
+     "20": {
+      "escaped_mutants": 60,
+      "of_all_escapes": 0.06795,
+      "of_reachable": 0.07335
+     },
+     "50": {
+      "escaped_mutants": 120,
+      "of_all_escapes": 0.1359,
+      "of_reachable": 0.146699
+     },
+     "100": {
+      "escaped_mutants": 211,
+      "of_all_escapes": 0.238958,
+      "of_reachable": 0.257946
+     },
+     "200": {
+      "escaped_mutants": 311,
+      "of_all_escapes": 0.352208,
+      "of_reachable": 0.380196
+     },
+     "500": {
+      "escaped_mutants": 611,
+      "of_all_escapes": 0.691959,
+      "of_reachable": 0.746944
+     }
+    },
+    "annotations_needed_for": {
+     "10%": {
+      "annotations": 31,
+      "escaped_mutants": 82,
+      "of_all_escapes": 0.092865
+     },
+     "25%": {
+      "annotations": 94,
+      "escaped_mutants": 205,
+      "of_all_escapes": 0.232163
+     },
+     "50%": {
+      "annotations": 298,
+      "escaped_mutants": 409,
+      "of_all_escapes": 0.463194
+     },
+     "75%": {
+      "annotations": 503,
+      "escaped_mutants": 614,
+      "of_all_escapes": 0.695357
+     },
+     "90%": {
+      "annotations": 626,
+      "escaped_mutants": 737,
+      "of_all_escapes": 0.834655
+     }
+    }
+   }
+  },
+  "top20_spread": {
+   "n_schemas": 13,
+   "escapes": 401,
+   "by_schema": [
+    {
+     "schema": "minecraft-loot-table.json",
+     "sites": 4,
+     "escapes": 140
+    },
+    {
+     "schema": "boyka-config.json",
+     "sites": 2,
+     "escapes": 48
+    },
+    {
+     "schema": "project.json",
+     "sites": 2,
+     "escapes": 43
+    },
+    {
+     "schema": "staticwebapp.config.json",
+     "sites": 2,
+     "escapes": 23
+    },
+    {
+     "schema": "solidaritySchema.json",
+     "sites": 2,
+     "escapes": 18
+    },
+    {
+     "schema": "eslintrc.json",
+     "sites": 1,
+     "escapes": 27
+    },
+    {
+     "schema": "github-issue-forms.json",
+     "sites": 1,
+     "escapes": 27
+    },
+    {
+     "schema": "jshintrc.json",
+     "sites": 1,
+     "escapes": 21
+    },
+    {
+     "schema": "codeclimate.json",
+     "sites": 1,
+     "escapes": 19
+    },
+    {
+     "schema": "bigquery-table.json",
+     "sites": 1,
+     "escapes": 14
+    },
+    {
+     "schema": "pterodactyl.json",
+     "sites": 1,
+     "escapes": 8
+    },
+    {
+     "schema": "minecraft-item-modifier.json",
+     "sites": 1,
+     "escapes": 7
+    },
+    {
+     "schema": "docfx.json",
+     "sites": 1,
+     "escapes": 6
+    }
+   ],
+   "top3_escapes": 231,
+   "top3_share": 0.57606
+  },
+  "sites_to_half": {
+   "unit": "write sites to classify >= 50% of that schema's own needed escapes",
+   "n_schemas_with_needed_escapes": 36,
+   "n_reaching_half": 36,
+   "n_not_reaching_half": 0,
+   "not_reaching_half": [],
+   "min": 1,
+   "q1": 1.0,
+   "median": 2.0,
+   "q3": 4.25,
+   "max": 13,
+   "distribution": {
+    "1": 14,
+    "2": 7,
+    "3": 3,
+    "4": 3,
+    "5": 2,
+    "6": 3,
+    "7": 1,
+    "8": 2,
+    "13": 1
+   },
+   "estimator": "statistics.quantiles(xs, n=4, method=\"inclusive\")"
+  },
+  "needed_escapes_per_schema": {
+   "min": 1,
+   "median": 9.0,
+   "max": 149
+  },
+  "schemas_without_needed_escapes": {
+   "n": 2,
+   "list": [
+    "github-funding.json",
+    "mdxlintrc.json"
+   ]
+  },
+  "reconciliation_with_frozen": {
+   "basis_merge_is_the_only_difference": true,
+   "x12_merge_off": {
+    "excluded": 450,
+    "needed": 932,
+    "coverable": 867,
+    "unreachable": 65
+   },
+   "x12_frozen": {
+    "already_expressed": 450,
+    "needs_annotation": 932,
+    "coverable": 867,
+    "unreachable": 65
+   },
+   "x13_merge_off_reproduced": true,
+   "write_sites_before": 291,
+   "write_sites_after": 284
+  },
+  "reading": "The permitted absences are not work: once the node's own chain is followed, 499 escapes state their own absence and 883 need a decision, of which 65 no annotation expresses. The class `undeclared-key` is now exactly the keys no keyword anywhere the node reaches governs."
+ },
+ "per_schema": [
+  {
+   "schema": "abc-supply-plan-2.0.0.json",
+   "needed_escapes": 31,
+   "write_sites": 5,
+   "covered_by_write_sites": 16,
+   "sites_to_half": 5,
+   "unreachable": 15,
+   "unreachable_reasons": {
+    "declared-keyword-out-of-scope": 15
+   }
+  },
+  {
+   "schema": "agripparc-1.4.json",
+   "needed_escapes": 7,
+   "write_sites": 7,
+   "covered_by_write_sites": 7,
+   "sites_to_half": 4,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "aiconfig-1.0.json",
+   "needed_escapes": 52,
+   "write_sites": 14,
+   "covered_by_write_sites": 27,
+   "sites_to_half": 13,
+   "unreachable": 25,
+   "unreachable_reasons": {
+    "ancestor-reached-by-index": 24,
+    "non-asserting-metadata": 1
+   }
+  },
+  {
+   "schema": "aiproj-1.10.json",
+   "needed_escapes": 8,
+   "write_sites": 7,
+   "covered_by_write_sites": 8,
+   "sites_to_half": 3,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "aiproj-1.6.json",
+   "needed_escapes": 7,
+   "write_sites": 7,
+   "covered_by_write_sites": 7,
+   "sites_to_half": 4,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "aiproj-1.7.json",
+   "needed_escapes": 7,
+   "write_sites": 7,
+   "covered_by_write_sites": 7,
+   "sites_to_half": 4,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "amx-muse.json",
+   "needed_escapes": 2,
+   "write_sites": 1,
+   "covered_by_write_sites": 1,
+   "sites_to_half": 1,
+   "unreachable": 1,
+   "unreachable_reasons": {
+    "non-asserting-metadata": 1
+   }
+  },
+  {
+   "schema": "bigquery-table.json",
+   "needed_escapes": 16,
+   "write_sites": 2,
+   "covered_by_write_sites": 16,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "boyka-config.json",
+   "needed_escapes": 123,
+   "write_sites": 39,
+   "covered_by_write_sites": 123,
+   "sites_to_half": 6,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "cargo-make.json",
+   "needed_escapes": 3,
+   "write_sites": 3,
+   "covered_by_write_sites": 3,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "codeclimate.json",
+   "needed_escapes": 33,
+   "write_sites": 14,
+   "covered_by_write_sites": 33,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "content-security-policy-report-2.json",
+   "needed_escapes": 6,
+   "write_sites": 6,
+   "covered_by_write_sites": 6,
+   "sites_to_half": 3,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "dart-test.json",
+   "needed_escapes": 6,
+   "write_sites": 3,
+   "covered_by_write_sites": 6,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "dependabot.json",
+   "needed_escapes": 1,
+   "write_sites": 1,
+   "covered_by_write_sites": 1,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "docfx.json",
+   "needed_escapes": 13,
+   "write_sites": 4,
+   "covered_by_write_sites": 13,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "elgato-stream-deck-plugin.json",
+   "needed_escapes": 16,
+   "write_sites": 16,
+   "covered_by_write_sites": 16,
+   "sites_to_half": 8,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "eslintrc.json",
+   "needed_escapes": 42,
+   "write_sites": 8,
+   "covered_by_write_sites": 34,
+   "sites_to_half": 1,
+   "unreachable": 8,
+   "unreachable_reasons": {
+    "ancestor-reached-by-index": 1,
+    "declared-keyword-out-of-scope": 7
+   }
+  },
+  {
+   "schema": "function.json",
+   "needed_escapes": 5,
+   "write_sites": 4,
+   "covered_by_write_sites": 4,
+   "sites_to_half": 3,
+   "unreachable": 1,
+   "unreachable_reasons": {
+    "declared-keyword-out-of-scope": 1
+   }
+  },
+  {
+   "schema": "github-action.json",
+   "needed_escapes": 20,
+   "write_sites": 10,
+   "covered_by_write_sites": 14,
+   "sites_to_half": 6,
+   "unreachable": 6,
+   "unreachable_reasons": {
+    "non-asserting-metadata": 3,
+    "declared-keyword-out-of-scope": 3
+   }
+  },
+  {
+   "schema": "github-issue-forms.json",
+   "needed_escapes": 27,
+   "write_sites": 1,
+   "covered_by_write_sites": 27,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "grunt-jshint-task.json",
+   "needed_escapes": 3,
+   "write_sites": 1,
+   "covered_by_write_sites": 3,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "jshintrc.json",
+   "needed_escapes": 38,
+   "write_sites": 16,
+   "covered_by_write_sites": 37,
+   "sites_to_half": 1,
+   "unreachable": 1,
+   "unreachable_reasons": {
+    "declared-keyword-out-of-scope": 1
+   }
+  },
+  {
+   "schema": "liquibase.json",
+   "needed_escapes": 10,
+   "write_sites": 10,
+   "covered_by_write_sites": 10,
+   "sites_to_half": 5,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "minecraft-biome.json",
+   "needed_escapes": 15,
+   "write_sites": 11,
+   "covered_by_write_sites": 11,
+   "sites_to_half": 8,
+   "unreachable": 4,
+   "unreachable_reasons": {
+    "declared-keyword-out-of-scope": 4
+   }
+  },
+  {
+   "schema": "minecraft-item-modifier.json",
+   "needed_escapes": 7,
+   "write_sites": 1,
+   "covered_by_write_sites": 7,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "minecraft-loot-table.json",
+   "needed_escapes": 149,
+   "write_sites": 9,
+   "covered_by_write_sites": 149,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "nightwatch.json",
+   "needed_escapes": 5,
+   "write_sites": 4,
+   "covered_by_write_sites": 5,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "project.json",
+   "needed_escapes": 48,
+   "write_sites": 5,
+   "covered_by_write_sites": 48,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "pterodactyl.json",
+   "needed_escapes": 54,
+   "write_sites": 18,
+   "covered_by_write_sites": 50,
+   "sites_to_half": 6,
+   "unreachable": 4,
+   "unreachable_reasons": {
+    "non-asserting-metadata": 4
+   }
+  },
+  {
+   "schema": "sarif-1.0.0.json",
+   "needed_escapes": 1,
+   "write_sites": 1,
+   "covered_by_write_sites": 1,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "schema-org-contact-point.json",
+   "needed_escapes": 5,
+   "write_sites": 1,
+   "covered_by_write_sites": 5,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "size-limit.json",
+   "needed_escapes": 1,
+   "write_sites": 1,
+   "covered_by_write_sites": 1,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "solidaritySchema.json",
+   "needed_escapes": 29,
+   "write_sites": 11,
+   "covered_by_write_sites": 29,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "stackblitzrc.json",
+   "needed_escapes": 1,
+   "write_sites": 1,
+   "covered_by_write_sites": 1,
+   "sites_to_half": 1,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "staticwebapp.config.json",
+   "needed_escapes": 86,
+   "write_sites": 30,
+   "covered_by_write_sites": 86,
+   "sites_to_half": 7,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  },
+  {
+   "schema": "typings.json",
+   "needed_escapes": 6,
+   "write_sites": 5,
+   "covered_by_write_sites": 6,
+   "sites_to_half": 2,
+   "unreachable": 0,
+   "unreachable_reasons": {}
+  }
+ ]
+}

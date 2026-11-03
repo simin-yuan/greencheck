@@ -1,0 +1,31 @@
+== three-way split quoted in the outline
+  declared absence (499)     499  = 368 properties + 82 patternProperties + 49 resolved chain
+  undeclared key   (333)     333  = 248 never declared at the node (139 dropped, 109 blanked) + 85 removed, declared nowhere along the chain
+  value level      (550)     550  = blanked-string-unconstrained 313, blanked-bool-unconstrained 71, blanked-number-unconstrained 66, removed-array-element 34, identifier-unconstrained 26, blanked-number-declared[minimum:value-satisfies] (ANOMALY) 19, blanked-annotation-string 9, blanked-number-declared[enum:other-branch/minimum:value-satisfies] (ANOMALY) 7, blanked-string-declared[enum:other-branch] (ANOMALY) 3, blanked-string-declared[const:other-branch] (ANOMALY) 1, blanked-bool-declared[enum:other-branch] (ANOMALY) 1
+  needs annotation (883)     883
+
+== the same three, reachable by an annotation (1,317 of 1,382)
+  499 + 308 + 510 = 1317
+  unreachable 65 = 25 undeclared + 40 value
+
+== where 248 and 333 come from
+  248  keys with no declared position at the node the instance sat at      (LinkedIn, 2026-10-11)
+  + 49 declared optional in the definition the node's own chain reaches
+  - 49 counted as a stated absence once that chain is followed
+  + 85 removals no keyword along the chain declares
+  or: 382 (x12 undeclared class) - 49 = 333
+  both routes give 333; the two artifacts leaf-split 248+134 and 248+85 differently,
+  and the two 248s are counted on different partitions - see numbers_check.md, item 3
+
+  [ok ] nine strata sum to the escaped population: 1382 vs 1382
+  [ok ] value + removed + undeclared = 1382: 1382 vs 1382
+  [ok ] 499 = 368 + 82 + 49: 499 vs 499
+  [ok ] 333 = 248 + 85: 333 vs 333
+  [ok ] 499 + 333 + 550 = 1382: 1382 vs 1382
+  [ok ] 883 = 333 + 550: 883 vs 883
+  [ok ] 248 = dropped 139 + blanked 109: 248 vs 248
+  [ok ] 85 = 134 - 49, with 134 from the pre-merge artifact: 85 vs 85
+  [ok ] reachable 1317 = 499 + 308 + 510: 1317 vs 1317
+  [ok ] 65 = 25 undeclared + 40 value: 65 vs 65
+
+all identities hold
