@@ -83,6 +83,9 @@ error: The Paths Object keys must not repeat a templated path
 `lint` 的退出码 4，无 JSON 输出，`rules={}`。也就是说这类文档对 `valid_example` 是不可见的——
 不是规则漏报，是文档在更早的一层就被拦了。
 
+每个案例的文档名、来源 URL、sha256、冲突的两条路径与行号、CLI 原文、一条复现命令，见
+`one_cases/README.md` 与 `one_cases/<document>/CASE.md`。
+
 ## 6. 对文章的影响
 
 不能写「他的新规则在真实数据上抓到了 5%」。能写的事实只有两条：
