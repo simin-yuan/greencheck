@@ -2,15 +2,16 @@
 
 **Status:** draft for community discussion. Nothing here is a specification, and no
 implementation is required to support it.
-**Date:** 2026-11-03
+**Author:** Simin Yuan
+**Date:** First drafted 2026-10-14; this version 2026-11-03
 **Measured against:** the two mutation studies in [`studies/`](../studies/), artifact
 names given per number.
 
 ## The gap
 
 A JSON Schema states what a document may contain. When an author writes a schema that
-is deliberately permissive at some position — an open object, a value that may be
-anything — the schema usually says nothing about it, and silence is indistinguishable
+is deliberately permissive at some position (an open object, a value that may be
+anything), the schema usually says nothing about it, and silence is indistinguishable
 from an author who forgot.
 
 That ambiguity is harmless while the schema only filters documents. It costs more once
@@ -66,7 +67,7 @@ author currently makes with `{}` or by omitting a subschema entirely.
 
 ## What changes, and what does not
 
-Nothing about validation. Both keywords are annotations, not assertions: a validator
+Nothing about validation. Both keywords are annotations: a validator
 that ignores unknown keywords produces the same verdicts with or without them. A schema
 can adopt them one node at a time, and removing them restores exactly the previous
 behaviour.
@@ -90,9 +91,10 @@ From the SchemaStore study (`studies/schemastore-2026-10/out/x16_merged_basis.js
 
 `x-open-object` reaches 308 of the 333 and `x-open-value` reaches 510 of the 550: 818
 of the 883 that need an annotation. With the 499 the schema already states, that is
-1,317 of 1,382 escapes. The remaining 65 admit no annotation of this shape — 31 sit at
+1,317 of 1,382 escapes. The remaining 65 admit no annotation of this shape: 31 sit at
 a declared keyword outside the annotation's scope, 25 are reached through an array
-index, 9 are non-asserting metadata — so the coverage figure is an upper bound.
+index, and 9 are non-asserting metadata. The coverage figure is therefore an upper
+bound.
 
 **Writing at the definition rather than at every use is what makes the cost small.**
 Reaching half of a schema's own annotation-needing escapes takes a median of 2 write
@@ -105,12 +107,14 @@ escapes; the same cut on instance paths instead of definitions accounts for 60.
 1. **Naming.** `x-open-object` / `x-open-value` follow the existing `x-lint-exclude`
    style. A vocabulary keyword would need a home in a published vocabulary; an `x-`
    prefix keeps this out of scope for validators.
-2. **Placement.** Both are written at the node they describe. The alternative, written
-   at the definition and inherited through `$ref`, is what the cost measurement above
-   already assumes, since a `$ref` use has no independent text.
+2. **Placement.** The cost figures above assume an annotation written once at a
+   definition applies wherever that definition is used through `$ref`. Whether tools
+   should honour it that way, or expect it at each use, is open.
 3. **Interaction with `additionalProperties`.** A node writing
    `additionalProperties: false` and `x-open-object: true` contradicts itself. The
-   annotation is intended for nodes that write neither `true` nor a schema.
+   annotation is intended for nodes that write neither `true` nor a schema. An explicit
+   `additionalProperties: true` may already say the same thing; whether `x-open-object`
+   is then redundant there is open (see sourcemeta/jsonschema#632).
 4. **Interaction with `unevaluatedProperties`.** A node that looks open in one schema
    may be closed by a schema that composes it. Any tool honouring these keywords should
    resolve composition before concluding.
