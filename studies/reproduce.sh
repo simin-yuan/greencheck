@@ -14,7 +14,7 @@ set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 py="${PYTHON:-python3}"
 export JSONSCHEMA_CLI="${JSONSCHEMA_CLI:-jsonschema}"
-export GREENCHECK_REPO="${GREENCHECK_REPO:-$(cd "$here/.." && pwd)}"
+export GREENCHECK_REPO="${GREENCHECK_REPO:-$(cd "$here/.." && { pwd -W 2>/dev/null || pwd; })}"
 
 if [ "${1:-}" = "--fetch" ]; then
   cd "$here/openapi30-2026-11"
