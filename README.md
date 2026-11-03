@@ -13,6 +13,10 @@ $ pip install greencheck
 
 Zero runtime dependencies. Python 3.9+.
 
+## Studies
+
+Two mutation studies on real schemas (SchemaStore and OpenAPI 3.0), plus a draft of two intent annotations: see [studies/](studies/) and [docs/intent-annotations.md](docs/intent-annotations.md).
+
 ## What it does
 
 `greencheck` tests whether a validator, metric, guard, or quality gate can actually distinguish the cases it claims to distinguish.
