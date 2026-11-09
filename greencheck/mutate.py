@@ -36,7 +36,7 @@ import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 # Only text files are mutated; anything else is skipped.
 TEXT_EXT = {
