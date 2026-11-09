@@ -374,6 +374,7 @@ def main(argv=None) -> int:
             print("  For each line, ask: if this had happened, why didn't the gate care?")
 
     report = {
+        "tool": "greencheck mutate",
         "greencheck_mutate_version": __version__,
         "gate": a.gate,
         "target": _portable(target),
