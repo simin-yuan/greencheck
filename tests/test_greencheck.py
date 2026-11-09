@@ -14,6 +14,7 @@ import pathlib
 import re
 import subprocess
 import sys
+import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -275,6 +276,93 @@ class TestMutationOperators(unittest.TestCase):
         mutants = mutate.build_mutants(corpus)
         names = [n for n, _ in mutants]
         self.assertEqual(len(names), len(set(names)))
+
+
+class TestMutateJSONReport(unittest.TestCase):
+    """`mutate --json` is a machine-readable contract.
+
+    Scripts and agents read this object instead of scraping the human output.
+    A key that moves or a count that stops adding up breaks them silently, so
+    the shape, the arithmetic and the survivor locations are asserted here.
+    """
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = pathlib.Path(self._tmp.name)
+        self.target = self.root / "input"
+        self.target.mkdir()
+        (self.target / "config.json").write_text(
+            '{\n  "name": "svc",\n  "keep": "yes"\n}\n', encoding="utf-8")
+        self.gate = self.root / "gate.py"
+        self.gate.write_text(
+            "import json, sys\n"
+            "from pathlib import Path\n"
+            "try:\n"
+            "    cfg = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))\n"
+            "except Exception:\n"
+            "    sys.exit(1)\n"
+            "sys.exit(0 if cfg.get('keep') == 'yes' else 1)\n",
+            encoding="utf-8",
+        )
+        self.report_path = self.root / "report.json"
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def _run_json(self):
+        gate = f'"{sys.executable}" "{self.gate}" "{{target}}/config.json"'
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = mutate.main(
+                ["--gate", gate, "--target", str(self.target),
+                 "--report", str(self.report_path), "--json"]
+            )
+        return rc, buf.getvalue()
+
+    def test_json_stdout_is_the_report_file_with_a_stable_shape(self):
+        rc, out = self._run_json()
+        self.assertEqual(rc, 1, "the fixture gate should let one mutant through")
+
+        report = json.loads(out)
+        self.assertEqual(json.loads(self.report_path.read_text(encoding="utf-8")), report)
+
+        self.assertEqual(report["tool"], "greencheck mutate")
+        self.assertIsInstance(report["greencheck_mutate_version"], str)
+        self.assertEqual(report["files"], 1)
+        self.assertIsInstance(report["mutants_total"], int)
+        self.assertGreater(report["mutants_total"], 0)
+        self.assertFalse(os.path.isabs(report["target"]))
+        self.assertTrue(report["baseline_ok"])
+        self.assertEqual(report["baseline_exit_code"], 0)
+
+        self.assertEqual(report["caught_count"], len(report["caught"]))
+        self.assertEqual(report["escaped_count"], len(report["escaped"]))
+        self.assertEqual(
+            report["mutants_total"],
+            report["caught_count"] + report["escaped_count"] + len(report["build_errors"]),
+        )
+
+        self.assertEqual(report["escaped_count"], len(report["escaped_detail"]))
+        self.assertEqual(
+            report["escaped"],
+            [d["mutant"] for d in report["escaped_detail"]],
+        )
+        for item in report["escaped_detail"]:
+            self.assertIsInstance(item["mutant"], str)
+            self.assertIsInstance(item["gate_output_head"], str)
+
+    def test_escaped_mutants_carry_their_location(self):
+        _, out = self._run_json()
+        escaped = json.loads(out)["escaped"]
+        self.assertTrue(escaped, "the fixture gate should let at least one mutant through")
+        for name in escaped:
+            self.assertIn("config.json", name, f"no file in escaped mutant: {name}")
+        self.assertTrue(
+            any(n.startswith("drop-line:config.json:2:") for n in escaped), escaped
+        )
+        self.assertTrue(
+            any(n.startswith("blank-value:config.json:2:") for n in escaped), escaped
+        )
 
 
 class TestVersionIsSingleSourced(unittest.TestCase):

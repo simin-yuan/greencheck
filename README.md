@@ -40,6 +40,33 @@ $ python -m greencheck.cli mutate --gate "python examples/mutate-demo/gate.py {t
 
 The bundled example intentionally contains a weak gate. It catches most mutations but lets one bad configuration through, showing the difference between “the check ran” and “the check can reject the right thing.”
 
+### Machine-readable report
+
+`mutate` always writes its report to `--report` (default
+`greencheck-mutate-report.json`). Add `--json` to print the same object to stdout
+as JSON and keep the human-readable commentary out of the stream:
+
+```console
+$ python -m greencheck.cli mutate --gate "python examples/mutate-demo/gate.py {target}/config.json" --target examples/mutate-demo/input --json
+```
+
+The printed object and the `--report` file are identical. Its top-level fields
+are a stable contract:
+
+| field | meaning |
+|---|---|
+| `tool` | `greencheck mutate` |
+| `greencheck_mutate_version` | version of the mutation engine that wrote the report |
+| `gate`, `target` | the gate command and the portable target path |
+| `baseline_exit_code`, `baseline_ok` | whether the unmutated input passed |
+| `files` | mutable input files scanned |
+| `mutants_total` | cases run, one per mutant |
+| `caught_count`, `escaped_count` | killed and surviving mutant counts |
+| `caught`, `escaped`, `build_errors` | mutant names; each names the operator, file and, where the operator applies to a line, the line number, so a surviving mutant carries its location |
+| `escaped_detail` | one object per surviving mutant: its `mutant` name (the location) and the head of the gate output |
+
+Human-readable output is unchanged when `--json` is absent.
+
 ## Metric demo
 
 ```console
