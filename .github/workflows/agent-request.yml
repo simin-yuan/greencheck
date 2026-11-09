@@ -1,0 +1,19 @@
+name: Agent request
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        required: true
+      body:
+        required: true
+permissions:
+  issues: write
+jobs:
+  file:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ inputs.title }}
+          BODY: ${{ inputs.body }}
+        run: gh issue create --repo "${{ github.repository }}" --title "$TITLE" --body "$BODY"
